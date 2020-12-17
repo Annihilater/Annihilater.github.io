@@ -1,0 +1,1396 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第12章 函数式编程： 匿名函数、高阶函数、装饰器, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第12章 函数式编程： 匿名函数、高阶函数、装饰器 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第12章 函数式编程： 匿名函数、高阶函数、装饰器</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                入门与进阶
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-03-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>本章节进一步介绍函数式编程的lambda、mapeduce、filter以及装饰器</p>
+<a id="more"></a>
+
+<h3 id="12-1-lambda表达式"><a href="#12-1-lambda表达式" class="headerlink" title="12-1 lambda表达式"></a>12-1 lambda表达式</h3><p>lambda表达式又被称为匿名函数。</p>
+<blockquote>
+<p>匿名函数：我们在定义一个函数的时候，不需要定义它的函数名。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> parameter_list: expression</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>冒号后面的表达式只是表达式，不能赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var = <span class="keyword">lambda</span> x, y: x + y</span><br><span class="line"></span><br><span class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">print(var(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">---------------------------</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="12-2-三元表达式"><a href="#12-2-三元表达式" class="headerlink" title="12-2 三元表达式"></a>12-2 三元表达式</h3><p>其他语言通用的三元表达式：<code>判断条件？ 条件为真时的返回结果 条件为假时的返回结果</code></p>
+<p><code>Python</code>三元表达式的伪代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">条件为真时的返回结果 <span class="keyword">if</span> 判断条件 <span class="keyword">else</span> 条件为假时的返回结果</span><br></pre></td></tr></table></figure>
+
+<p>示例：对于 x，y 如果 x &gt; y 返回 x，否则返回 y</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 其他语言</span></span><br><span class="line">x &gt; y ？ x : y</span><br><span class="line"></span><br><span class="line"><span class="comment"># Python</span></span><br><span class="line">x <span class="keyword">if</span> x &gt; y <span class="keyword">else</span> y</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="12-3-map"><a href="#12-3-map" class="headerlink" title="12-3 map"></a>12-3 map</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144421.jpg" alt="image-20181030192652350"></p>
+<p><code>map</code>会将一个函数映射到一个输入列表的所有元素上。</p>
+<p><code>map</code>接收两个参数：</p>
+<ul>
+<li>函数</li>
+<li>序列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>(function_to_apply, *list_of_inputs)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">list_x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> x * x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># for item in list_x:</span></span><br><span class="line"><span class="comment">#     square(item)</span></span><br><span class="line"></span><br><span class="line">r = <span class="built_in">map</span>(square, list_x)</span><br><span class="line">print(<span class="built_in">type</span>(r), r)</span><br><span class="line">print(<span class="built_in">list</span>(r))</span><br><span class="line">---------------------------------------</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">map</span>&#x27;&gt; &lt;<span class="title">map</span> <span class="title">object</span> <span class="title">at</span> 0<span class="title">x10d54f4e0</span>&gt;</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64]</span><br></pre></td></tr></table></figure>
+
+<p>代码解释：</p>
+<p><code>map</code>会对其所传入的集合或者序列的每一项执行 <code>square</code>函数，并且接收 <code>square</code>的返回结果。</p>
+<p>如果我们从比较抽象的层面或者数学的层面来看它的作用呢，它其实就是一个映射。它可以把原集合的每一个元素映射到新集合里面来。至于说最终映射的结果是什么？是通过你编写的函数来决定的。</p>
+<h3 id="12-4-map与lambda"><a href="#12-4-map与lambda" class="headerlink" title="12-4 map与lambda"></a>12-4 map与lambda</h3><p><code>map</code>与 <code>lambda</code>表达式结合使用要比 <code>for</code>循环更加易懂、可阅读性更强、更精简、更优美。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list_x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">r = <span class="built_in">map</span>(<span class="keyword">lambda</span> x: x*x, list_x)</span><br><span class="line"></span><br><span class="line">print(<span class="built_in">type</span>(r), r)</span><br><span class="line">print(<span class="built_in">list</span>(r))</span><br><span class="line">-------------------------------------</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">map</span>&#x27;&gt; &lt;<span class="title">map</span> <span class="title">object</span> <span class="title">at</span> 0<span class="title">x10686c550</span>&gt;</span></span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="map-接收多参数"><a href="#map-接收多参数" class="headerlink" title="map 接收多参数"></a>map 接收多参数</h4><ul>
+<li><code>map</code>参数列表的数目必须与 <code>lambda</code>表达式数目相同；</li>
+<li>结果列表的元素个数取决于，原始列表中较小列表的长度。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">list_x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">list_y = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">r = <span class="built_in">map</span>(<span class="keyword">lambda</span> x, y: x*x + y, list_x, list_y)</span><br><span class="line"></span><br><span class="line">print(<span class="built_in">type</span>(r), r)</span><br><span class="line">print(<span class="built_in">list</span>(r))</span><br><span class="line">------------------------------------------</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">map</span>&#x27;&gt; &lt;<span class="title">map</span> <span class="title">object</span> <span class="title">at</span> 0<span class="title">x1065b3588</span>&gt;</span></span><br><span class="line">[2, 6, 12, 20, 30, 42]</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>七月心语：</p>
+<p><code>map</code>或者 <code>lambda</code>表达式并不能提升代码的运行效率，只能提升代码的简洁性。</p>
+</blockquote>
+<h3 id="12-5-reduce"><a href="#12-5-reduce" class="headerlink" title="12-5 reduce"></a>12-5 reduce</h3><blockquote>
+<p><code>map</code>在 vscode 的智能感知的情况下是可以直接看到 <code>map</code>的定义的，而 <code>reduce</code>却不可以，智能感知无法识别 <code>reduce</code>。那是因为 <code>Python3</code>里<code>reduce</code>已经不再<strong>全局的命名空间里</strong>了，我们需要先导入 <code>reduce</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144422.jpg" alt="image-20181030192612066"></p>
+<p><code>reduce</code> 函数会对参数序列中元素进行累积。</p>
+<p>函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。</p>
+<p>示例：（第三个参数表示初始化，将初始值带入运算）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line">list_x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line">r1 = reduce(<span class="keyword">lambda</span> x, y: x + y, list_x, <span class="number">10</span>)</span><br><span class="line">print(r1)</span><br><span class="line"></span><br><span class="line">list_y = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>]</span><br><span class="line">r2 = reduce(<span class="keyword">lambda</span> x, y: x + y, list_y, <span class="string">&#x27;aaa&#x27;</span>)</span><br><span class="line">print(r2)</span><br><span class="line">-----------------------------------------------</span><br><span class="line"><span class="number">46</span></span><br><span class="line">aaa12345678</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>reduce</code>是将执行流程高度抽象化了。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>如果对大数据有一定了解的同学，应听说过Google 提出过一个大数据的计算模型，这个计算模型就叫做 <strong>map/reduce</strong> ，这个map/reduce在大数据计算里是一个编程模型，那么 map 在这里面就是<strong>映射</strong>，reduce 在大数据里面叫做<strong>归约</strong>。map/reduce 在大数据里面最主要的应用是做并行计算。其实大数据里面的 map/reduce 借鉴的思想就是函数式编程。在 Python 里函数式编程最主要的体现就是在 map/reduce 上面。</p>
+<p>Python 里面出现了 map/reduce，hdoop 里面也出现了 map/reduce，它们有什么区别呢？</p>
+<p>区别肯定是有的，但是本质上来讲都是编程模型或者说是一种思想，都源自于函数式编程。</p>
+</blockquote>
+<h3 id="12-6-filter"><a href="#12-6-filter" class="headerlink" title="12-6 filter"></a>12-6 filter</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144424.jpg" alt="image-20181031091044590"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list_x = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">r = <span class="built_in">filter</span>(<span class="keyword">lambda</span> x: <span class="literal">True</span> <span class="keyword">if</span> x == <span class="number">1</span> <span class="keyword">else</span> <span class="literal">False</span>, list_x)</span><br><span class="line"><span class="comment"># r = filter(lambda x: x, list_x)</span></span><br><span class="line">print(<span class="built_in">type</span>(r), r)</span><br><span class="line">print(<span class="built_in">list</span>(r))</span><br><span class="line">--------------------------------------------------------</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">filter</span>&#x27;&gt; &lt;<span class="title">filter</span> <span class="title">object</span> <span class="title">at</span> 0<span class="title">x10ce8a5f8</span>&gt;</span></span><br><span class="line">[1, 1, 1]</span><br></pre></td></tr></table></figure>
+
+<h4 id="filter-的特点"><a href="#filter-的特点" class="headerlink" title="filter 的特点"></a>filter 的特点</h4><p><code>filter</code>要求第一个参数 <code>function</code>返回的必须是可以代表 <code>True</code>或者 <code>False</code>的类型。因为 filter 就是靠函数的返回结果来判断当前元素是否应该保留在结果集合中。如果返回的是 <code>False</code>，那么该元素将被剔除。这就是过滤器的作用。</p>
+<p>示例：返回列表字符中的小写字母</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">list_x = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;D&#x27;</span>]</span><br><span class="line">r = <span class="built_in">filter</span>(<span class="keyword">lambda</span> x: <span class="literal">True</span> <span class="keyword">if</span> re.findall(<span class="string">&#x27;[a-z]&#x27;</span>, x) <span class="keyword">else</span> <span class="literal">False</span>, list_x)</span><br><span class="line"><span class="comment"># r = filter(lambda x: re.findall(&#x27;[a-z]&#x27;, x), list_x)</span></span><br><span class="line">print(<span class="built_in">list</span>(r))</span><br><span class="line">-------------------------------------------------------------------------</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="12-7-命令式编程vs函数式编程"><a href="#12-7-命令式编程vs函数式编程" class="headerlink" title="12-7 命令式编程vs函数式编程"></a>12-7 命令式编程vs函数式编程</h3><p>我们现在最为熟知的其实还是命令式编程，但是我们在本小节之前学的 lambda、map、reduce、filter ，它们的实质应该是属于函数式编程。</p>
+<h4 id="命令式编程"><a href="#命令式编程" class="headerlink" title="命令式编程"></a>命令式编程</h4><p>命令式编程就是我们每天在写的代码的风格，或者说是一个过程的控制。那么我们可以想一想，无论多么复杂的业务逻辑，如果我们要控制它的流程，几个关键点是我们一定要有的：</p>
+<ol>
+<li>函数 def</li>
+<li>条件判断 if else</li>
+<li>循环 for</li>
+</ol>
+<p>我们可以发现不管多复杂的业务，我们可以通过 def、if else、for，都是可以去实现的。当然这里的总结并不完全，很多同学可能会提到，老师你不是还有包和模块吗？不是还有类和对象吗？是的，还有这些东西但是我们先挑选这些代表流程的东西来举例说明。我们关注的是命令式编程的本质，所以先不考虑这么多因素。举个例子来说，你没有这些功能可以实现这些功能吗？可以，函数可以实现所有的功能，你不把它封装成类和对象，直接写在函数里就行了。这三大类算是命令式编程最显著的特征了。</p>
+<h4 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h4><p>对应于命令式编程，函数式编程也有必须的一些关键字。我们常用的函数式编程的关键字或者说手段有4个：</p>
+<ol>
+<li>map</li>
+<li>reduce</li>
+<li>filter</li>
+<li>lambda 表达式：算子</li>
+</ol>
+<p>理论上而言我们可以使用以上这四个去替换所有的命令式编程里复杂的业务逻辑。lambda 表达式其实是作为函数式编程最基本的单元，它在一定程度上是可以替换命令式编程里的函数的。其次是 map、reduce 其实是可以替换循环的。为什么说是理论上可以去实现呢？因为我也没有尝试过把很复杂的用命令式编程编写的项目全部改写成函数式编程。问题在于什么呢？在于我们习惯的就是命令式编程。我们上学的时候，包括我们看编程的书籍、视频，我们所有接受的都是命令式编程的思想，这个思想一旦形成之后你就很难去改变。这里只是一个简单的介绍，函数式编程可以说是一个全新的领域。</p>
+<p>所以说我的建议就是：函数式编程，我们可以把它结合到我们最熟悉的命令式编程里面，来帮助我们写出一些简洁的代码，但是我不推荐大家全盘的使用函数式编程的思想来构建你的业务逻辑或者是实际项目。</p>
+<p><code>lisp</code>语言算是函数式编程的鼻祖，如果你真的想用函数式编程的话，那么你就用 <code>lisp</code>。你不要强行拿 Java、python、c#、c++ 这些命令式的或者说是结构式的编程语言来强行写函数式编程。因为我强调一个观点：python、Java、c# 等，它们可能对函数式编程有一定支持的，但是这只是说它们支持部分特性，但是这些语言的本质来说还是命令式的编程，所以你千万不跟别人说 python 是函数式编程。</p>
+<blockquote>
+<p>这节课的目的并不是倡导到家用函数式编程去写代码，而是只是想让大家了解命令式编程和函数式编程到底是什么，以及他们有什么区别，我们达到这个目的就可以了。</p>
+<p>我记得有同学之前问我，老师你之前学过 lisp 语言吗？我记得我上大学的时候在图书馆的角落里翻出一本 lisp 书籍，当时坐着翻了一会儿，说真的看的不是太懂。有兴趣的小伙伴可以去挑战一下，lisp 在人工智能的领域里也是用的比较多的。</p>
+</blockquote>
+<h3 id="12-8-装饰器-一"><a href="#12-8-装饰器-一" class="headerlink" title="12-8 装饰器 一"></a>12-8 装饰器 一</h3><h4 id="装饰器的写法"><a href="#装饰器的写法" class="headerlink" title="装饰器的写法"></a>装饰器的写法</h4><p>装饰器必须满足三个条件：</p>
+<ol>
+<li>必须是嵌套函数</li>
+<li>必须返回嵌套函数</li>
+<li>调用的时候使用<code>@</code>语法糖</li>
+</ol>
+<blockquote>
+<p>我个人认为学习装饰器，直接给出装饰器的概念或者说意义，我觉得是没有太大作用的。对于装饰器来讲，我们不仅要知道什么是装饰器，最关键的还是要理解装饰器的使用场景，以及装饰器可以帮助我们解决什么样的问题，它的优势在什么地方。搞清楚这些才算是真正理解了装饰器。</p>
+</blockquote>
+<h4 id="Unix-时间戳"><a href="#Unix-时间戳" class="headerlink" title="Unix 时间戳"></a>Unix 时间戳</h4><p>Unix 时间戳（Unix timestamp）或者成 Unix 时间（Unix time）或者POSIX 时间（POSIX time）是一种时间表示方式，定义为从格林威治时间1970年01月01日00分00秒起至现在的总秒数。</p>
+<p>Python 获取 Unix 时间戳：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">time.time()</span><br></pre></td></tr></table></figure>
+
+<p>Python 将Unix 时间戳 转换为普通时间：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line">time.gmtime(Unix timestamp)</span><br><span class="line">time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Python 将普通时间转换为 Unix 时间戳：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">int</span>(time.mktime(time.strptime(<span class="string">&#x27;YYYY-MM-DD HH:MM:SS&#x27;</span>, <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+
+
+
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    print(time.time())</span><br><span class="line">    print(time.clock())</span><br><span class="line">    print(time.gmtime())</span><br><span class="line">    print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">    print(<span class="string">&#x27;This is a function.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    new_time = <span class="built_in">int</span>(time.mktime(time.strptime(<span class="string">&#x27;2018-10-31 14:15:50&#x27;</span>, <span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)))</span><br><span class="line">    print(new_time)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"><span class="number">1540966577.973166</span></span><br><span class="line"><span class="number">0.042615</span></span><br><span class="line">time.struct_time(tm_year=<span class="number">2018</span>, tm_mon=<span class="number">10</span>, tm_mday=<span class="number">31</span>, tm_hour=<span class="number">6</span>, tm_min=<span class="number">16</span>, tm_sec=<span class="number">17</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">304</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">14</span>:<span class="number">16</span>:<span class="number">17</span></span><br><span class="line">This <span class="keyword">is</span> a function.</span><br><span class="line"><span class="number">1540966550</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h4><ol>
+<li><p>需要在一个函数里打印程序执行时的时间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">    print(<span class="string">&#x27;This is a function.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line">---------------------------------------------</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">14</span>:<span class="number">21</span>:<span class="number">58</span></span><br><span class="line">This <span class="keyword">is</span> a function.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>假如我有1000个函数，都需要附带这种在内部打印执行时间的功能呢？</p>
+</li>
+<li><pre><code class="python">import time
+
+</code></pre>
+</li>
+</ol>
+<p>   def f1():<br>       print(time.strftime(‘%Y-%m-%d %H:%M:%S’))<br>       print(‘This is a function.’)</p>
+<p>   def f2():<br>       print(time.strftime(‘%Y-%m-%d %H:%M:%S’))<br>       print(‘This is a function.’)</p>
+<p>   def f3():<br>       print(time.strftime(‘%Y-%m-%d %H:%M:%S’))<br>       print(‘This is a function.’)</p>
+<p>   …<br>   f1()<br>   f2()<br>   f3()</p>
+<hr>
+<p>   2018-10-31 14:24:31<br>   This is a function.<br>   2018-10-31 14:24:31<br>   This is a function.<br>   2018-10-31 14:24:31<br>   This is a function.<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">像这么在每个函数的内部加上这样的语句显然是不切合实际的，而且也违背了开闭原则（对修改是关闭的，对扩展是开放的）。</span><br><span class="line"></span><br><span class="line">那么有的同学就用函数式编程的方法，将函数作为参数，提出了下面的解决方案：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def f1():</span><br><span class="line">    print(&#39;This is a function.&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def f2():</span><br><span class="line">    print(&#39;This is a function.&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def f3():</span><br><span class="line">    print(&#39;This is a function.&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def print_current_time(func):</span><br><span class="line">    print(time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;))</span><br><span class="line">    func()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print_current_time(f1)</span><br><span class="line">print_current_time(f2)</span><br><span class="line">print_current_time(f3)</span><br><span class="line">-----------------------------------------------------</span><br><span class="line">2018-10-31 14:30:36</span><br><span class="line">This is a function.</span><br><span class="line">2018-10-31 14:30:36</span><br><span class="line">This is a function.</span><br><span class="line">2018-10-31 14:30:36</span><br><span class="line">This is a function.</span><br></pre></td></tr></table></figure></p>
+<p>   这个方法的有点是准守了开闭原则。巧妙的运用了函数式编程的特性，将函数作为参数传递到另外的函数里面去，然后再另外的函数里面通过打印时间，最终完成了需求的变更。</p>
+<p>   如果不使用装饰器，那么像这样的新增加一个函数的方式不失为一种方法，但是这种方法我个人认为是不够好的，至少不够优雅。这种方案是优缺点的，很多课程或者教程在解释这样一种对于需求变更的处理时候的缺点呢，我觉得都没有说到关键的地方，关键在于打印时间这个新增加的需求，是属于每个函数本身的，并不是属于新增加的函数的。我们这样是相当于是强行的在每个函数之前加入了打印时间，它并没有体现函数本身的特性。其实上述写法和这种写法完全没有区别：</p>
+   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">f1()</span><br><span class="line">print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">f2()</span><br><span class="line">print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">f3()</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>那么有没有一种方法，可以让我们新添加的业务逻辑依然可以和老函数绑定在一起，体现出对原来老函数功能的增加，但是又不去更改函数内部的实现呢？这个就是装饰器要去解决的问题。</li>
+</ol>
+<h3 id="12-9-装饰器-二"><a href="#12-9-装饰器-二" class="headerlink" title="12-9 装饰器 二"></a>12-9 装饰器 二</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>():</span></span><br><span class="line">        print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">        func()</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = decorator(f1)</span><br><span class="line">f()</span><br><span class="line">------------------------------------------------------</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">15</span>:<span class="number">26</span>:01</span><br><span class="line">This <span class="keyword">is</span> a function.</span><br></pre></td></tr></table></figure>
+
+<p>上述写法就是装饰器的写法了，其实只是变了一个魔术，和上节中的调用方案没有太大的区别，只不过这样的写法内置性更高。</p>
+<blockquote>
+<p>注意：上述装饰器的写法与闭包的写法相似，只是没有引用外部的、非全局的环境变量。</p>
+</blockquote>
+<p>回到上一节所提出的问题，上节的解法里不能体现出新功能与 f1、f2 等函数的关联性，本节的这种所谓的装饰器的解法其实也没用体现出这种关联性。</p>
+<p>下面我们来看下这样的写法为什么叫装饰器？</p>
+<p>真正的业务逻辑其实不在 decorator 里面，真正的业务实际上在 wrapper 里面（wrapper 是被封装的意思）。也就是说我们通过在 wrapper 外面包裹了一层 decorator 来实现我们不改变原有函数，而增加了新的功能这样的一种特性。那么看起来就像 wrapper 被 decorator 装饰了一样，所以这也是它叫装饰器的原因。</p>
+<p>不知道各位同学听明白了没有，反正我是没有听明白，我刚刚讲的对于装饰器的解释，是绝大多数课程或者教材或者是书籍里面所定义的装饰器，但是在我看来这样的解释根本没有体现出装饰的特性。那么下一节课给大家讲一讲我理解的装饰器为什么叫装饰器。</p>
+<h3 id="12-10-装饰器-三"><a href="#12-10-装饰器-三" class="headerlink" title="12-10 装饰器 三"></a>12-10 装饰器 三</h3><h4 id="语法糖"><a href="#语法糖" class="headerlink" title="@ 语法糖"></a>@ 语法糖</h4><p>使用 <code>@</code> 语法糖直接可以不改变原函数的调用方式，给原函数添加新的功能。相比于前两节所介绍的方法都必须改变原函数的调用方式才能打印出程序执行时的时间。</p>
+<p><code>@</code>语法糖优势展露无遗。这就是装饰器最大的特点，也是其意义所在。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>():</span></span><br><span class="line">        print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">        func()</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用语法糖</span></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line">--------------------------------------------------</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">15</span>:<span class="number">45</span>:<span class="number">23</span></span><br><span class="line">This <span class="keyword">is</span> a function.</span><br></pre></td></tr></table></figure>
+
+<p>这样看起来只有定义的时候比较复杂，调用的时候很方便。我们可以接受定义时候的复杂，但是我们决定不能接受调用时候的复杂，因为我们可能只需要写一次定义，但是我们可能会调用无数次，这也是我们封装的最基本的原则。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>Python 里的装饰器其实涉及到了 AOP 的编程思想，那么这个 AOP 就不展开讲了，这个涉及到编程模式，而且我比较推荐 AOP 的编程。我在上一门 PHP 的课程里面大量的应用了 AOP 的编程思想，想了解的同学建议私下了解一下。</p>
+</blockquote>
+<h3 id="12-11-装饰器-四"><a href="#12-11-装饰器-四" class="headerlink" title="12-11 装饰器 四"></a>12-11 装饰器 四</h3><h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><p>上节介绍了简单的装饰器，上节的装饰器是不需要任何参数的，如果我们所装饰的函数需要传入参数，这个装饰器需要做哪些改变才能支持带参数的函数呢？使用<code>*args</code>：表示参数列表。</p>
+<blockquote>
+<p>args：是通用命名。在具体函数里还是使用字面意识能够代表参数含义的参数名会比较好。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args</span>):</span></span><br><span class="line">        print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">        func(*args)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用语法糖</span></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>(<span class="params">arg</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + arg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span>(<span class="params">arg1, arg2</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + <span class="built_in">str</span>(arg1))</span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + <span class="built_in">str</span>(arg2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test_function1 = <span class="number">1</span></span><br><span class="line">test_function2 = <span class="number">2</span></span><br><span class="line">f1(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">f2(test_function1, test_function2)</span><br><span class="line">-------------------------------------------------------</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">17</span>:01:<span class="number">46</span></span><br><span class="line">This <span class="keyword">is</span> a function: test</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">17</span>:01:<span class="number">46</span></span><br><span class="line">This <span class="keyword">is</span> a function: <span class="number">1</span></span><br><span class="line">This <span class="keyword">is</span> a function: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="12-12-装饰器-五"><a href="#12-12-装饰器-五" class="headerlink" title="12-12 装饰器 五"></a>12-12 装饰器 五</h3><h4 id="传递关键字参数"><a href="#传递关键字参数" class="headerlink" title="传递关键字参数"></a>传递关键字参数</h4><p>让装饰器兼容带有关键字参数的函数：使用<code>**kwargs</code>：表示关键字参数列表。</p>
+<blockquote>
+<p>kwargs：是通用命名，代表 key word args 关键字的意思。这个词可以任意命名。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">        print(time.strftime(<span class="string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>))</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用语法糖</span></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>(<span class="params">arg</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + arg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span>(<span class="params">arg1, arg2</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + <span class="built_in">str</span>(arg1))</span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + <span class="built_in">str</span>(arg2))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f3</span>(<span class="params">arg1, arg2, **kw</span>):</span></span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + <span class="built_in">str</span>(arg1))</span><br><span class="line">    print(<span class="string">&#x27;This is a function: &#x27;</span> + <span class="built_in">str</span>(arg2))</span><br><span class="line">    print(kw)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test_function1 = <span class="number">1</span></span><br><span class="line">test_function2 = <span class="number">2</span></span><br><span class="line">f1(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">f2(test_function1, test_function2)</span><br><span class="line">f3(test_function1, test_function2, a=<span class="number">1</span>, b=<span class="number">2</span>, c=<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">-----------------------------------------------------------</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">26</span></span><br><span class="line">This <span class="keyword">is</span> a function: test</span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">26</span></span><br><span class="line">This <span class="keyword">is</span> a function: <span class="number">1</span></span><br><span class="line">This <span class="keyword">is</span> a function: <span class="number">2</span></span><br><span class="line"><span class="number">2018</span>-<span class="number">10</span>-<span class="number">31</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">26</span></span><br><span class="line">This <span class="keyword">is</span> a function: <span class="number">1</span></span><br><span class="line">This <span class="keyword">is</span> a function: <span class="number">2</span></span><br><span class="line">&#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;c&#x27;</span>: <span class="string">&#x27;123&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>小技巧：</p>
+<p>在 Python 里<code>func(*args, **kwargs)</code>基本上是可以调用具有任何形式的参数（一个参数、两个参数、关键字参数等等）。</p>
+<p>当你想调用一个函数，你又不知道这个函数是怎么定义的时候（不知道该函数需要什么参数），就可以使用<code>func(*args, **kwargs)</code>这种形式。</p>
+</blockquote>
+<h3 id="12-13-装饰器-六"><a href="#12-13-装饰器-六" class="headerlink" title="12-13 装饰器 六"></a>12-13 装饰器 六</h3><h4 id="代码稳定性"><a href="#代码稳定性" class="headerlink" title="代码稳定性"></a>代码稳定性</h4><p>装饰器最基本的思想在于如果我们想对某一个被封装的单元，比如说是函数，做出一个代码上的修改的话，我们可以不去改动单元或者函数内部具体的实现，而是通过装饰器的这样一种形式来改变这个函数的行为，这个是从代码的稳定性的角度阐述装饰器的作用。</p>
+<h4 id="代码复用性"><a href="#代码复用性" class="headerlink" title="代码复用性"></a>代码复用性</h4><p>从代码复用性的角度阐述装饰器的用法：</p>
+<p>比如我们打印程序运行时的时间的功能就是新增的一个逻辑，那么我们现在把这个功能封装成一个装饰器，凡是需要有打印时间这个功能的函数都可以通过装饰器的<code>@</code>语法糖将这个新的功能加在函数上面，这个其实代码的复用。</p>
+<h4 id="web-框架举例"><a href="#web-框架举例" class="headerlink" title="web 框架举例"></a>web 框架举例</h4><p>下面举几个实际的例子，这些例子都是框架里一些特有的功能：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144426.jpg" alt="image-20181031182328186"></p>
+<p>在 <code>flask</code>内部就是用了大量的装饰器。上图展示 <code>flask</code> 里面的两个控制器。<code>flask</code>是我经常用的 web 框架，如果我们要开发 web，<code>flask</code>是个比较好的选择。我们可以看到在<code>flask</code>控制器上面有<code>@</code>符号，这个就是一个装饰器。我们先来看下<code>@api.route</code>，如果我们不添加<code>@api.route</code>的话，它只是一个简单的函数，当我们加了<code>@api.route</code>之后，这个<code>test_javascript_http</code>它就可以变成一个控制器了。这个控制器的作用是可以将访问这个控制器的 <code>url</code>地址设置成 <code>get</code>，还可以指定访问这个控制器的 <code>http</code>方法。关键在于，如果这个装饰器只是用在这一个控制器上面的话就没什么意义，但是我们可以看到我们还可以将装饰器用在别的函数上，凡是加了<code>@api.route</code>的函数，它马上就不是普通函数了，而是变成了一个控制器。</p>
+<p>如果大家觉得这个装饰器还没有体现出它的优势来，我告诉大家<code>@api.route</code>这个装饰器内部的代码是很复杂的。大家可以想一想，这么复杂的代码，如果不用装饰器来实现，而是直接把复杂的代码加到函数里，大家觉得这样可行吗？加一个可能没什么问题，那么加100个呢？大家都知道对于一个 web 项目来说，稍微中大型一点的，三五十个接口实在是太正常了，<code>rest</code>的接口可能少一点，如果不是 <code>rest</code>的话，如果你直接是业务型的接口，成百上千个实在是太正常了。你把这样很复杂的逻辑平摊到每个函数里面显然是不可行的，这个时候装饰器的优势就体现出来了。我只在我需要的函数前加上装饰器就可以了，它就变成一个控制器了。这个是<code>@api.route</code>装饰器的作用。</p>
+<p>我们再看下面<code>@auth.login_required</code>装饰器，正如我们所看到的，并不是一个函数只能增加一个装饰器，它可以增加很多个装饰器，你可以像盖楼房一样，一层一层的将这些装饰器磊在一起。那我们知道有些接口是面向大众的，谁都可以访问额，但是有些接口却不是任何人都可以访问的。比如我们所提供的接口是图书信息服务，这个图书信息服务我们可以让任何人都可以访问，比如说像豆瓣的开放 api，它的图书信息是谁都可以访问的，不需要登录也不需要注册，但是对于有一些接口的话，比如说我们要删除一个数据的话，这样的接口是谁都可以访问的吗？显然不是。所以说借口大致分为两类，一类是所有人都可以访问的，另一类是需要受保护的。那么具体到如果是我们自己来编写代码的时候，我们就需要做区分，比如说上面接口谁都可以访问，下面接口我不想让其他人访问，我需要验证它的身份，身份通过了之后我才能去让它访问我的接口，这个时候装饰器就是一个很灵活的用法。我可以在所有需要验证用户身份的接口上面加上<code>@auth.login_required</code>装饰器，那么这个函数就变成了一个需要验证才能访问的控制器。</p>
+<p>就给大家举这两个例子，因为我自己是对 <code>flask</code>比较熟的，我自己写 <code>flask</code>的时候就会写很多装饰器。</p>
+<p>装饰器还是体现了 AOP 的思想，也就是从一个横切面上解决问题，有基础的同学可以去了解一下。AOP 确实是很好用的思想。                                        </p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/03/14/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC12%E7%AB%A0%20%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9A%20%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E3%80%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/">https://www.klause.cn/2019/03/14/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC12%E7%AB%A0%20%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9A%20%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E3%80%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-03-14T21-37-05',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/03/26/Markdown/sites-available_default/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="sites-available_default">
+                        
+                        <span class="card-title">sites-available_default</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-03-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech/" class="post-category">
+                                    Tech
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/markdown/">
+                        <span class="chip bg-color">markdown</span>
+                    </a>
+                    
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/14/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC11%E7%AB%A0%20Python%E7%9A%84%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95%E4%B8%8E%E7%94%A8%E6%B3%95/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="第11章 Python的高级语法与用法">
+                        
+                        <span class="card-title">第11章 Python的高级语法与用法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本章节我们揭开Python进阶部分的高级特性，详细讲解枚举、闭包，并对函数式编程做出介绍。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    入门与进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1864 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第10章 正则表达式与JSON, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第10章 正则表达式与JSON | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第10章 正则表达式与JSON</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                入门与进阶
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-04-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>此章节是原生爬虫的基础。正则表达式也是文本解析中非常重要的知识点。本章我们将讲解什如何在Python中编写正则表达式与常见的正则表达式。此外，JSON作为非常重要的数据格式，我们会重点讲解，包括JSON对象，JSON字符串，Python类型与JSON的转换。…</p>
+<h3 id="10-1-初识正则表达式"><a href="#10-1-初识正则表达式" class="headerlink" title="10-1 初识正则表达式"></a>10-1 初识正则表达式</h3><p><strong>正则表达式</strong>：是一个特殊的字符序列，可以帮助我们检测一个字符串是否与我们所设定的字符序列相匹配。</p>
+<p>如果匹配，我们就可以进行快速检索、实现一些替换文本的操作。</p>
+<p>正则应用场景：</p>
+<ol>
+<li>检查一串数字是否是电话号码</li>
+<li>检测一个字符串是否符合 <code>email</code></li>
+<li>把一个文本里指定的单词替换为另一个单词</li>
+</ol>
+<p>诸如此类对字符串或者文本的操作都可以用正则表达式来实现。正则表达式的功能可以说是非常强大的。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>以我多年的编程经验来看，编程很多时候就是在做数据处理，而我们处理的绝大多数数据都是文本或者字符串，所以掌握正则表达式是非常重要的。如果你的正则表达式用的非常6，你是不需要很多语言提供的内置字符串处理函数，当然这并不是鼓励大家对于字符串的处理全部都用正则表达式，正则表达式确实很强大，但是有时候系统提供给我们的内置的字符串处理函数使用起来是很方便的。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;C|C++|Java|C#|Python|Javascript&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;Python&#x27;</span>, a)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(r) &gt; <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">&#x27;字符串中包含 Python&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;No&#x27;</span>)</span><br><span class="line">print(r)</span><br><span class="line"></span><br><span class="line">print(a.index(<span class="string">&#x27;Python&#x27;</span>) &gt; -<span class="number">1</span>)</span><br><span class="line">print(<span class="string">&#x27;Python&#x27;</span> <span class="keyword">in</span> a)</span><br><span class="line">--------------------------------------</span><br><span class="line">字符串中包含 Python</span><br><span class="line">[<span class="string">&#x27;Python&#x27;</span>]</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="10-2-元字符与普通字符"><a href="#10-2-元字符与普通字符" class="headerlink" title="10-2 元字符与普通字符"></a>10-2 元字符与普通字符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;C2C++1Java0C#5Python7Javascript&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;\d&#x27;</span>, a)</span><br><span class="line">print(r)</span><br><span class="line">------------------------------------------</span><br><span class="line">[<span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;7&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>上节中的 <code>Python</code>是普通字符，<code>\d</code>是元字符</p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>将下一个字符标记符、或一个向后引用、或一个八进制转义符。例如，“\n”匹配\n。“\n”匹配换行符。序列“\”匹配“\”而“(”则匹配“(”。即相当于多种编程语言中都有的“转义字符”的概念。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配输入字行首。如果设置了RegExp对象的Multiline属性，^也匹配“\n”或“\r”之后的位置。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入行尾。如果设置了RegExp对象的Multiline属性，$也匹配“\n”或“\r”之前的位置。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前面的子表达式任意次。例如，zo<em>能匹配“z”，也能匹配“zo”以及“zoo”。</em>等价于{0,}。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面的子表达式零次或一次。例如，“do(es)?”可以匹配“do”或“does”。?等价于{0,1}。</td>
+</tr>
+<tr>
+<td>{<em>n</em>}</td>
+<td><em>n</em>是一个非负整数。匹配确定的<em>n</em>次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o。</td>
+</tr>
+<tr>
+<td>{<em>n</em>,}</td>
+<td><em>n</em>是一个非负整数。至少匹配<em>n</em>次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”。</td>
+</tr>
+<tr>
+<td>{<em>n</em>,<em>m</em>}</td>
+<td><em>m</em>和<em>n</em>均为非负整数，其中<em>n</em>&lt;=<em>m</em>。最少匹配<em>n</em>次且最多匹配<em>m</em>次。例如，“o{1,3}”将匹配“fooooood”中的前三个o为一组，后三个o为一组。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>当该字符紧跟在任何一个其他限制符（*,+,?，{<em>n</em>}，{<em>n</em>,}，{<em>n</em>,<em>m</em>}）后面时，匹配模式是非贪婪的。非贪婪模式尽可能少地匹配所搜索的字符串，而默认的贪婪模式则尽可能多地匹配所搜索的字符串。例如，对于字符串“oooo”，“o+”将尽可能多地匹配“o”，得到结果[“oooo”]，而“o+?”将尽可能少地匹配“o”，得到结果 [‘o’, ‘o’, ‘o’, ‘o’]</td>
+</tr>
+<tr>
+<td>.点</td>
+<td>匹配除“\n”和”\r”之外的任何单个字符。要匹配包括“\n”和”\r”在内的任何字符，请使用像“[\s\S]”的模式。</td>
+</tr>
+<tr>
+<td>(pattern)</td>
+<td>匹配pattern并获取这一匹配。所获取的匹配可以从产生的Matches集合得到，在VBScript中使用SubMatches集合，在JScript中则使用$0…$9属性。要匹配圆括号字符，请使用“(”或“)”。</td>
+</tr>
+<tr>
+<td>(?:pattern)</td>
+<td>非获取匹配，匹配pattern但不获取匹配结果，不进行存储供以后使用。这在使用或字符“(|)”来组合一个模式的各个部分时很有用。例如“industr(?:y|ies)”就是一个比“industry|industries”更简略的表达式。</td>
+</tr>
+<tr>
+<td>(?=pattern)</td>
+<td>非获取匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如，“Windows(?=95|98|NT|2000)”能匹配“Windows2000”中的“Windows”，但不能匹配“Windows3.1”中的“Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+</tr>
+<tr>
+<td>(?!pattern)</td>
+<td>非获取匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串，该匹配不需要获取供以后使用。例如“Windows(?!95|98|NT|2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。</td>
+</tr>
+<tr>
+<td>(?&lt;=pattern)</td>
+<td>非获取匹配，反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?&lt;=95|98|NT|2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。“(?&lt;=95|98|NT|2000)Windows”目前在python3.6中re模块测试会报错，用“|”连接的字符串长度必须一样，这里“95|98|NT”的长度都是2，“2000”的长度是4，会报错。</td>
+</tr>
+<tr>
+<td>(?&lt;!patte_n)</td>
+<td>非获取匹配，反向否定预查，与正向否定预查类似，只是方向相反。例如“(?&lt;!95|98|NT|2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。这个地方不正确，有问题此处用或任意一项都不能超过2位，如“(?&lt;!95|98|NT|20)Windows正确，“(?&lt;!95|980|NT|20)Windows 报错，若是单独使用则无限制，如(?&lt;!2000)Windows 正确匹配。同上，这里在python3.6中re模块中字符串长度要一致，并不是一定为2，比如“(?&lt;!1995|1998|NTNT|2000)Windows”也是可以的。</td>
+</tr>
+<tr>
+<td>x|y</td>
+<td>匹配x或y。例如，“z|food”能匹配“z”或“food”(此处请谨慎)。“[zf]ood”则匹配“zood”或“food”。</td>
+</tr>
+<tr>
+<td>[xyz]</td>
+<td>字符集合。匹配所包含的任意一个字符。例如，“[abc]”可以匹配“plain”中的“a”。</td>
+</tr>
+<tr>
+<td>[^xyz]</td>
+<td>负值字符集合。匹配未包含的任意字符。例如，“[^abc]”可以匹配“plain”中的“plin”任一字符。</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>字符范围。匹配指定范围内的任意字符。例如，“[a-z]”可以匹配“a”到“z”范围内的任意小写字母字符。注意:只有连字符在字符组内部时,并且出现在两个字符之间时,才能表示字符的范围; 如果出字符组的开头,则只能表示连字符本身.</td>
+</tr>
+<tr>
+<td>[^a-z]</td>
+<td>负值字符范围。匹配任何不在指定范围内的任意字符。例如，“[^a-z]”可以匹配任何不在“a”到“z”范围内的任意字符。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词的边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”；“\b1_”可以匹配“1_23”中的“1_”，但不能匹配“21_3”中的“1_”。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。</td>
+</tr>
+<tr>
+<td>\cx</td>
+<td>匹配由x指明的控制字符。例如，\cM匹配一个Control-M或回车符。x的值必须为A-Z或a-z之一。否则，将c视为一个原义的“c”字符。</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于[0-9]。grep 要加上-P，perl正则支持</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。等价于[^0-9]。grep要加上-P，perl正则支持</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>匹配一个换页符。等价于\x0c和\cL。</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个换行符。等价于\x0a和\cJ。</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个回车符。等价于\x0d和\cM。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何不可见字符，包括空格、制表符、换页符等等。等价于[ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何可见字符。等价于[^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个制表符。等价于\x09和\cI。</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>匹配一个垂直制表符。等价于\x0b和\cK。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配包括下划线的任何单词字符。类似但不等价于“[A-Za-z0-9_]”，这里的”单词”字符使用Unicode字符集。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。</td>
+</tr>
+<tr>
+<td>\x<em>n</em></td>
+<td>匹配<em>n</em>，其中<em>n</em>为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“\x41”匹配“A”。“\x041”则等价于“\x04&amp;1”。正则表达式中可以使用ASCII编码。</td>
+</tr>
+<tr>
+<td>\<em>num</em></td>
+<td>匹配<em>num</em>，其中<em>num</em>是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td>\<em>n</em></td>
+<td>标识一个八进制转义值或一个向后引用。如果*n<em>之前至少</em>n<em>个获取的子表达式，则</em>n<em>为向后引用。否则，如果</em>n<em>为八进制数字（0-7），则</em>n*为一个八进制转义值。</td>
+</tr>
+<tr>
+<td>\<em>nm</em></td>
+<td>标识一个八进制转义值或一个向后引用。如果*nm<em>之前至少有</em>nm<em>个获得子表达式，则</em>nm<em>为向后引用。如果\</em>nm<em>之前至少有</em>n<em>个获取，则</em>n<em>为一个后跟文字</em>m<em>的向后引用。如果前面的条件都不满足，若</em>n<em>和</em>m<em>均为八进制数字（0-7），则\</em>nm<em>将匹配八进制转义值</em>nm*。</td>
+</tr>
+<tr>
+<td>\<em>nml</em></td>
+<td>如果<em>n</em>为八进制数字（0-7），且<em>m</em>和<em>l</em>均为八进制数字（0-7），则匹配八进制转义值<em>nml</em>。</td>
+</tr>
+<tr>
+<td>\u<em>n</em></td>
+<td>匹配<em>n</em>，其中<em>n</em>是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（&copy;）。</td>
+</tr>
+<tr>
+<td>\p{P}</td>
+<td>小写 p 是 property 的意思，表示 Unicode 属性，用于 Unicode 正表达式的前缀。中括号内的“P”表示Unicode 字符集七个字符属性之一：标点字符。<br />其他六个属性：<br />L：字母；<br />M：标记符号（一般不会单独出现）；<br />Z：分隔符（比如空格、换行等）；<br />S：符号（比如数学符号、货币符号等）；<br />N：数字（比如阿拉伯数字、罗马数字等）；<br />C：其他字符。<br />*<em>注：此语法部分语言不支持，例：javascript。</em></td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>匹配词（word）的开始（&lt;）和结束（&gt;）。例如正则表达式&lt;the&gt;能够匹配字符串”for the wise”中的”the”，但是不能匹配字符串”otherwise”中的”the”。注意：这个元字符不是所有的软件都支持的。</td>
+</tr>
+<tr>
+<td>( )</td>
+<td>将( 和 ) 之间的表达式定义为“组”（group），并且将匹配这个表达式的字符保存到一个临时区域（一个正则表达式中最多可以保存9个），它们可以用 \1 到\9 的符号来引用。</td>
+</tr>
+<tr>
+<td>|</td>
+<td>将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him|her) 匹配”it belongs to him”和”it belongs to her”，但是不能匹配”it belongs to them.”。注意：这个元字符不是所有的软件都支持的。</td>
+</tr>
+</tbody></table>
+<h4 id="正则表达式字母缩写"><a href="#正则表达式字母缩写" class="headerlink" title="正则表达式字母缩写"></a>正则表达式字母缩写</h4><p>明白单词的意思对记忆Regular Expression 的修饰符和元字符很有帮助。有整理的不合理的地方请小伙伴留言指教。</p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>ignore</th>
+<th>忽略</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>g</td>
+<td>globel</td>
+<td>全局</td>
+</tr>
+<tr>
+<td>m</td>
+<td>multiLine</td>
+<td>多行</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>word</td>
+<td>自字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>digit</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>space</td>
+<td>空格</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>boundary</td>
+<td>单词边界</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>newline</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>formfeed</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>return</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>tab</td>
+<td>制表符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>vertical tab</td>
+<td>垂直制表</td>
+</tr>
+</tbody></table>
+<h3 id="10-3-字符集"><a href="#10-3-字符集" class="headerlink" title="10-3 字符集"></a>10-3 字符集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;C2C++1Java0C#5Python7Javascript&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;abc, adc, acc, afc, auc, aic&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选出中间字符为 f 或者 c 的单词</span></span><br><span class="line">r = re.findall(<span class="string">&#x27;a[fc]c&#x27;</span>, s)</span><br><span class="line">print(r)</span><br><span class="line">-------------------------------------------</span><br><span class="line">[<span class="string">&#x27;acc&#x27;</span>, <span class="string">&#x27;afc&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p><code>[abc]</code>：匹配 <code>abc</code> 中的任意一个</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125806.jpg" alt="image-20181028105525106"></p>
+<p><code>[^abc]</code>：匹配除 <code>abc</code> 以外的字符</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125810.jpg" alt="image-20181028105502169"></p>
+<p><code>[a-f]</code>：匹配 <code>a</code> 到 <code>f</code> 之间的字符 </p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125813.jpg" alt="image-20181028105433911"></p>
+<p><code>[^a-f]</code>：匹配不在 <code>a</code> 到 <code>f</code> 之间的字符</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125814.jpg" alt="image-20181028105559390"></p>
+<h3 id="10-4-概括字符集"><a href="#10-4-概括字符集" class="headerlink" title="10-4 概括字符集"></a>10-4 概括字符集</h3><blockquote>
+<p>概括字符集是七月自己发明的词语，并不通用。</p>
+</blockquote>
+<ul>
+<li><p><code>\w</code>：匹配单词字符（字母数字下划线），等同于<code>[A-Za_z0-9_]</code><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125817.jpg" alt="image-20181028110114382"><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125821.jpg" alt="image-20181028110151947"></p>
+</li>
+<li><p><code>\W</code>：匹配非单词字符，等同于<code>[^A-Za_z0-9_]</code><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125823.jpg" alt="image-20181028110816154"><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125827.jpg" alt="image-20181028110840976"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 空格也是非单词字符</span></span><br><span class="line">a = <span class="string">&#x27;C2C++1   Java0C#5Pyt$%^*()@hon7Javascript\n\b\r&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;abc, adc, acc, afc, auc, aic&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;\W&#x27;</span>, a)</span><br><span class="line">print(r)</span><br><span class="line">--------------------------------------------------</span><br><span class="line">[<span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;#&#x27;</span>, <span class="string">&#x27;$&#x27;</span>, <span class="string">&#x27;%&#x27;</span>, <span class="string">&#x27;^&#x27;</span>, <span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;@&#x27;</span>, <span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;\x08&#x27;</span>, <span class="string">&#x27;\r&#x27;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>\s</code>：匹配空白字符，等价于<code>[ \f\n\r\t\v]</code><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125831.jpg" alt="image-20181028111332192"><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125833.jpg" alt="image-20181028111454830"></p>
+</li>
+<li><p><code>\S</code>：匹配非空白字符，<code>[^ \f\n\r\t\v]</code><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125840.jpg" alt="image-20181028111639444"></p>
+</li>
+<li><p><code>.</code> ：点表示匹配除换行符 <code>\n</code> 之外其他所有字符</p>
+</li>
+</ul>
+<p>还有很多就不一一举例了，自己查表。</p>
+<h3 id="10-5-数量词"><a href="#10-5-数量词" class="headerlink" title="10-5 数量词"></a>10-5 数量词</h3><p><code>&#123;n&#125;</code>：匹配数量</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125924.jpg" alt="image-20181028111935500"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;C2C++1   Java0C#5Pyt$%^*()@hon7Javascript\n\b\r&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;abc, adc, acc, afc, auc, aic&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;[a-z]&#123;3&#125;&#x27;</span>, a)</span><br><span class="line">print(r)</span><br><span class="line">----------------------------------------------------</span><br><span class="line">[<span class="string">&#x27;ava&#x27;</span>, <span class="string">&#x27;hon&#x27;</span>, <span class="string">&#x27;ava&#x27;</span>, <span class="string">&#x27;scr&#x27;</span>, <span class="string">&#x27;ipt&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>那么问题来了，筛选出来的只是固定的三个字符，并不是一个个单词，</p>
+<p>使用筛选数量范围 <code>&#123;3,6&#125;</code>（中间仅仅只是用逗号隔开，不能有空格）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;C2C++1   Java0C#5Pyt$%^*()@hon7Javascript\n\b\r&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;abc, adc, acc, afc, auc, aic&#x27;</span></span><br><span class="line">m = <span class="string">&#x27;pythonn  222java3545php,,.&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选数量范围&#123;3, 6&#125;</span></span><br><span class="line">r = re.findall(<span class="string">&#x27;[a-z]&#123;3,6&#125;&#x27;</span>, m)</span><br><span class="line">print(r)</span><br><span class="line">-------------------------------------------------</span><br><span class="line">[<span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;java&#x27;</span>, <span class="string">&#x27;php&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="10-6-贪婪与非贪婪"><a href="#10-6-贪婪与非贪婪" class="headerlink" title="10-6 贪婪与非贪婪"></a>10-6 贪婪与非贪婪</h3><p>为什么上节中的数量匹配在匹配到 <code>pth</code>的时候不返回，而是将 <code>python</code>匹配完才返回呢？</p>
+<p>原因在于正则表达式的数量词是有<strong>贪婪</strong>与<strong>非贪婪</strong>之分的。默认情况下 <code>Python</code>倾向于贪婪的匹配方式。</p>
+<h4 id="贪婪"><a href="#贪婪" class="headerlink" title="贪婪"></a>贪婪</h4><p>什么叫贪婪的匹配方式？如果将数量词限定在一个区间之内，<code>Python</code>会倾向于尽可能多的取最大的值，比如<code>&#123;3,6&#125;</code>，<code>Python</code>取到3个字符的时候并不会认为你的表达式是成立的，它还会继续往后寻找一直到某个字符不满足条件的时候才会停止。</p>
+<h4 id="非贪婪"><a href="#非贪婪" class="headerlink" title="非贪婪"></a>非贪婪</h4><p>非贪婪的匹配方式是在数量词的大括号后面加上<code>？</code>：<code>&#123;3, 6&#125;?</code></p>
+<p>示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;C2C++1   Java0C#5Pyt$%^*()@hon7Javascript\n\b\r&#x27;</span></span><br><span class="line">s = <span class="string">&#x27;abc, adc, acc, afc, auc, aic&#x27;</span></span><br><span class="line">m = <span class="string">&#x27;pythonn  222java3545php,,.&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;[a-z]&#123;3,6&#125;?&#x27;</span>, m)</span><br><span class="line">print(r)</span><br><span class="line">----------------------------------------------------</span><br><span class="line">[<span class="string">&#x27;pyt&#x27;</span>, <span class="string">&#x27;hon&#x27;</span>, <span class="string">&#x27;jav&#x27;</span>, <span class="string">&#x27;php&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p><code>Python</code>取到连续的三个字符就返回。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>贪婪与非贪婪，原理上其实很简单，但是在使用正则表达式解决具体问题的时候，贪婪与非贪婪经常是我们使用错误，产生程序 bug 最主要的一个因素。</p>
+<p>所以说如果你以后在匹配的时候发现，和你预期的结果相比，后面又多出了很多其他的字符的话呢，那么就应该怀疑一下是不是使用了贪婪模式？而你本身应该需求的是非贪婪模式。</p>
+</blockquote>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">my_str = <span class="string">&#x27;&lt;div class&gt;&#x27;</span> \</span><br><span class="line">    <span class="string">&#x27;&lt;div class&gt;&#x27;</span> \</span><br><span class="line">    <span class="string">&#x27;&lt;h2&gt;What?&lt;/h2&gt;&#x27;</span> \</span><br><span class="line">    <span class="string">&#x27;&lt;p&gt;The&lt;/p&gt;&#x27;</span></span><br><span class="line">result1 = re.findall(<span class="string">&#x27;&lt;.*&gt;&#x27;</span>, my_str)</span><br><span class="line">result2 = re.findall(<span class="string">&#x27;&lt;.*?&gt;&#x27;</span>, my_str)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br><span class="line">-------------------------------------</span><br><span class="line">[<span class="string">&#x27;&lt;div class&gt;&lt;div class&gt;&lt;h2&gt;What?&lt;/h2&gt;&lt;p&gt;The&lt;/p&gt;&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;&lt;div class&gt;&#x27;</span>, <span class="string">&#x27;&lt;div class&gt;&#x27;</span>, <span class="string">&#x27;&lt;h2&gt;&#x27;</span>, <span class="string">&#x27;&lt;/h2&gt;&#x27;</span>, <span class="string">&#x27;&lt;p&gt;&#x27;</span>, <span class="string">&#x27;&lt;/p&gt;&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p><code>&#39;&lt;.*&gt;&#39;</code>贪婪匹配：</p>
+<ul>
+<li>遇到前边界<code>&lt;</code>后继续匹配字符，在遇到第一个边界<code>&gt;</code>后仍然不满足，继续匹配直到匹配最后一个边界<code>&gt;</code>，才返回</li>
+</ul>
+<p><code>&#39;&lt;.*?&gt;&#39;</code>非贪婪匹配：</p>
+<ul>
+<li>遇到前边界<code>&lt;</code>后继续匹配字符，在遇到第一个边界<code>&gt;</code>后就返回匹配到的内容，继续往后匹配</li>
+<li>再次遇到前边界<code>&lt;</code>开始匹配，再次遇到后边界<code>&gt;</code>，立刻返回匹配到的内容</li>
+</ul>
+<p>由此可见贪婪与非贪婪的区别：</p>
+<ul>
+<li>贪婪：返回的是<strong>单元素的列表</strong>，一整段作为元素</li>
+<li>非贪婪：返回的是<strong>多元素列表</strong>，每段作为一个元素</li>
+</ul>
+<h3 id="10-7-匹配0次1次或者无限多次"><a href="#10-7-匹配0次1次或者无限多次" class="headerlink" title="10-7 匹配0次1次或者无限多次"></a>10-7 匹配0次1次或者无限多次</h3><p><code>*</code>：匹配<code>*</code> 号前面的字符0次或者无限多次。</p>
+<p><code>+</code>：匹配<code>+</code> 号前面的字符1次或者无限多次。</p>
+<p><code>?</code>：匹配 <code>?</code> 号前面的字符0次或者1次。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>我常常用 ? 号的正则表达式进行字符串去重的操作。比如说你的这个 python 后面有很多个重复的字符，我只想保留一个的话，可能你用 python 里面字符串截取或者循环都不是一个太好的方法。但是一个小小的 ? 号可以帮助你解决这个问题。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n = <span class="string">&#x27;pytho0python1pythonn2&#x27;</span></span><br><span class="line"></span><br><span class="line">r1 = re.findall(<span class="string">&#x27;python*&#x27;</span>, n)</span><br><span class="line">r2 = re.findall(<span class="string">&#x27;python+&#x27;</span>, n)</span><br><span class="line">r3 = re.findall(<span class="string">&#x27;python?&#x27;</span>, n)</span><br><span class="line">print(r1)</span><br><span class="line">print(r2)</span><br><span class="line">print(r3)</span><br><span class="line">---------------------------------------------</span><br><span class="line">[<span class="string">&#x27;pytho&#x27;</span>, <span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;pythonn&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;pythonn&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27;pytho&#x27;</span>, <span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;python&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>七月心语：</p>
+<p>正则表达式真的是非常非常有用，如果你非常熟悉正则表达式的规则的话，它可以大幅度提高我们编码效率。另外如果你想使用 Python 做数据处理方面的工作，正则表达式是一个必不可少的知识点。</p>
+</blockquote>
+<h3 id="10-8-边界匹配符"><a href="#10-8-边界匹配符" class="headerlink" title="10-8 边界匹配符"></a>10-8 边界匹配符</h3><p><code>^</code>：匹配行首</p>
+<p><code>$</code>：匹配行尾</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125944.jpg" alt="image-20181028121159058"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">qq = <span class="string">&#x27;123456789&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;^\d&#123;4,9&#125;$&#x27;</span>, qq)</span><br><span class="line">print(r)</span><br><span class="line">--------------------------------</span><br><span class="line">[<span class="string">&#x27;123456789&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="10-9-组"><a href="#10-9-组" class="headerlink" title="10-9 组"></a>10-9 组</h3><p><code>(str)</code>：组，一个括号对应一组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">a = <span class="string">&#x27;PythonPythonPythonPythonPython&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配3组 Python 字符串</span></span><br><span class="line">r = re.findall(<span class="string">&#x27;(Python)&#123;3&#125;&#x27;</span>, a)</span><br><span class="line">print(r)</span><br><span class="line">--------------------------------------</span><br><span class="line">[<span class="string">&#x27;Python&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>重点理解：</p>
+<p><code>[abc]</code> 中间元素是<strong>或</strong>关系，<code>(abc)</code>中间元素是<strong>且</strong>关系。</p>
+</blockquote>
+<h3 id="10-10-匹配模式参数"><a href="#10-10-匹配模式参数" class="headerlink" title="10-10 匹配模式参数"></a>10-10 匹配模式参数</h3><p>匹配多参数模式的时候，使用管道符号<code>|</code>隔开。</p>
+<ul>
+<li><code>re.I</code>：匹配大小写</li>
+<li><code>re.S</code>：将点号升级为匹配所有字符</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">language = <span class="string">&#x27;PythonC#\nJavaPHP&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;c#.&#123;1&#125;&#x27;</span>, language, re.I)</span><br><span class="line">print(r)</span><br><span class="line">------------------------------------------</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p>加上<code>re.S</code>模式之后：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">language = <span class="string">&#x27;PythonC#\nJavaPHP&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.findall(<span class="string">&#x27;c#.&#123;1&#125;&#x27;</span>, language, re.I | re.S)</span><br><span class="line">print(r)</span><br><span class="line">-------------------------------------------</span><br><span class="line">[<span class="string">&#x27;C#\n&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="10-11-re-sub正则替换"><a href="#10-11-re-sub正则替换" class="headerlink" title="10-11 re.sub正则替换"></a>10-11 re.sub正则替换</h3><p>Python 的 <code>re</code> 模块提供了<code>re.sub</code>用于替换字符串中的匹配项。</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li><code>pattern</code> : 正则中的模式字符串。</li>
+<li><code>repl</code> : 替换的字符串，也可为一个函数。</li>
+<li><code>string</code> : 要被查找替换的原始字符串。</li>
+<li><code>count</code> : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">language = <span class="string">&#x27;PythonC#JavaPHPC#&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.sub(<span class="string">&#x27;C#&#x27;</span>, <span class="string">&#x27;go&#x27;</span>, language, <span class="number">1</span>)</span><br><span class="line">print(r)</span><br><span class="line">---------------------------------------</span><br><span class="line">PythongoJavaPHPC<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>使用字符串内置的方法<code>replace</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">language = <span class="string">&#x27;PythonC#JavaPHPC#&#x27;</span></span><br><span class="line">new_language = language.replace(<span class="string">&#x27;C#&#x27;</span>, <span class="string">&#x27;go&#x27;</span>)</span><br><span class="line">print(new_language)</span><br><span class="line">print(language)</span><br><span class="line">------------------------------------------</span><br><span class="line">PythongoJavaPHPgo</span><br><span class="line">PythonC<span class="comment">#JavaPHPC#</span></span><br></pre></td></tr></table></figure>
+
+<p>代码解释：</p>
+<p>因为字符串是不可变类型，使用 <code>replace</code>之后返回了一个新的字符串对象，赋值给<code>new_language</code>，原来的 <code>language</code>对象并没有改变。</p>
+<blockquote>
+<p><code>replace(old, new, count)</code>基本上算是<code>re.sub()</code>的简化版，所以说对于一些常规的替换，我们可以使用<code>replace</code>，因为比较简单、用起来比较方便。但是如果你想使用比较复杂的替换，还是建议使用<code>re.sub</code>。可以毫不夸张的说，内置函数无法实现的替换或者查找逻辑，正则表达式肯定是可以实现的。</p>
+</blockquote>
+<p><code>re.sub</code>强大的地方在于第二个参数可以是一个函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">language = <span class="string">&#x27;PythonC#JavaC#PHPC#&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert</span>(<span class="params">value</span>):</span></span><br><span class="line">    <span class="comment"># 将匹配的字符串从 value 里面取出来</span></span><br><span class="line">    matched = value.group()</span><br><span class="line">    print(value, <span class="built_in">type</span>(value))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;!!&#x27;</span> + matched + <span class="string">&#x27;!!&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = re.sub(<span class="string">&#x27;C#&#x27;</span>, convert, language, <span class="number">2</span>)</span><br><span class="line">print(r)</span><br><span class="line">------------------------------------------</span><br><span class="line">&lt;_sre.SRE_Match <span class="built_in">object</span>; span=(<span class="number">6</span>, <span class="number">8</span>), match=<span class="string">&#x27;C#&#x27;</span>&gt; &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">_sre</span>.<span class="title">SRE_Match</span>&#x27;&gt;</span></span><br><span class="line">&lt;_sre.SRE_Match object; span=(12, 14), match=&#x27;C#&#x27;&gt; &lt;class &#x27;_sre.SRE_Match&#x27;&gt;</span><br><span class="line">Python!!C<span class="comment">#!!Java!!C#!!PHPC#</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>七月心语：</p>
+<p>这里的函数作为参数有什么意义呢？</p>
+<p>意义是重大的！为什么呢？我们之前把 <code>C#</code>换成 <code>go</code>只是一个简单的示例，但是假如说我们替换的不是一个常量字符串，根据正则表达的匹配，有可能替换的是各种各样的结果，但是有时候我们需要<strong>根据不同的匹配结果进行不同的替换操作</strong>，那么这种情况下，没有函数的支持这样的功能是很难去实现的。不用函数的话，要根据不同的匹配结果进行不同的替换操作，至少需要写<code>if else</code>进行判断，显然我们不能在<code>sub()</code>函数内直接写<code>if else</code>。所以将函数当做参数传入到<code>sub()</code>的参数列表里面就具有重大意义。这样就实现了把具体的业务逻辑交给我们自己去处理（我们在函数内部写具体的业务逻辑）。</p>
+<p>函数的参数列表不仅仅只能接受字符串、列表等变量，它也是可以接收另外一个函数的。这也是 Python 非常强大的地方。</p>
+</blockquote>
+<h3 id="10-12-把函数作为参数传递"><a href="#10-12-把函数作为参数传递" class="headerlink" title="10-12 把函数作为参数传递"></a>10-12 把函数作为参数传递</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找出字符串中的数字，大于等于6的替换为9，小于6的替换为0</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;A8C3721D86&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert</span>(<span class="params">value</span>):</span></span><br><span class="line">    matched = <span class="built_in">int</span>(value.group())</span><br><span class="line">    result = <span class="string">&#x27;9&#x27;</span> <span class="keyword">if</span> matched &gt;= <span class="number">6</span> <span class="keyword">else</span> <span class="string">&#x27;0&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">r = re.sub(<span class="string">&#x27;\d&#x27;</span>, convert, s)</span><br><span class="line">print(r)</span><br><span class="line">---------------------------------------------------------</span><br><span class="line">A9C0900D99</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>七月心语：</p>
+<p>从软件设计的角度阐述<code>convert</code>函数的作用和意义。一个函数接收另外一个函数作为参数，在软件设计中是一个非常经典的思想，这样做的用处是什么呢？假如我作为 <code>sub</code>函数的编写方，有一些逻辑我是无法帮助<code>sub</code>函数的调用方去做决定的，所以说呢，我需要开放一个接口让你，让你自己去实现一些逻辑功能，那么这个时候我要求你给我传入一个函数，我把你的函数作为参数接收了之后，我就会在我的 <code>sub</code>函数内部调用 <code>convert</code>函数，我调用 <code>convert</code>函数的时候我会给你传一个中间的结果 <code>value</code>，你要如何处理 <code>value</code>与我无关，随便你怎么处理，但是最终处理完之后你要返回一个结果给我（本例中的结果要求是字符串）。</p>
+<p>这样的一种设计方式是非常灵活的，我们通过学习 Python 的一些函数设计对我们来说是具有启发意义的。像这样接收一个函数作为参数的设计方式，我们能不能在我们自己设计函数的时候来模仿这种做法，这就是我们需要学习地方。学习绝对不是说我们只是听课程就叫学习，那么其实我们时时刻刻分分秒秒都是可以通过我们标准的函数库，看看它的设计模式、它的设计方式、它为什么这么设计，这样的过程也是可以学习到很多的。</p>
+</blockquote>
+<h3 id="10-13-search与match函数"><a href="#10-13-search与match函数" class="headerlink" title="10-13 search与match函数"></a>10-13 search与match函数</h3><h4 id="match"><a href="#match" class="headerlink" title="match"></a>match</h4><p><code>re.match</code> 尝试从字符串的<strong>起始位置匹</strong>配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<p><strong>函数语法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern, string, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。参见：<a target="_blank" rel="noopener" href="http://www.runoob.com/python/python-reg-expressions.html#flags">正则表达式修饰符 - 可选标志</a></td>
+</tr>
+</tbody></table>
+<p>匹配成功re.match方法返回一个匹配的对象，否则返回None。</p>
+<p>我们可以使用group(num) 或 groups() 匹配对象函数来获取匹配表达式。</p>
+<table>
+<thead>
+<tr>
+<th>匹配对象方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>group(num=0)</td>
+<td>匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
+</tr>
+<tr>
+<td>groups()</td>
+<td>返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
+</tr>
+</tbody></table>
+<h4 id="search"><a href="#search" class="headerlink" title="search"></a>search</h4><p>re.search 扫描整个字符串并返回<strong>第一个成功的匹配</strong>。</p>
+<p>函数语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.search(pattern, string, flags&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串。</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody></table>
+<p>匹配成功re.search方法返回一个匹配的对象，否则返回None。</p>
+<p>我们可以使用group(num) 或 groups() 匹配对象函数来获取匹配表达式。</p>
+<table>
+<thead>
+<tr>
+<th>匹配对象方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>group(num=0)</td>
+<td>匹配的整个表达式的字符串，group() 可以一次输入多个组号，在这种情况下它将返回一个包含那些组所对应值的元组。</td>
+</tr>
+<tr>
+<td>groups()</td>
+<td>返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>match</code>从首位开始检索，并返回匹配的第一项</li>
+<li><code>search</code>搜索整个字符串，并返回匹配的第一项</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;8C3721D86&#x27;</span></span><br><span class="line"></span><br><span class="line">r1 = re.match(<span class="string">&#x27;\d&#x27;</span>, s)</span><br><span class="line">r2 = re.search(<span class="string">&#x27;\d&#x27;</span>, s)</span><br><span class="line">r3 = re.findall(<span class="string">&#x27;\d&#x27;</span>, s)</span><br><span class="line">print(r1, r1.group())</span><br><span class="line">print(r2, r2.group())</span><br><span class="line">print(r3)</span><br><span class="line">-----------------------------------</span><br><span class="line">&lt;_sre.SRE_Match <span class="built_in">object</span>; span=(<span class="number">0</span>, <span class="number">1</span>), match=<span class="string">&#x27;8&#x27;</span>&gt; <span class="number">8</span></span><br><span class="line">&lt;_sre.SRE_Match <span class="built_in">object</span>; span=(<span class="number">0</span>, <span class="number">1</span>), match=<span class="string">&#x27;8&#x27;</span>&gt; <span class="number">8</span></span><br><span class="line">[<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;6&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="10-14-group分组"><a href="#10-14-group分组" class="headerlink" title="10-14 group分组"></a>10-14 group分组</h3><p><code>group(0)</code>：永远记录的是完整的匹配结果。</p>
+<ul>
+<li><p>如果想访问匹配结果的部分，必须从<code>group(1)</code>开始。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>寻找字符串中间的内容，这个问题的解决方法非常重要。因为这个方法在爬虫里用到的是非常多的，这个场景和爬虫爬 html 网页的行为很向，我们经常根据 html 标签，找到标签中间的内容（并不包括标签本身，因为标签对数据并没有太大意义）。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;life is short, i use python&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.search(<span class="string">&#x27;life.*python&#x27;</span>, s)</span><br><span class="line">print(r)</span><br><span class="line">print(r.group(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">r1 = re.search(<span class="string">&#x27;life(.*)python&#x27;</span>, s)</span><br><span class="line">print(r1.group(<span class="number">0</span>))</span><br><span class="line">print(r1.group(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">r2 = re.findall(<span class="string">&#x27;life.*python&#x27;</span>, s)</span><br><span class="line">print(r2)</span><br><span class="line"></span><br><span class="line">r3 = re.findall(<span class="string">&#x27;life(.*)python&#x27;</span>, s)</span><br><span class="line">print(r3)</span><br><span class="line">-----------------------------------------------</span><br><span class="line">&lt;_sre.SRE_Match <span class="built_in">object</span>; span=(<span class="number">0</span>, <span class="number">27</span>), match=<span class="string">&#x27;life is short, i use python&#x27;</span>&gt;</span><br><span class="line">life <span class="keyword">is</span> short, i use python</span><br><span class="line">life <span class="keyword">is</span> short, i use python</span><br><span class="line"> <span class="keyword">is</span> short, i use </span><br><span class="line">[<span class="string">&#x27;life is short, i use python&#x27;</span>]</span><br><span class="line">[<span class="string">&#x27; is short, i use &#x27;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>group(0, 1, 2)</code>与<code>groups()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;life is short, i use python, i love python&#x27;</span></span><br><span class="line"></span><br><span class="line">r = re.search(<span class="string">&#x27;life(.*)python(.*python)&#x27;</span>, s)</span><br><span class="line">print(r.group(<span class="number">0</span>))</span><br><span class="line">print(r.group(<span class="number">1</span>))</span><br><span class="line">print(r.group(<span class="number">2</span>))</span><br><span class="line">print(r.group(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">print(r.groups())</span><br><span class="line">--------------------------------------------------</span><br><span class="line">life <span class="keyword">is</span> short, i use python, i love python</span><br><span class="line"> <span class="keyword">is</span> short, i use </span><br><span class="line">, i love python</span><br><span class="line">(<span class="string">&#x27;life is short, i use python, i love python&#x27;</span>, <span class="string">&#x27; is short, i use &#x27;</span>, <span class="string">&#x27;, i love python&#x27;</span>)</span><br><span class="line">(<span class="string">&#x27; is short, i use &#x27;</span>, <span class="string">&#x27;, i love python&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<h3 id="10-15-一些关于学习正则的建议"><a href="#10-15-一些关于学习正则的建议" class="headerlink" title="10-15 一些关于学习正则的建议"></a>10-15 一些关于学习正则的建议</h3><ul>
+<li><p>站在提高工作效率的基础上，建议使用别人已经写好的正则表达式，正则表达式虽然很强大，但是如果 <code>Python</code>内置的函数能够满足需求的时候还是建议使用内置的函数。</p>
+</li>
+<li><p>站在学习的角度上稍微花时间分析一下别人的正则表达式是怎么写的，多尝试使用正则表达式以提高自己。</p>
+</li>
+</ul>
+<h3 id="10-16-理解JSON"><a href="#10-16-理解JSON" class="headerlink" title="10-16 理解JSON"></a>10-16 理解JSON</h3><h4 id="JSON-定义"><a href="#JSON-定义" class="headerlink" title="JSON 定义"></a>JSON 定义</h4><p><code>JavaScript Object Notation</code>的简写，中文翻译为<code>JavaScript</code>对象标记，是一种<strong>轻量级数据交换格式</strong>。</p>
+<blockquote>
+<p><strong>强调一万遍：<code>JSON</code>是一种数据格式</strong></p>
+</blockquote>
+<h4 id="JSON-字符串"><a href="#JSON-字符串" class="headerlink" title="JSON 字符串"></a>JSON 字符串</h4><ul>
+<li><p>字符串是<code>JSON</code>的表现形式。符合<code>JSON</code>格式的字符串叫做<code>JSON</code>字符串。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;qiyue&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="JSON-VS-XML"><a href="#JSON-VS-XML" class="headerlink" title="JSON VS XML"></a>JSON VS XML</h4><p><code>XML</code>在<code>JSON</code>出现之前确实是一个主流的交换格式，大部分的互联网上的服务之间交换数据都是采用的<code>XML</code>格式。但是自从轻量级的<code>JSON</code>出现之后<code>XML</code>使用的就越来越少了，不是说<code>XML</code>没有人使用，<code>XML</code>在某些特性的领域，比如在一些比较注重数据结构的领域<code>XML</code>还是有一定的优势的。但是绝大多数互联网产品都会选择<code>JSON</code>作为数据交换。</p>
+<h4 id="JSON-的优势"><a href="#JSON-的优势" class="headerlink" title="JSON 的优势"></a>JSON 的优势</h4><ul>
+<li>易于阅读</li>
+<li>易于解析</li>
+<li>网络传输效率高</li>
+<li>适合做<strong>跨语言数据交换</strong></li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-125954.jpg" alt="image-20181029085207797"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130029.jpg" alt="image-20181029085315782"></p>
+<h3 id="10-17-反序列化"><a href="#10-17-反序列化" class="headerlink" title="10-17 反序列化"></a>10-17 反序列化</h3><p><code>JSON</code>字符串转化为语言上的某种数据结构的过程称为<strong>反序列化</strong>。</p>
+<p>在 <code>Python</code>中使用 <code>loads()</code>函数进行反序列化。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># json 字符串转化为 Python 里的字典</span></span><br><span class="line">json_str = <span class="string">&#x27;&#123;&quot;name&quot;:&quot;vampire&quot;,&quot;age&quot;:18, &quot;flag&quot;:false&#125;&#x27;</span></span><br><span class="line">student = json.loads(json_str)</span><br><span class="line">print(<span class="built_in">type</span>(student), student)</span><br><span class="line">print(student[<span class="string">&#x27;name&#x27;</span>], student[<span class="string">&#x27;age&#x27;</span>], student[<span class="string">&#x27;flag&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># json 数组转化为 Python 里的列表嵌套字典，</span></span><br><span class="line">json_array = <span class="string">&#x27;[&#123;&quot;name&quot;:&quot;vampire&quot;,&quot;age&quot;:18&#125;, &#123;&quot;name&quot;:&quot;stefan&quot;,&quot;age&quot;:17&#125;]&#x27;</span></span><br><span class="line">student1 = json.loads(json_array)</span><br><span class="line">print(<span class="built_in">type</span>(student1), student1)</span><br><span class="line">----------------------------------------------------------------------------</span><br><span class="line">&lt;class &#x27;dict&#x27;&gt; &#123;&#x27;name&#x27;: &#x27;vampire&#x27;, &#x27;age&#x27;: 18, &#x27;flag&#x27;: False&#125;</span><br><span class="line">vampire <span class="number">18</span> <span class="literal">False</span></span><br><span class="line">&lt;class &#x27;list&#x27;&gt; [&#123;&#x27;name&#x27;: &#x27;vampire&#x27;, &#x27;age&#x27;: 18&#125;, &#123;&#x27;name&#x27;: &#x27;stefan&#x27;, &#x27;age&#x27;: 17&#125;]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>json</code> 字符串转化为 <code>Python</code> 里的字典</li>
+<li><code>json</code> 数组转化为 <code>Python</code> 里的列表嵌套字典，</li>
+<li><code>json</code> 布尔类型 <code>false</code>转换成 <code>Python</code> 里的布尔类型 <code>False</code>（有一个小写到大写的变化）</li>
+</ul>
+<h4 id="JSON-与-Python-类型对应"><a href="#JSON-与-Python-类型对应" class="headerlink" title="JSON 与 Python 类型对应"></a>JSON 与 Python 类型对应</h4><table>
+<thead>
+<tr>
+<th>JSON</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object</td>
+<td>dict</td>
+</tr>
+<tr>
+<td>array</td>
+<td>list</td>
+</tr>
+<tr>
+<td>string</td>
+<td>str</td>
+</tr>
+<tr>
+<td>number</td>
+<td>int</td>
+</tr>
+<tr>
+<td>number</td>
+<td>float</td>
+</tr>
+<tr>
+<td>true</td>
+<td>True</td>
+</tr>
+<tr>
+<td>false</td>
+<td>False</td>
+</tr>
+<tr>
+<td>null</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h3 id="10-18-序列化"><a href="#10-18-序列化" class="headerlink" title="10-18 序列化"></a>10-18 序列化</h3><p>把语言的某种数据类型转化为 <code>JSON</code>类型的过程称为<strong>序列化</strong>。使用<code>json.dumps()</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">student = [</span><br><span class="line">    &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;vampire&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>, <span class="string">&#x27;flag&#x27;</span>: <span class="literal">False</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;stefan&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">17</span>&#125;</span><br><span class="line">]</span><br><span class="line">json_str = json.dumps(student)</span><br><span class="line">print(json_str)</span><br><span class="line">print(<span class="built_in">type</span>(json_str))</span><br><span class="line">----------------------------------------------------</span><br><span class="line">[&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;vampire&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">18</span>, <span class="string">&quot;flag&quot;</span>: false&#125;, &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;stefan&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="number">17</span>&#125;]</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">str</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>七月心语：</p>
+<p>当初我最早接触到序列化的名词的时候是上大学的时候，那时候遇到一个问题，当时思考的是怎么把一个<strong>C#对象</strong>存到数据库里面去呢？数据库是一个个二维表，没办法表示一个对象的结构，对不对？所以说解决方法就是先把对象序列化成 <code>JSON</code> 字符串或者 <code>XML</code> 字符串，再将字符串存到数据库里去。当你需要对象的时候，把字符串从数据库里读出来，再将字符串反序列化成对象。</p>
+<p>当时我确实是这么做的，但是这种方式不可取，因为效率太低了。<code>MySQL</code> 等数据库还是比较适合存储一些比较简单的数据结构。像<strong>对象</strong>这种东西，应该将其拆成二维表结构，也就是说将对象分成一个属性、一个属性的存到数据库里面去比较合适。</p>
+<p>如果你实在需要存储对象呢？给大家推荐一个<code>NOSQL</code> 数据库，现在 <code>NOSQL</code> 数据库用的比较多的是<code>MongoDB</code> 数据库。<code>MongoDB</code> 比较适合储存序列化后的对象。</p>
+<p>强烈反对大家将对象序列化之后储存到数据库里面去。</p>
+</blockquote>
+<h3 id="10-19-小谈JSON、JSON对象与JSON字符串"><a href="#10-19-小谈JSON、JSON对象与JSON字符串" class="headerlink" title="10-19 小谈JSON、JSON对象与JSON字符串"></a>10-19 小谈JSON、JSON对象与JSON字符串</h3><blockquote>
+<p>网上的很多解释都没有跳出 <code>JavaScript</code>的范围来理解这个三个东西。绝大多数解释都是站在 JavaScript这个特定语言的角度，在阐述这三个名词的区别。我认为这是不够准确的，我们必须跳出语言的范畴来理解这三个名词。</p>
+<p>首先 <code>JSON</code>并不是为 JavaScript量身定制的一种数据格式，它确实是传输数据的一种格式。不要把 JavaScript想得太过于特殊了，JavaScript在JSON 的数据交换里与 Python、Java、C#是没有什么区别的。很多同学JavaScript很特殊，认为它和JSON有特殊关系，实际上是没有的。</p>
+<p>造成这种误区的原因主要可能有两个方面：</p>
+<ol>
+<li><code>JSON</code>数据类型和<code>JavaScript</code>数据类型太过于相似；<br>所以很多同学一直搞不清楚 JSON 和 JavaScript 的关系。首先大家要明白 JavaScript 这个语言只是 ECMASCRIPT 标准的实现方案之一，实现 ECMASCRIPT 标准的另外的一种语言还有 ActionScript，其实我们可以将 JSON 理解为 ECMASCRIPT 标准的另一种实现版本。<br>JSON 并不是 JavaScript 的附属品，某种程度上 JSON 甚至可以看成是与 JavaScript 平级的语言。因为 JSON 和 JavaScript 都是 ECMASCRIPT 标准的实现。</li>
+<li>JSON 最开始的时候确实在 Web 前后端分离的过程中起到了重要的作用，而服务器的语言有很多种，而 Web 里的主流语言是 JavaScript ，因为 JSON 被大量应用于 JavaScript 的交互中，所以会让很多同学产生这样的误区。<br>当然现在除了 JavaScript 还有微软开源的 TypeScript，这个也是可以用来编写前端代码的，但是目前主流还是 JavaScript，而且 TypeScript 只是 JavaScript 的一个超集，和 JavaScript 也脱离不了关系。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>经典面试题</p>
+</blockquote>
+<p><code>JSON</code>、<code>JSON</code> 对象、<code>JSON</code> 字符串分别是什么？有什么区别？</p>
+<ul>
+<li><p><code>JSON</code>是数据交换的标准格式；</p>
+</li>
+<li><p><code>JSON</code>字符串是<code>JSON</code>对象的载体；</p>
+</li>
+<li><p><code>JSON</code>对象确实是存在的，但是它的定义非常片面，片面在如果你把它放在<code>JavaScript</code>里面来说呢，<code>JSON</code>对象这个说法是成立的。如果你跳出了<code>JavaScript</code>的语言范畴，其实是没有<code>JSON</code>对象这个说法的。</p>
+</li>
+</ul>
+<p><code>JSON</code>是有自己的数据类型的，它<code>JavaScript</code>数据类型是有些相似额，不能说相似，几乎是一模一样的。相似或者说一样，但是并不等同于它们两个是一个东西。相似是因为它们都是 ECMASCRIPT 标准的实现。但是理解的时候前往不能将<code>JSON</code>和<code>JavaScript</code>混淆在一起。</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130051.jpg" alt="image-20181029102109097"></p>
+<h4 id="REST-服务"><a href="#REST-服务" class="headerlink" title="REST 服务"></a>REST 服务</h4><p>现在最流行的服务是<code>REST</code>服务，REST 服务的数据交换采用的就是 JSON 格式。而且 REST 服务也建议我们一定要使用 JSON 而不要使用 XML。因为 REST 服务标志性的特点就是轻量，所以使用 XML 并不合适，不是说不可以，只是说不合适。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/04/12/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC10%E7%AB%A0%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EJSON/">https://www.klause.cn/2019/04/12/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC10%E7%AB%A0%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8EJSON/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-04-12T11-54-10',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/12/Python%20Flask%20%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%20RESTful%20API/%E7%AC%AC3%E7%AB%A0%20REST%20%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="第3章 REST 基本特征">
+                        
+                        <span class="card-title">第3章 REST 基本特征</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ginger/" class="post-category">
+                                    ginger
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                    <a href="/tags/restful/">
+                        <span class="chip bg-color">restful</span>
+                    </a>
+                    
+                    <a href="/tags/api/">
+                        <span class="chip bg-color">api</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/11/Python%20Flask%20%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%20RESTful%20API/%E7%AC%AC2%E7%AB%A0%20%E8%B5%B7%E6%AD%A5%E4%B8%8E%E7%BA%A2%E5%9B%BE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="第2章 起步与红图">
+                        
+                        <span class="card-title">第2章 起步与红图</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ginger/" class="post-category">
+                                    ginger
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                    <a href="/tags/restful/">
+                        <span class="chip bg-color">restful</span>
+                    </a>
+                    
+                    <a href="/tags/api/">
+                        <span class="chip bg-color">api</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

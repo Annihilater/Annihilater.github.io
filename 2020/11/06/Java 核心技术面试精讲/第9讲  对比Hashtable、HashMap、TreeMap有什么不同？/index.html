@@ -1,0 +1,1454 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第9讲 | 对比Hashtable、HashMap、TreeMap有什么不同？, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第9讲 | 对比Hashtable、HashMap、TreeMap有什么不同？ | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第9讲 | 对比Hashtable、HashMap、TreeMap有什么不同？</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/HashMap/">
+                                <span class="chip bg-color">HashMap</span>
+                            </a>
+                        
+                            <a href="/tags/Hashtable/">
+                                <span class="chip bg-color">Hashtable</span>
+                            </a>
+                        
+                            <a href="/tags/TreeMap/">
+                                <span class="chip bg-color">TreeMap</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/">
+                                <span class="chip bg-color">哈希冲突</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%86%8D%E6%95%A3%E5%88%97/">
+                                <span class="chip bg-color">再散列</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%86%8D%E5%93%88%E5%B8%8C/">
+                                <span class="chip bg-color">再哈希</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%91%E5%8C%96/">
+                                <span class="chip bg-color">树化</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%BA%90%E7%A0%81/">
+                                <span class="chip bg-color">源码</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E7%B2%BE%E8%AE%B2/" class="post-category">
+                                Java核心技术面试精讲
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-11-06
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-11-08
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="第9讲-对比Hashtable、HashMap、TreeMap有什么不同？"><a href="#第9讲-对比Hashtable、HashMap、TreeMap有什么不同？" class="headerlink" title="第9讲 | 对比Hashtable、HashMap、TreeMap有什么不同？"></a>第9讲 | 对比Hashtable、HashMap、TreeMap有什么不同？</h1><p>对比  <code>Hashtable</code>、<code>HashMap</code>、<code>TreeMap</code> 有什么不同？谈谈你对 <code>HashMap</code>  的掌握。</p>
+<h2 id="典型回答"><a href="#典型回答" class="headerlink" title="典型回答"></a>典型回答</h2><p><code>Hashtable</code>、<code>HashMap</code>、<code>TreeMap</code> 都是最常见的一些 Map  实现，是以键值对的形式存储和操作数据的容器类型。</p>
+<ul>
+<li><code>Hashtable</code> 是早期 Java 类库提供的一个哈希表实现，本身是<strong>同步的</strong>，不支持 <code>null</code>  键和值，<strong>由于同步导致的性能开销，所以已经很少被推荐使用。</strong></li>
+<li><code>HashMap</code> 是应用更加广泛的哈希表实现，行为上大致上与 <code>HashTable</code>  一致，主要区别在于 <code>HashMap</code> <strong>不是同步的</strong>，支持 <code>null</code> 键和值等。通常情况下，<code>HashMap</code> 进行 <code>put</code> 或者 <code>get</code>  操作，可以达到<strong>常数时间的性能</strong>，所以它是绝大部分利用键值对存取场景的首选，比如，实现一个用户 <code>ID</code> 和用户信息对应的运行时存储结构。</li>
+<li><code>TreeMap</code> 则是基于<strong>红黑树</strong>的一种提供顺序访问的 <code>Map</code>，和 <code>HashMap</code> 不同，它的 <code>get</code>、<code>put</code>、<code>remove</code> 之类操作都是  <code>O（log(n)）</code>的时间复杂度，具体顺序可以由指定的 <code>Comparator</code> 来决定，或者根据键的自然顺序来判断。</li>
+</ul>
+<h2 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h2><p>HashMap 在这种情况下基本是最好的选择。HashMap 的性能表现非常依赖于哈希码的有效性，请务必掌握 hashCode 和 equals 的一些基本约定，比如：</p>
+<ul>
+<li><code>equals</code> 相等，<code>hashCode</code> 一定要相等。</li>
+<li>重写了 <code>hashCode</code> 也要重写 <code>equals</code>。</li>
+<li><code>hashCode</code> 需要保持一致性，状态改变返回的哈希值仍然要一致。</li>
+<li><code>equals</code> 的对称、反射、传递等特性。</li>
+</ul>
+<p>虽然 <code>LinkedHashMap</code> 和 <code>TreeMap</code> 都可以保证某种顺序，但二者还是非常不同的：</p>
+<ul>
+<li><code>LinkedHashMap</code> 通常提供的是遍历顺序符合插入顺序，它的实现是通过为条目（键值对）维护一个双向链表。注意，通过特定构造函数，我们可以创建反映访问顺序的实例，所谓的 put、get、compute 等，都算作“访问”。</li>
+<li>对于 TreeMap，它的整体顺序是由键的顺序关系决定的，通过 Comparator 或 Comparable（自然顺序）来决定。</li>
+</ul>
+<h3 id="HashMap-源码分析"><a href="#HashMap-源码分析" class="headerlink" title="HashMap 源码分析"></a>HashMap 源码分析</h3><ul>
+<li><code>HashMap</code> 内部实现基本点分析</li>
+<li>容量（<code>capacity</code>）和负载系数（<code>load factor</code>）</li>
+<li>树化 </li>
+</ul>
+<h4 id="HashMap-内部实现基本点分析"><a href="#HashMap-内部实现基本点分析" class="headerlink" title="HashMap 内部实现基本点分析"></a>HashMap 内部实现基本点分析</h4><p>首先，我们来一起看看 <code>HashMap</code> 内部的结构，它可以看作是数组（<code>Node[]  table</code>）和链表结合组成的复合结构，</p>
+<ul>
+<li>数组被分为一个个桶（<code>bucket</code>），通过哈希值决定了键值对在这个数组的寻址；</li>
+<li>哈希值相同的键值对，则以链表形式存储；</li>
+</ul>
+<p>你可以参考下面的示意图。这里需要注意的是，如果链表大小超过阈值（<code>TREEIFY_THRESHOLD</code>, <code>8</code>），图中的链表就会被改造为树形结构。</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/uPic/1f72306a9d8719c66790b56ef7977c56.png" alt="img"></p>
+<p>从非拷贝构造函数的实现来看，这个表格（数组）似乎并没有在最初就初始化好，仅仅设置了一些初始值而已。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span></span>&#123;  </span><br><span class="line">    <span class="comment">// ... </span></span><br><span class="line">    <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">    <span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>所以，我们深刻怀疑，<code>HashMap</code> 也许是按照 <code>lazy-load</code> 原则，在首次使用时被初始化（拷贝构造函数除外，我这里仅介绍最通用的场景）。既然如此，我们去看看 <code>put</code> 方法实现，似乎只有一个 <code>putVal</code> 的调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看来主要的秘密似乎藏在 <code>putVal</code> 里面，到底有什么秘密呢？为了节省空间，我这里只截取了 <code>putVal</code> 比较关键的几部分。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbent,</span></span></span><br><span class="line"><span class="function"><span class="params">               <span class="keyword">boolean</span> evit)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> , i;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) = <span class="number">0</span>)</span><br><span class="line">        n = (tab = resize()).length;</span><br><span class="line">    <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == ull)</span><br><span class="line">        tab[i] = newNode(hash, key, value, nll);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for first </span></span><br><span class="line">           treeifyBin(tab, hash);</span><br><span class="line">        <span class="comment">//  ... </span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>从 <code>putVal</code>  方法最初的几行，我们就可以发现几个有意思的地方：</p>
+<ul>
+<li>如果表格是 <code>null</code>，<code>resize</code> 方法会负责初始化它，这从 <code>tab = resize()</code>  可以看出。</li>
+<li><code>resize</code>  方法兼顾两个职责，创建初始存储表格，或者在容量不满足需求的时候，进行扩容（<code>resize</code>）。</li>
+<li>在放置新的键值对的过程中，如果发生下面条件，就会发生扩容。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">    resize();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>具体键值对在哈希表中的位置（数组 <code>index</code>）取决于下面的位运算：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = (n - <span class="number">1</span>) &amp; hash</span><br></pre></td></tr></table></figure>
+
+<p>仔细观察哈希值的源头，我们会发现，它并不是  <code>key</code> 本身的 <code>hashCode</code>，而是来自于 <code>HashMap</code> 内部的另外一个 <code>hash</code>  方法。注意，为什么这里需要将高位数据移位到低位进行异或运算呢？<strong>这是因为有些数据计算出的哈希值差异主要在高位，而 HashMap  里的哈希寻址是忽略容量以上的高位的，那么这种处理就可以有效避免类似情况下的哈希碰撞。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object kye)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt;<span class="number">16</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，<code>putVal</code> 方法本身逻辑非常集中，从初始化、扩容到树化，全部都和它有关，推荐你阅读源码的时候，可以参考上面的主要逻辑。我进一步分析一下身兼多职的 <code>resize</code> 方法，很多朋友都反馈经常被面试官追问它的源码设计。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Node&lt;K,V&gt;[] resize() &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACIY &amp;&amp;</span><br><span class="line">                oldCap &gt;= DEFAULT_INITIAL_CAPAITY)</span><br><span class="line">        newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">// double there</span></span><br><span class="line">       <span class="comment">// ... </span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (oldThr &gt; <span class="number">0</span>) <span class="comment">// initial capacity was placed in threshold</span></span><br><span class="line">        newCap = oldThr;</span><br><span class="line">    <span class="keyword">else</span> &#123;  </span><br><span class="line">        <span class="comment">// zero initial threshold signifies using defaultsfults</span></span><br><span class="line">        newCap = DEFAULT_INITIAL_CAPAITY;</span><br><span class="line">        newThr = (<span class="keyword">int</span>)(DEFAULT_LOAD_ATOR* DEFAULT_INITIAL_CAPACITY；</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (newThr ==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">float</span> ft = (<span class="keyword">float</span>)newCap * loadFator;</span><br><span class="line">        newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="keyword">float</span>)MAXIMUM_CAPACITY ?(<span class="keyword">int</span>)ft : Integer.MAX_VALUE);</span><br><span class="line">    &#125;</span><br><span class="line">    threshold = neThr;</span><br><span class="line">    Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node[newap];</span><br><span class="line">    table = n；</span><br><span class="line">    <span class="comment">// 移动到新的数组结构e数组结构 </span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>依据 <code>resize</code> 源码，不考虑极端情况（容量理论最大极限由 <code>MAXIMUM_CAPACITY</code> 指定，数值为 <code>1&lt;&lt;30</code>，也就是 <code>2 的 30 次方</code>），我们可以归纳为：</p>
+<ul>
+<li>门限值等于（<strong>负载因子</strong>）x（<strong>容量</strong>），如果构建  <code>HashMap</code> 的时候没有指定它们，那么就是依据相应的默认常量值。</li>
+<li>门限通常是以倍数进行调整 （<code>newThr = oldThr &lt;&lt;  1</code>），我前面提到，根据 <code>putVal</code> 中的逻辑，当元素个数超过门限大小时，则调整 <code>Map</code>  大小。</li>
+<li>扩容后，需要将老的数组中的元素重新放置到新的数组，这是扩容的一个主要开销来源。</li>
+</ul>
+<h4 id="容量（capacity）和负载系数（load-factor）"><a href="#容量（capacity）和负载系数（load-factor）" class="headerlink" title="容量（capacity）和负载系数（load factor）"></a>容量（capacity）和负载系数（load factor）</h4><p>为什么我们需要在乎容量和负载因子呢？</p>
+<p>这是因为容量和负载系数决定了<strong>可用的桶的数量</strong>，空桶太多会浪费空间，如果使用的太满则会严重影响操作的性能。极端情况下，假设只有一个桶，那么它就退化成了链表，完全不能提供所谓常数时间存的性能。</p>
+<p>既然容量和负载因子这么重要，我们在实践中应该如何选择呢？</p>
+<p>如果能够知道 <code>HashMap</code>  要存取的键值对数量，可以考虑预先设置合适的容量大小。具体数值我们可以根据扩容发生的条件来做简单预估，根据前面的代码分析，我们知道它需要符合计算条件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">负载因子 * 容量 &gt; 元素数量</span><br></pre></td></tr></table></figure>
+
+<p>所以，预先设置的容量需要满足，大于“<strong>预估元素数量 / 负载因子</strong>”，同时它是 <code>2 的幂数</code>，结论已经非常清晰了。</p>
+<p>而对于负载因子，我建议：</p>
+<ul>
+<li>如果没有特别需求，不要轻易进行更改，因为 <code>JDK</code>  自身的默认负载因子是非常符合通用场景的需求的。</li>
+<li>如果确实需要调整，建议不要设置超过 <code>0.75</code> 的数值，因为会显著增加冲突，降低 <code>HashMap</code>  的性能。</li>
+<li>如果使用太小的负载因子，按照上面的公式，预设容量值也进行调整，否则可能会导致更加频繁的扩容，增加无谓的开销，本身访问性能也会受影响。我们前面提到了树化改造，对应逻辑主要在 <code>putVal</code> 和 <code>treeifyBin</code> 中。</li>
+</ul>
+<h4 id="树化"><a href="#树化" class="headerlink" title="树化"></a>树化</h4><p>我们前面提到了<strong>树化改造</strong>，对应逻辑主要在 <code>putVal</code> 和 <code>treeifyBin</code> 中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">treeifyBin</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> hash)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, index; Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)</span><br><span class="line">        resize();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> ((e = tab[index = (n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">//树化改造逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面是精简过的 <code>treeifyBin</code>  示意，综合这两个方法，树化改造的逻辑就非常清晰了，可以理解为，当 <code>bin</code> 的数量大于 <code>TREEIFY_THRESHOLD</code> 时：</p>
+<ul>
+<li>如果容量小于  <code>MIN_TREEIFY_CAPACITY</code>，只会进行简单的扩容。</li>
+<li>如果容量大于 <code>MIN_TREEIFY_CAPACITY</code> ，则会进行树化改造。</li>
+</ul>
+<p>那么，为什么 <code>HashMap</code>  要树化呢？</p>
+<blockquote>
+<p>Java7中<code>Hashmap</code>底层采用的是<code>Entry</code>对数组，而每一个<code>Entry</code>对又向下延伸是一个链表，在链表上的每一个<code>Entry</code>对不仅存储着自己的<code>key/value</code>值，还存了前一个和后一个<code>Entry</code>对的地址。 　　</p>
+<p>Java8中的<code>Hashmap</code>底层结构有一定的变化，还是使用的数组，但是数组的对象以前是Entry对，现在换成了<code>Node</code>对象（可以理解是<code>Entry</code>对，结构一样，存储时也会存<code>key/value</code>键值对、前一个和后一个<code>Node</code>的地址），以前所有的<code>Entry</code>向下延伸都是链表，Java8变成<strong>链表</strong>和<strong>红黑树</strong>的组合，</p>
+<ul>
+<li><strong>数据少量存入的时候优先还是链表，</strong></li>
+<li><strong>当链表长度大于8，且总数据量大于64的时候，链表就会转化成红黑树</strong>，</li>
+</ul>
+<p>所以你会看到Java8的<code>Hashmap</code>的数据存储是<strong>链表+红黑树的组合</strong>，</p>
+<ul>
+<li><strong>如果数据量小于64则只有链表，</strong></li>
+<li><strong>如果数据量（数组长度）大于64，且某一个数组下标数据量（桶中链表的长度）大于8，那么该处即为红黑树。</strong></li>
+</ul>
+<p><strong>红黑树的插入、删除、查找各种操作性能都比较稳定。</strong> 本质其实是性能问题。<strong>哈希碰撞频繁，导致链表过长，查询时间陡升</strong>，黑客则会利用这个『漏洞』来攻击服务器，让服务器CPU被大量占用，从而引起了安全问题。 而<strong>树化(使用红黑树）能将时间复杂度降到O(logn)**，从而避免查询时间过长。所以说，本质还是个</strong>性能问题**。</p>
+</blockquote>
+<p>本质上这是个安全问题。<strong>因为在元素放置过程中，如果一个对象哈希冲突，都被放置到同一个桶里，则会形成一个链表，我们知道链表查询是线性的，会严重影响存取的性能</strong>。</p>
+<p>而在现实世界，构造哈希冲突的数据并不是非常复杂的事情，恶意代码就可以利用这些数据大量与服务器端交互，导致服务器端 CPU 大量占用，这就构成了哈希碰撞拒绝服务攻击，国内一线互联网公司就发生过类似攻击事件。</p>
+<blockquote>
+<p><strong>加载因子</strong>（负载因子）是表示<code>Hsah</code>表中元素的填满的程度</p>
+<ul>
+<li><p>若加载因子越大，填满的元素越多</p>
+<ul>
+<li>好处：空间利用率高了</li>
+<li>缺点：冲突的机会加大了</li>
+</ul>
+</li>
+<li><p>反之，加载因子越小，填满的元素越少</p>
+<ul>
+<li>好处：冲突的机会减小了</li>
+<li>缺点：空间浪费多了</li>
+</ul>
+</li>
+</ul>
+<p>冲突的机会越大，则查找的成本越高。反之，查找的成本越小，因而查找时间就越小。</p>
+<p>因此，必须在 <strong>冲突的机会</strong>与<strong>空间利用率</strong>之间寻找一种平衡与折衷。 这种平衡与折衷本质上是数据结构中有名的<strong>时-空矛盾的平衡与折衷</strong>。</p>
+</blockquote>
+<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><h3 id="解决哈希冲突的常用方法有"><a href="#解决哈希冲突的常用方法有" class="headerlink" title="解决哈希冲突的常用方法有"></a>解决哈希冲突的常用方法有</h3><h4 id="再散列—线性再散列"><a href="#再散列—线性再散列" class="headerlink" title="再散列—线性再散列"></a>再散列—线性再散列</h4><ul>
+<li>即插入元素时，没有发生冲突放在原有的规则下的空槽下</li>
+<li>发生冲突时，简单遍历<code>hash</code>表，<strong>找到表中下一个空槽，进行元素插入</strong></li>
+<li>查找元素时，找到相应的位置的元素，如果不匹配则进行<strong>遍历hash表</strong></li>
+</ul>
+<h4 id="再散列—非线性再散列"><a href="#再散列—非线性再散列" class="headerlink" title="再散列—非线性再散列"></a>再散列—非线性再散列</h4><h5 id="开放定址法"><a href="#开放定址法" class="headerlink" title="开放定址法"></a>开放定址法</h5><p>基本思想是：当关键字<code>key</code>的哈希地址<code>p=H（key）</code>出现冲突时，以<code>p</code>为基础，产生另一个哈希地址<code>p1</code>，如果<code>p1</code>仍然冲突，再以<code>p1</code>为基础，产生另一个哈希地址<code>p2</code>，…，直到找出一个不冲突的哈希地址<code>pi</code> ，将相应元素存入其中。</p>
+<h5 id="再哈希法"><a href="#再哈希法" class="headerlink" title="再哈希法"></a>再哈希法</h5><p>这种方法是<strong>同时构造多个不同的哈希函数</strong>：<br><code>Hi=RH1（key） i=1，2，…，k</code><br>当哈希地址<code>Hi=RH1（key）</code>发生冲突时，再计算<code>Hi=RH2（key）</code>……，直到冲突不再产生。这种方法不易产生聚集，但增加了计算时间。</p>
+<h4 id="链地址法"><a href="#链地址法" class="headerlink" title="链地址法"></a>链地址法</h4><p>这种方法的基本思想是将所有哈希地址为<code>i</code>的元素构成一个称为同义词链的单链表，并将单链表的头指针存在哈希表的第<code>i</code>个单元中，因而查找、插入和删除主要在同义词链中进行。链地址法适用于经常进行插入和删除的情况。</p>
+<h4 id="建立公共溢出区"><a href="#建立公共溢出区" class="headerlink" title="建立公共溢出区"></a>建立公共溢出区</h4><p>这种方法的基本思想是：将哈希表分为<strong>基本表</strong>和<strong>溢出表</strong>两部分，凡是和基本表发生冲突的元素，一律填入溢出表。</p>
+<hr>
+<h3 id="Hashtable、HashMap、TreeMap心得"><a href="#Hashtable、HashMap、TreeMap心得" class="headerlink" title="Hashtable、HashMap、TreeMap心得"></a>Hashtable、HashMap、TreeMap心得</h3><p>三者均实现了Map接口，存储的内容是基于<code>key-value</code>的键值对映射，一个映射不能有重复的键，一个键最多只能映射一个值。</p>
+<h4 id="（1）元素特性"><a href="#（1）元素特性" class="headerlink" title="（1）元素特性"></a>（1）元素特性</h4><ul>
+<li><code>HashTable</code>中的<code>key</code>、<code>value</code>都不能为<code>null</code>；</li>
+<li><code>HashMap</code>中的<code>key</code>、<code>value</code>可以为<code>null</code>，很显然只能有一个<code>key</code>为<code>null</code>的键值对，但是允许有多个值为<code>null</code>的键值对；</li>
+<li><code>TreeMap</code>中当未实现 <code>Comparator</code> 接口时，<code>key</code> 不可以为<code>null</code>；<ul>
+<li>当实现 <code>Comparator</code>  接口时，若未对null情况进行判断，则key不可以为null，反之亦然。</li>
+</ul>
+</li>
+</ul>
+<h4 id="（2）顺序特性"><a href="#（2）顺序特性" class="headerlink" title="（2）顺序特性"></a>（2）顺序特性</h4><ul>
+<li><code>HashTable</code>、<code>HashMap</code>具有无序特性。</li>
+<li><code>TreeMap</code>是利用红黑树来实现的，实现了<code>SortMap</code>接口，能够对保存的记录根据键进行排序。所以一般需要排序的情况下是选择<code>TreeMap</code>来进行，默认为升序排序方式（深度优先搜索），可自定义实现<code>Comparator</code>接口实现排序方式。</li>
+</ul>
+<blockquote>
+<p>红黑树：树中的每个节点的值，都会大于或等于它的左子树种的所有节点的值，并且小于或等于它的右子树中的所有节点的值</p>
+</blockquote>
+<h4 id="（3）初始化与增长方式"><a href="#（3）初始化与增长方式" class="headerlink" title="（3）初始化与增长方式"></a>（3）初始化与增长方式</h4><p>初始化时：</p>
+<ul>
+<li><code>HashTable</code>在不指定容量的情况下的默认容量为<code>11</code>，且<code>不要求</code>底层数组的容量一定要为<code>2的整数次幂</code>；</li>
+<li><code>HashMap</code>默认容量为<code>16</code>，且要求容量一定为<code>2的整数次幂</code>。</li>
+</ul>
+<p>扩容时：</p>
+<ul>
+<li><code>Hashtable</code>将容量变为原来的<code>2倍加1</code>；</li>
+<li><code>HashMap</code>扩容将容量变为原来的<code>2倍</code>。</li>
+</ul>
+<h4 id="（4）线程安全性"><a href="#（4）线程安全性" class="headerlink" title="（4）线程安全性"></a>（4）线程安全性</h4><ul>
+<li><code>HashTable</code>其方法函数都是同步的（采用<code>synchronized</code>修饰）<ul>
+<li>不会出现两个线程同时对数据进行操作的情况，因此保证了线程安全性。也正因为如此，在多线程运行环境下效率表现非常低下。</li>
+<li>因为当一个线程访问<code>HashTable</code>的同步方法时，其他线程也访问同步方法就会进入阻塞状态。比如当一个线程在添加数据时候，另外一个线程即使执行获取其他数据的操作也必须被阻塞，大大降低了程序的运行效率，在新版本中已被废弃，不推荐使用。</li>
+</ul>
+</li>
+<li><code>HashMap</code>不支持线程的同步，即任一时刻可以有多个线程同时写<code>HashMap</code>;可能会导致数据的不一致。如果需要同步：<ul>
+<li>（1）可以用  <code>Collections</code>的<code>synchronizedMap</code>方法；</li>
+<li>（2）使用<code>ConcurrentHashMap</code>类，相较于<code>HashTable</code>锁住的是对象整体； <ul>
+<li><code>ConcurrentHashMap</code>基于<code>lock</code>实现锁分段技术。首先将<code>Map</code>存放的数据分成一段一段的存储方式，</li>
+<li>然后给每一段数据分配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。</li>
+<li><code>ConcurrentHashMap</code>不仅保证了多线程运行环境下的数据访问安全性，而且性能上有长足的提升。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-一段话HashMap"><a href="#5-一段话HashMap" class="headerlink" title="(5) 一段话HashMap"></a>(5) 一段话HashMap</h4><p><code>HashMap</code>基于哈希思想，实现对数据的读写。</p>
+<ul>
+<li>当我们将键值对传递给<code>put()</code>方法时，它调用键对象的<code>hashCode()</code>方法来计算<code>hashcode</code>，让后找到<code>bucket</code>位置来储存值对象。</li>
+<li>当获取对象时，通过键对象的<code>equals()</code>方法找到正确的键值对，然后返回值对象。</li>
+<li><code>HashMap</code>使用<strong>链表</strong>来解决碰撞问题，当发生碰撞了，对象将会储存在链表的下一个节点中。  <code>HashMap</code>在每个链表节点中储存键值对对象。当两个不同的键对象的<code>hashcode</code>相同时，它们会储存在同一个<code>bucket</code>位置的链表中，可通过键对象的<code>equals()</code>方法用来找到键值对。如果链表大小超过阈值（<code>TREEIFY_THRESHOLD</code>, <code>8</code>），链表就会被改造为<strong>树形结构</strong>。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2020/11/06/Java%20%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E7%B2%BE%E8%AE%B2/%E7%AC%AC9%E8%AE%B2%20%20%E5%AF%B9%E6%AF%94Hashtable%E3%80%81HashMap%E3%80%81TreeMap%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%EF%BC%9F/">https://www.klause.cn/2020/11/06/Java%20%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E7%B2%BE%E8%AE%B2/%E7%AC%AC9%E8%AE%B2%20%20%E5%AF%B9%E6%AF%94Hashtable%E3%80%81HashMap%E3%80%81TreeMap%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%EF%BC%9F/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/HashMap/">
+                                    <span class="chip bg-color">HashMap</span>
+                                </a>
+                            
+                                <a href="/tags/Hashtable/">
+                                    <span class="chip bg-color">Hashtable</span>
+                                </a>
+                            
+                                <a href="/tags/TreeMap/">
+                                    <span class="chip bg-color">TreeMap</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/">
+                                    <span class="chip bg-color">哈希冲突</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%86%8D%E6%95%A3%E5%88%97/">
+                                    <span class="chip bg-color">再散列</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%86%8D%E5%93%88%E5%B8%8C/">
+                                    <span class="chip bg-color">再哈希</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%91%E5%8C%96/">
+                                    <span class="chip bg-color">树化</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%BA%90%E7%A0%81/">
+                                    <span class="chip bg-color">源码</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2020-11-06T20-47-24',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/11/06/Java/%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E5%8A%A0%E8%BD%BD%E5%9B%A0%E5%AD%90%E4%B8%80%E5%AE%9A%E6%98%AF0.75%EF%BC%9F%E8%80%8C%E4%B8%8D%E6%98%AF0.8%EF%BC%8C0.6%EF%BC%9F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="为什么HashMap加载因子一定是0.75？而不是0.8，0.6？">
+                        
+                        <span class="card-title">为什么HashMap加载因子一定是0.75？而不是0.8，0.6？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/HashMap/">
+                        <span class="chip bg-color">HashMap</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90/">
+                        <span class="chip bg-color">负载因子</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A0%E8%BD%BD%E5%9B%A0%E5%AD%90/">
+                        <span class="chip bg-color">加载因子</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/11/06/Java%20%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E7%B2%BE%E8%AE%B2/%E7%AC%AC8%E8%AE%B2%20%20%E5%AF%B9%E6%AF%94Vector%E3%80%81ArrayList%E3%80%81LinkedList%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/12.jpg" class="responsive-img" alt="第8讲 | 对比Vector、ArrayList、LinkedList有何区别？">
+                        
+                        <span class="card-title">第8讲 | 对比Vector、ArrayList、LinkedList有何区别？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E7%B2%BE%E8%AE%B2/" class="post-category">
+                                    Java核心技术面试精讲
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/Vector/">
+                        <span class="chip bg-color">Vector</span>
+                    </a>
+                    
+                    <a href="/tags/ArrayList/">
+                        <span class="chip bg-color">ArrayList</span>
+                    </a>
+                    
+                    <a href="/tags/LinkedList/">
+                        <span class="chip bg-color">LinkedList</span>
+                    </a>
+                    
+                    <a href="/tags/java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+                        <span class="chip bg-color">java集合框架</span>
+                    </a>
+                    
+                    <a href="/tags/Collections/">
+                        <span class="chip bg-color">Collections</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

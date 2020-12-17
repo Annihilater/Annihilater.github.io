@@ -1,0 +1,1461 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="CentOS安装MySQL详解, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>CentOS安装MySQL详解 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">CentOS安装MySQL详解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/centos/">
+                                <span class="chip bg-color">centos</span>
+                            </a>
+                        
+                            <a href="/tags/mysql/">
+                                <span class="chip bg-color">mysql</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                <span class="chip bg-color">转载</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Tech/" class="post-category">
+                                Tech
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-02-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-02-11
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="CentOS-安装-MySQL-详解"><a href="#CentOS-安装-MySQL-详解" class="headerlink" title="CentOS 安装 MySQL 详解"></a>CentOS 安装 MySQL 详解</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>最近某云搞活动，买了个服务器作为平时学习和测试用，新机器啥也没有，一些常用软件的安装是免不了的，于是乎想着把安装过程都详细记录下来，一是做个备忘，二是给有需要的同学作个参考。</p>
+<p>Linux 上安装软件常见的几种方式：</p>
+<ul>
+<li>源码编译</li>
+<li>压缩包解压（一般为 tar.gz）</li>
+<li>编译好的安装包（RPM、DPKG 等）</li>
+<li>在线安装（YUM、APT 等）</li>
+</ul>
+<p>以上几种方式便捷性依次增加，但通用性依次下降，比如直接下载压缩包进行解压，这种方式一般需要自己做一些额外的配置工作，但只要掌握了方法，各个平台基本都适用，YUM 虽然简单，但是平台受限，网络受限，必要的时候还需要增加一些特定 YUM 源。</p>
+<p>几种安装方式最好都能掌握，原则上能用简单的就用简单的：YUM&gt;RPM&gt;tar.gz&gt;源码</p>
+<p>本文是介绍 MySQL 在 CentOS 上的安装，主要步骤都是参考了 MySQL 官方文档：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/installing.html">dev.mysql.com/doc/refman/…</a></p>
+<p>为了测试不同安装方式，反复折腾了好几次，装了删，删了装，每个步骤都是亲测成功的，每条命令都是亲自执行过的，可以放心使用</p>
+<p>咱们闲话少说，书归正传（这闲话就不少了…）</p>
+<h2 id="一、YUM"><a href="#一、YUM" class="headerlink" title="一、YUM"></a>一、YUM</h2><h4 id="0、删除已安装的-MySQL"><a href="#0、删除已安装的-MySQL" class="headerlink" title="0、删除已安装的 MySQL"></a>0、删除已安装的 MySQL</h4><h5 id="检查-MariaDB"><a href="#检查-MariaDB" class="headerlink" title="检查 MariaDB"></a>检查 MariaDB</h5><pre><code>shell&gt; rpm -qa|grep mariadb
+mariadb-server-5.5.60-1.el7_5.x86_64
+mariadb-5.5.60-1.el7_5.x86_64
+mariadb-libs-5.5.60-1.el7_5.x86_64
+复制代码</code></pre>
+<h5 id="删除-mariadb"><a href="#删除-mariadb" class="headerlink" title="删除 mariadb"></a>删除 mariadb</h5><p>如果不存在（上面检查结果返回空）则跳过步骤</p>
+<pre><code>shell&gt; rpm -e --nodeps mariadb-server
+shell&gt; rpm -e --nodeps mariadb
+shell&gt; rpm -e --nodeps mariadb-libs
+复制代码</code></pre>
+<p><em>其实 yum 方式安装是可以不用删除 mariadb 的，安装 MySQL 会覆盖掉之前已存在的 mariadb</em></p>
+<h5 id="检查-MySQL"><a href="#检查-MySQL" class="headerlink" title="检查 MySQL"></a>检查 MySQL</h5><pre><code>shell&gt; rpm -qa|grep mysql
+复制代码</code></pre>
+<h5 id="删除-MySQL"><a href="#删除-MySQL" class="headerlink" title="删除 MySQL"></a>删除 MySQL</h5><p>如果不存在（上面检查结果返回空）则跳过步骤</p>
+<pre><code>shell&gt; rpm -e --nodeps xxx
+复制代码</code></pre>
+<h3 id="1、添加-MySQL-Yum-Repository"><a href="#1、添加-MySQL-Yum-Repository" class="headerlink" title="1、添加 MySQL Yum Repository"></a>1、添加 MySQL Yum Repository</h3><blockquote>
+<p>从 CentOS 7 开始，MariaDB 成为 Yum 源中默认的数据库安装包。也就是说在 CentOS 7 及以上的系统中使用 yum 安装 MySQL 默认安装的会是 MariaDB（MySQL 的一个分支）。如果想安装官方 MySQL 版本，需要使用 MySQL 提供的 Yum 源。</p>
+</blockquote>
+<h5 id="下载-MySQL-源"><a href="#下载-MySQL-源" class="headerlink" title="下载 MySQL 源"></a>下载 MySQL 源</h5><p>官网地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">dev.mysql.com/downloads/r…</a></p>
+<p>查看系统版本：</p>
+<pre><code>shell&gt; cat /etc/redhat-release
+CentOS Linux release 7.6.1810 (Core)
+复制代码</code></pre>
+<p>选择对应的版本进行下载，例如 CentOS 7 当前在官网查看最新 Yum 源的下载地址为： <a target="_blank" rel="noopener" href="https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm">dev.mysql.com/get/mysql80…</a></p>
+<pre><code>shell&gt; wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+复制代码</code></pre>
+<h5 id="安装-MySQL-源"><a href="#安装-MySQL-源" class="headerlink" title="安装 MySQL 源"></a>安装 MySQL 源</h5><pre><code>shell&gt; sudo rpm -Uvh platform-and-version-specific-package-name.rpm
+复制代码</code></pre>
+<p>例如 CentOS7 当前最新 MySQL 源安装：</p>
+<pre><code>shell&gt; sudo rpm -Uvh mysql80-community-release-el7-3.noarch.rpm
+复制代码</code></pre>
+<h5 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h5><p>执行成功后会在<code>/etc/yum.repos.d/</code>目录下生成两个 repo 文件<code>mysql-community.repo</code>及 <code>mysql-community-source.repo</code></p>
+<p>并且通过<code>yum repolist</code>可以看到 mysql 相关资源</p>
+<pre><code>shell&gt; yum repolist enabled | grep &quot;mysql.*-community.*&quot;
+!mysql-connectors-community/x86_64 MySQL Connectors Community                108
+!mysql-tools-community/x86_64      MySQL Tools Community                      90
+!mysql80-community/x86_64          MySQL 8.0 Community Server                113
+复制代码</code></pre>
+<h3 id="2、选择-MySQL-版本"><a href="#2、选择-MySQL-版本" class="headerlink" title="2、选择 MySQL 版本"></a>2、选择 MySQL 版本</h3><p>使用 MySQL Yum Repository 安装 MySQL，默认会选择当前最新的稳定版本，例如通过上面的 MySQL 源进行安装的话，默安装会选择 MySQL 8.0 版本，如果就是想要安装该版本，可以直接跳过此步骤，如果不是，比如我这里希望安装 MySQL5.7 版本，就需要“切换一下版本”：</p>
+<h5 id="查看当前-MySQL-Yum-Repository-中所有-MySQL-版本（每个版本在不同的子仓库中）"><a href="#查看当前-MySQL-Yum-Repository-中所有-MySQL-版本（每个版本在不同的子仓库中）" class="headerlink" title="查看当前 MySQL Yum Repository 中所有 MySQL 版本（每个版本在不同的子仓库中）"></a>查看当前 MySQL Yum Repository 中所有 MySQL 版本（每个版本在不同的子仓库中）</h5><pre><code>shell&gt; yum repolist all | grep mysql
+复制代码</code></pre>
+<h5 id="切换版本"><a href="#切换版本" class="headerlink" title="切换版本"></a>切换版本</h5><pre><code>shell&gt; sudo yum-config-manager --disable mysql80-community
+shell&gt; sudo yum-config-manager --enable mysql57-community
+复制代码</code></pre>
+<p>除了使用 yum-config-manager 之外，还可以直接编辑<code>/etc/yum.repos.d/mysql-community.repo</code>文件</p>
+<p>enabled=0 禁用</p>
+<pre><code>[mysql80-community]
+name=MySQL 8.0 Community Server
+baseurl=http://repo.mysql.com/yum/mysql-8.0-community/el/7/$basearch/
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+复制代码</code></pre>
+<p>enabled=1 启用</p>
+<pre><code># Enable to use MySQL 5.7
+[mysql57-community]
+name=MySQL 5.7 Community Server
+baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+复制代码</code></pre>
+<h5 id="检查当前启用的-MySQL-仓库"><a href="#检查当前启用的-MySQL-仓库" class="headerlink" title="检查当前启用的 MySQL 仓库"></a>检查当前启用的 MySQL 仓库</h5><pre><code>shell&gt; yum repolist enabled | grep mysql
+复制代码</code></pre>
+<p><em>如果同时启用了多个仓库，安装时会选择最新版本</em></p>
+<h3 id="3、安装-MySQL"><a href="#3、安装-MySQL" class="headerlink" title="3、安装 MySQL"></a>3、安装 MySQL</h3><pre><code>shell&gt; sudo yum install mysql-community-server
+复制代码</code></pre>
+<p>该命令会安装 MySQL 服务器 (mysql-community-server) 及其所需的依赖、相关组件，包括 mysql-community-client、mysql-community-common、mysql-community-libs 等</p>
+<p>如果带宽不够，这个步骤时间会比较长，请耐心等待~</p>
+<h3 id="4、启动-MySQL"><a href="#4、启动-MySQL" class="headerlink" title="4、启动 MySQL"></a>4、启动 MySQL</h3><h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><pre><code>shell&gt; sudo systemctl start mysqld.service
+复制代码</code></pre>
+<p>CentOS 6：</p>
+<pre><code>shell&gt; sudo service mysqld start
+复制代码</code></pre>
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5><pre><code>shell&gt; sudo systemctl status mysqld.service
+复制代码</code></pre>
+<p>CentOS 6：</p>
+<pre><code>shell&gt; sudo service mysqld status
+复制代码</code></pre>
+<h5 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h5><pre><code>shell&gt; sudo systemctl stop mysqld.service
+复制代码</code></pre>
+<p>CentOS 6：</p>
+<pre><code>shell&gt; sudo service mysqld stop
+复制代码</code></pre>
+<h5 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h5><pre><code>shell&gt; sudo systemctl restart mysqld.service
+复制代码</code></pre>
+<p>CentOS 6：</p>
+<pre><code>shell&gt; sudo service mysqld restart
+复制代码</code></pre>
+<h3 id="5、修改密码"><a href="#5、修改密码" class="headerlink" title="5、修改密码"></a>5、修改密码</h3><h5 id="初始密码"><a href="#初始密码" class="headerlink" title="初始密码"></a>初始密码</h5><p>MySQL 第一次启动后会创建超级管理员账号<code>root@localhost</code>，初始密码存储在日志文件中：</p>
+<pre><code>shell&gt; sudo grep &#39;temporary password&#39; /var/log/mysqld.log
+复制代码</code></pre>
+<h5 id="修改默认密码"><a href="#修改默认密码" class="headerlink" title="修改默认密码"></a>修改默认密码</h5><pre><code>shell&gt; mysql -uroot -p
+复制代码
+
+mysql&gt; ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;;
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+复制代码</code></pre>
+<p>出现上面的提示是因为密码太简单了，解决方法如下：</p>
+<ol>
+<li><p> 使用复杂密码，MySQL 默认的密码策略是要包含数字、字母及特殊字符；</p>
+</li>
+<li><p> 如果只是测试用，不想用那么复杂的密码，可以修改默认策略，即<code>validate_password_policy</code>（以及<code>validate_password_length</code>等相关参数），使其支持简单密码的设定，具体方法可以自行百度；</p>
+</li>
+<li><p>修改配置文件<code>/etc/my.cnf</code>，添加<code>validate_password=OFF</code>，保存并重启 MySQL</p>
+<p> mysql&gt; ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘123456’;<br> Query OK, 0 rows affected (0.00 sec)<br> 复制代码</p>
+</li>
+</ol>
+<h3 id="6、允许-root-远程访问"><a href="#6、允许-root-远程访问" class="headerlink" title="6、允许 root 远程访问"></a>6、允许 root 远程访问</h3><pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39; WITH GRANT OPTION;
+mysql&gt; FLUSH PRIVILEGES;
+复制代码</code></pre>
+<h3 id="7、设置编码为-utf8"><a href="#7、设置编码为-utf8" class="headerlink" title="7、设置编码为 utf8"></a>7、设置编码为 utf8</h3><h5 id="查看编码"><a href="#查看编码" class="headerlink" title="查看编码"></a>查看编码</h5><pre><code>mysql&gt; SHOW VARIABLES LIKE &#39;character%&#39;;
+复制代码</code></pre>
+<h5 id="设置编码"><a href="#设置编码" class="headerlink" title="设置编码"></a>设置编码</h5><p>编辑/etc/my.cnf，[mysqld]节点增加以下代码：</p>
+<pre><code>[mysqld]
+character_set_server=utf8
+init-connect=&#39;SET NAMES utf8&#39;
+复制代码</code></pre>
+<h3 id="8、设置开机启动"><a href="#8、设置开机启动" class="headerlink" title="8、设置开机启动"></a>8、设置开机启动</h3><pre><code>shell&gt; systemctl enable mysqld
+shell&gt; systemctl daemon-reload
+复制代码</code></pre>
+<h2 id="二、RPM"><a href="#二、RPM" class="headerlink" title="二、RPM"></a>二、RPM</h2><blockquote>
+<p>除安装过程外，其他步骤和 yum 方式安装相同，不再赘述</p>
+</blockquote>
+<h3 id="0、删除已旧版本"><a href="#0、删除已旧版本" class="headerlink" title="0、删除已旧版本"></a>0、删除已旧版本</h3><p>略</p>
+<h3 id="1、下载-MySQL-安装包"><a href="#1、下载-MySQL-安装包" class="headerlink" title="1、下载 MySQL 安装包"></a>1、下载 MySQL 安装包</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">dev.mysql.com/downloads/m…</a></p>
+<p>选择对应的版本：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/ipic/2020-02-11-080250.png"></p>
+<pre><code>shell&gt; wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar
+复制代码</code></pre>
+<h3 id="2、安装-MySQL"><a href="#2、安装-MySQL" class="headerlink" title="2、安装 MySQL"></a>2、安装 MySQL</h3><h5 id="解压（解打包）"><a href="#解压（解打包）" class="headerlink" title="解压（解打包）"></a>解压（解打包）</h5><pre><code>shell&gt; tar -xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar
+tar -xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar
+mysql-community-embedded-devel-5.7.26-1.el7.x86_64.rpm
+mysql-community-libs-5.7.26-1.el7.x86_64.rpm
+mysql-community-embedded-5.7.26-1.el7.x86_64.rpm
+mysql-community-test-5.7.26-1.el7.x86_64.rpm
+mysql-community-embedded-compat-5.7.26-1.el7.x86_64.rpm
+mysql-community-common-5.7.26-1.el7.x86_64.rpm
+mysql-community-devel-5.7.26-1.el7.x86_64.rpm
+mysql-community-client-5.7.26-1.el7.x86_64.rpm
+mysql-community-server-5.7.26-1.el7.x86_64.rpm
+复制代码</code></pre>
+<p>我们主要安装的是这四个（如果有需要也可以一并安装其它的）：</p>
+<pre><code>mysql-community-libs-5.7.26-1.el7.x86_64.rpm
+mysql-community-common-5.7.26-1.el7.x86_64.rpm
+mysql-community-client-5.7.26-1.el7.x86_64.rpm
+mysql-community-server-5.7.26-1.el7.x86_64.rpm
+复制代码</code></pre>
+<p>如果不想下载 rpm-bundle，官网也提供单独的 rpm 下载链接</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>各 rpm 包是有依赖关系的，所以需要按照一定顺序进行安装，安装期间如果提示缺少哪些依赖也要先安装相应的包：</p>
+<pre><code>shell&gt; rpm -ivh mysql-community-common-5.7.26-1.el7.x86_64.rpm
+shell&gt; rpm -ivh mysql-community-libs-5.7.26-1.el7.x86_64.rpm
+shell&gt; rpm -ivh mysql-community-client-5.7.26-1.el7.x86_64.rpm
+shell&gt; rpm -ivh mysql-community-server-5.7.26-1.el7.x86_64.rpm
+复制代码</code></pre>
+<p>还有一种简单的方式，可以自动处理各个包之间的依赖关系并自动下载缺少的依赖：</p>
+<pre><code>shell&gt; yum install mysql-community-&#123;server,client,common,libs&#125;-*
+复制代码</code></pre>
+<p><em>注意：上面的<code>yum install</code>命令需要在 tar 解压之后的各个 rpm 包所在目录内执行，否则就变成 yum 方式安装了，需要配置 MySQL 的 yum 源并且速度很慢，还要当前机器支持外网访问</em></p>
+<h3 id="3、设置"><a href="#3、设置" class="headerlink" title="3、设置"></a>3、设置</h3><p>略</p>
+<h2 id="三、tar-gz"><a href="#三、tar-gz" class="headerlink" title="三、tar.gz"></a>三、tar.gz</h2><h3 id="0、删除旧版本"><a href="#0、删除旧版本" class="headerlink" title="0、删除旧版本"></a>0、删除旧版本</h3><p>略</p>
+<h3 id="1、下载"><a href="#1、下载" class="headerlink" title="1、下载"></a>1、下载</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">dev.mysql.com/downloads/m…</a></p>
+<p>选择对应的版本：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/ipic/2020-02-11-080251.png"></p>
+<pre><code>shell&gt; wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.26-linux-glibc2.12-x86_64.tar.gz
+复制代码</code></pre>
+<h3 id="2、安装-amp-配置："><a href="#2、安装-amp-配置：" class="headerlink" title="2、安装&amp;配置："></a>2、安装&amp;配置：</h3><h5 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h5><p>MySQL 依赖 libaio 库，如果没有先安装一下：</p>
+<pre><code>shell&gt; yum install libaio
+复制代码</code></pre>
+<h5 id="创建-mysql-用户"><a href="#创建-mysql-用户" class="headerlink" title="创建 mysql 用户"></a>创建 mysql 用户</h5><p>不需要登录的一个系统账号，启动 MySQL 服务时会使用该账号</p>
+<pre><code>shell&gt; groupadd mysql
+shell&gt; useradd -r -g mysql -s /bin/false mysql
+复制代码</code></pre>
+<h5 id="解压并创建链接"><a href="#解压并创建链接" class="headerlink" title="解压并创建链接"></a>解压并创建链接</h5><pre><code>shell&gt; cd /usr/local
+shell&gt; tar zxvf /path/to/mysql-5.7.26-linux-glibc2.12-x86_64.tar.gz
+shell&gt; ln -s mysql-5.7.26-linux-glibc2.12-x86_64/ mysql
+复制代码</code></pre>
+<h5 id="创建-mysql-files-目录"><a href="#创建-mysql-files-目录" class="headerlink" title="创建 mysql-files 目录"></a>创建 mysql-files 目录</h5><p>这一步并不是必须的，可以设置 secure_file_priv 的值指向该目录（用于限制数据导入导出操作的目录）</p>
+<pre><code>shell&gt; cd mysql
+shell&gt; mkdir mysql-files
+shell&gt; chown mysql:mysql mysql-files
+shell&gt; chmod 750 mysql-files
+复制代码</code></pre>
+<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><pre><code>shell&gt; bin/mysqld --initialize --user=mysql
+复制代码</code></pre>
+<p>如果初始化时报错如下：</p>
+<pre><code>error while loading shared libraries: libnuma.so.1: cannot open shared object file: No such file or directory
+复制代码</code></pre>
+<p>是因为 libnuma 没有安装（或者默认安装的是 32 位），我们这里需要 64 位的：</p>
+<pre><code>shell&gt; yum install numactl.x86_64
+复制代码</code></pre>
+<p>执行完后重新初始化即可 初始化成功后返回结果中有一行包含初始密码，第一次登录时要用到它：</p>
+<pre><code>A temporary password is generated for root@localhost: 8M0ary878s*U
+复制代码</code></pre>
+<h5 id="启用-SSL（非必须）"><a href="#启用-SSL（非必须）" class="headerlink" title="启用 SSL（非必须）"></a>启用 SSL（非必须）</h5><pre><code>shell&gt; bin/mysql_ssl_rsa_setup
+复制代码</code></pre>
+<h5 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h5><pre><code>shell&gt; bin/mysqld_safe --user=mysql &amp;
+复制代码</code></pre>
+<p>查看进程可以看到一些默认参数，可以在配置文件中修改这些参数</p>
+<pre><code>shell&gt; ps -ef | grep mysql
+root     14604 12719  0 00:03 pts/0    00:00:00 /bin/sh bin/mysqld_safe --user=mysql
+mysql    14674 14604  0 00:03 pts/0    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=VM_2_24_centos.err --pid-file=VM_2_24_centos.pid
+复制代码</code></pre>
+<h5 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h5><p>避免每次执行 mysql 命令都要加上路径，在<code>/etc/profile</code>中添加：</p>
+<pre><code>export PATH=$PATH:/usr/local/mysql/bin
+复制代码</code></pre>
+<h5 id="设置为服务"><a href="#设置为服务" class="headerlink" title="设置为服务"></a>设置为服务</h5><pre><code>shell&gt; cp support-files/mysql.server /etc/init.d/mysqld
+shell&gt; service mysqld start|stop|restart|status
+复制代码</code></pre>
+<h5 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h5><pre><code>shell&gt; chkconfig --add mysqld
+shell&gt; chkconfig --list mysqld
+mysqld             0:关    1:关    2:开    3:开    4:开    5:开    6:关
+复制代码</code></pre>
+<p><em>其他配置与 yum、rpm 相同，不再赘述</em></p>
+<h2 id="四、源码安装"><a href="#四、源码安装" class="headerlink" title="四、源码安装"></a>四、源码安装</h2><p>就别费这个劲了吧…</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>我们不是 Linux 运维专家，也不是 MySQL 专家，生在这个年代也不知算是幸福还是不幸，线上的环境已经越来越少有人（主要指平时写代码的人）手动去搞这些数据库、中间件的安装配置了，为什么呢？因为各种云产品实在是太方便了呀，一般的公司也不会差这几个钱，既方便又稳定，何乐而不为呢~但是我们自己搞一搞用于自己测试还是必要的，而且还有不少公司的开发环境、测试环境偶尔还是需要手动搞一下的，当然，还有那些个自己搞机房的巨头们。</p>
+<p>那我们既然不是专家，上面所写的内容如果有纰漏也是在所难免的，如果被看到了还希望能够及时批评指正~</p>
+<p>转载地址：<a target="_blank" rel="noopener" href="https://juejin.im/post/5d07cf13f265da1bd522cfb6">CentOS 安装 MySQL 详解</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2020/02/11/CentOS/CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/">https://www.klause.cn/2020/02/11/CentOS/CentOS%E5%AE%89%E8%A3%85MySQL%E8%AF%A6%E8%A7%A3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/centos/">
+                                    <span class="chip bg-color">centos</span>
+                                </a>
+                            
+                                <a href="/tags/mysql/">
+                                    <span class="chip bg-color">mysql</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                    <span class="chip bg-color">转载</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2020-02-11T15-55-07',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/02/11/CentOS/CentOS%207%E5%88%B7%E6%96%B0%20DNS%20%E7%BC%93%E5%AD%98/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="CentOS 7 刷新 DNS 缓存">
+                        
+                        <span class="card-title">CentOS 7 刷新 DNS 缓存</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech/" class="post-category">
+                                    Tech
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/centos/">
+                        <span class="chip bg-color">centos</span>
+                    </a>
+                    
+                    <a href="/tags/dns/">
+                        <span class="chip bg-color">dns</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/11/CentOS/CentOS%20%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/13.jpg" class="responsive-img" alt="CentOS 初始化配置">
+                        
+                        <span class="card-title">CentOS 初始化配置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech/" class="post-category">
+                                    Tech
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/cnetos/">
+                        <span class="chip bg-color">cnetos</span>
+                    </a>
+                    
+                    <a href="/tags/zsh/">
+                        <span class="chip bg-color">zsh</span>
+                    </a>
+                    
+                    <a href="/tags/oh-my-zsh/">
+                        <span class="chip bg-color">oh-my-zsh</span>
+                    </a>
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/zsh-autosuggestions/">
+                        <span class="chip bg-color">zsh-autosuggestions</span>
+                    </a>
+                    
+                    <a href="/tags/autojump/">
+                        <span class="chip bg-color">autojump</span>
+                    </a>
+                    
+                    <a href="/tags/zsh-syntax-highlighting/">
+                        <span class="chip bg-color">zsh-syntax-highlighting</span>
+                    </a>
+                    
+                    <a href="/tags/vim/">
+                        <span class="chip bg-color">vim</span>
+                    </a>
+                    
+                    <a href="/tags/SpaceVim/">
+                        <span class="chip bg-color">SpaceVim</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

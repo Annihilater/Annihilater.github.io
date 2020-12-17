@@ -1,0 +1,1973 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Python Flask 高级编程视频笔记1, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Python Flask 高级编程视频笔记1 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Python Flask 高级编程视频笔记1</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/flask/">
+                                <span class="chip bg-color">flask</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/fisher/" class="post-category">
+                                fisher
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-04-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-04-23
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Python-Flask-高级编程视频笔记1"><a href="#Python-Flask-高级编程视频笔记1" class="headerlink" title="Python Flask 高级编程视频笔记1"></a>Python Flask 高级编程视频笔记1</h1><h3 id="flask-路由的基本原理"><a href="#flask-路由的基本原理" class="headerlink" title="flask 路由的基本原理"></a>flask 路由的基本原理</h3><p><code>add_url_route</code>可以传入<code>rule</code>、<code>view_function</code>、<code>endpoint</code>，如果不传<code>endpoint</code>，会默认将<code>view_function</code>的名字作为<code>endpoint</code>。</p>
+<p><code>add_url_route</code>会将最终的<code>rule</code>存放在<code>url_map</code>里面，视图函数存放在<code>view_function</code>的字典里面。</p>
+<blockquote>
+<p><code>view_functions</code>为字典，键为<code>endpoint</code>，值为视图函数</p>
+</blockquote>
+<ul>
+<li><p>首先<code>url_map</code>这个 <code>map</code>对象里面必须由我们的 <code>url</code> -&gt; <code>search endpoint </code>的指向；</p>
+</li>
+<li><p>同时<code>view_functions</code>里面必须记录<code>search endpoint</code>所指向的视图函数。</p>
+</li>
+</ul>
+<p>这样当一个请求进入 <code>flask</code>之后才能根据 <code>url</code> 顺利的找到对应的视图函数，这就是 <code>flask</code>路由的基本原理。</p>
+<h3 id="循环引用图解"><a href="#循环引用图解" class="headerlink" title="循环引用图解"></a>循环引用图解</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132310.jpg" alt="image-20181123003843668"></p>
+<h3 id="1-拆分视图函数到单独的模块中去"><a href="#1-拆分视图函数到单独的模块中去" class="headerlink" title="1. 拆分视图函数到单独的模块中去"></a>1. <strong>拆分视图函数</strong>到单独的模块中去</h3><p>将视图函数从主执行文件分离出来时，不能直接导入flask的核心对象，导致不能使用flask核心对象来注册视图函数的路由</p>
+<h3 id="2-只有由视图函数或者http请求触发的request才能得到get返回的结果数据"><a href="#2-只有由视图函数或者http请求触发的request才能得到get返回的结果数据" class="headerlink" title="2. 只有由视图函数或者http请求触发的request才能得到get返回的结果数据"></a>2. 只有由<strong>视图函数</strong>或者<code>http</code>请求触发的<code>request</code>才能得到<code>get</code>返回的结果数据</h3><ul>
+<li><code>flask</code>默认<code>request</code>类型是<code>localproxy</code>(本地代理)</li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132315.jpg" alt="image-20181123084533135"></p>
+<h3 id="3-验证层"><a href="#3-验证层" class="headerlink" title="3. 验证层"></a>3. <strong>验证层</strong></h3><p><strong>验证层</strong>：使用<code>wtforms</code>进行参数校验</p>
+<h3 id="4-MVC模型"><a href="#4-MVC模型" class="headerlink" title="4. MVC模型"></a>4. <strong>MVC</strong>模型</h3><ul>
+<li><strong>MVC</strong>模型里绝对不是只有数据，如果只有数据的话，那只能算作数据表</li>
+<li><strong>MVC</strong>里的<em>M</em>是一个业务模型，必须定义很多操作一个个数据字段的业务方法<blockquote>
+<p><strong>经典面试问题</strong>:<br>业务逻辑应该写在<strong>MVC</strong>里的哪一层？<br>业务逻辑最好应该是在<strong>M</strong>(<em>model</em>)层编写</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-ORM的含义"><a href="#5-ORM的含义" class="headerlink" title="5. ORM的含义"></a>5. <strong>ORM</strong>的含义</h3><p><strong>ORM</strong>：关系型数据库和实体间做映射，操作对象的属性和方法，跳过SQL语句</p>
+<p>对象关系映射(英语:<code>Object Relational Mapping</code>，简称<code>ORM</code>，或<code>O/RM</code>，或<code>O/R mapping</code>)，用于实现面向对象编程语言里不同类型系统的数据之间的转换。其实是创建了一个可在编程语言里使用的<code>虚拟对象数据库</code>。<code>Object</code>是可以继承的，是可以使用接口的，而<code>Relation</code>没有这个概念。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132318.jpg"></p>
+<h3 id="6-最基本的数据结构"><a href="#6-最基本的数据结构" class="headerlink" title="6. 最基本的数据结构"></a>6. 最基本的数据结构</h3><ul>
+<li><strong>栈</strong>：<strong>后进先出</strong></li>
+<li><strong>队列</strong>：<strong>先进先出</strong></li>
+</ul>
+<h3 id="7-with语句"><a href="#7-with语句" class="headerlink" title="7. with语句"></a>7. <strong><code>with</code>语句</strong></h3><p><code>with</code>语句：上下文管理器可以使用<code>with</code>语句</p>
+<blockquote>
+<p>实现了上下文协议的对象就可以使用<code>with</code>语句<br>实现了上下文协议的对象通常称为<strong>上下文管理器</strong><br>一个对象只要实现了<code>__enter__</code>和<code>__exit__</code>两个方法，就是实现了<strong>上下文协议</strong><br>上下文表达式（with后面的表达式）必须返回一个上下文管理器</p>
+</blockquote>
+<p>示例1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):</span></span><br><span class="line">        b = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> A() <span class="keyword">as</span> obj_A:  </span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>obj_A</code> 是 <code>None</code>；<code>A()</code>直接实例化 <code>A</code>，返回的是上下文管理器对象</li>
+<li>as 语句后面的变量不是上下文管理器</li>
+<li><code>__enter__</code> 方法所返回的值会赋给 as 语句后面的变量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        a = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):</span></span><br><span class="line">        b = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> A() <span class="keyword">as</span> obj_A:  <span class="comment"># obj_A ：1</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>示例2：<code>文件读写</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    f = <span class="built_in">open</span>(<span class="string">r&#x27;D:\t.txt&#x27;</span>)</span><br><span class="line">    print(f.read())</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+<p>使用<strong>with语句</strong>改写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r&#x27;D:\t.txt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br></pre></td></tr></table></figure>
+
+<p>示例3：<code>with语句处理异常</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyResource</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;connect to resource&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, exc_type, exc_val, exc_tb</span>):</span></span><br><span class="line">        <span class="keyword">if</span> exc_tb:</span><br><span class="line">            print(<span class="string">&#x27;process exception&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">&#x27;no exception&#x27;</span>)</span><br><span class="line">        print(<span class="string">&#x27;close resource connection&#x27;</span>)</span><br><span class="line">        <span class="comment"># return True     # 返回 True 表示已经在 __exit__ 内部处理过异常，不需要在外部处理</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>    <span class="comment"># 返回 False 表示没有在 __exit__ 内部处理异常，需要在外部处理</span></span><br><span class="line">        <span class="comment"># 如果 __exit__ 没有返回，则默认返回 False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;query data&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> MyResource() <span class="keyword">as</span> resource:</span><br><span class="line">        <span class="number">1</span>/<span class="number">0</span></span><br><span class="line">        resource.query()</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> ex:</span><br><span class="line">    print(<span class="string">&#x27;with语句出现异常&#x27;</span>)</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-操作数据库的流程"><a href="#8-操作数据库的流程" class="headerlink" title="8.操作数据库的流程"></a>8.操作数据库的流程</h3><ul>
+<li><p>连接数据库</p>
+<ul>
+<li><p><code>flask-sqlalchemy</code>连接数据库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQLALCHEMY_DATABASE_URI = <span class="string">&#x27;mysql+cymysql://username:password@localhost:3306/fisher?charset=utf8&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>参数解释：</p>
+<p><code>cymysql</code>：<code>mysql</code>数据库的链接驱动</p>
+<p><code>username:password@localhost:3306</code>：用户名：密码@服务器地址：端口</p>
+<p><code>fisher</code>：数据库名称</p>
+<p><code>charset=utf8</code>：指定数据库的编码方式为<code>utf8</code></p>
+<blockquote>
+<p>采坑：</p>
+<p><strong><code>mysql</code>数据库必须指定编码方式，否则<code>commit</code>的时候会出错。</strong><br>时间：2018年10月18日20:39:43<br>就因此踩了坑，花费了三天的时间。刚开始没有指定数据库的编码方式，结果在用户之间发起鱼漂的时候，储存鱼漂到数据库的时候报如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlalchemy.exc.InternalError: (cymysql.err.InternalError) (1366，...）</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>vscode</code>进行远程调试，主要调试了提交数据库的几个操作：</p>
+<ul>
+<li><p>用户注册的时候，需要储存用户数据到数据库，这类 <code>commit</code>没问题，储存的是 <code>user</code>表</p>
+</li>
+<li><p>赠送数据的时候，需要将礼物（书籍）数据添加到数据库，这类 <code>commit</code>没问题，储存的是 <code>gift</code>表</p>
+</li>
+<li><p>添加心愿书籍的时候，需要储存心愿，这类 <code>commit</code>没问题，储存的是 <code>wish</code>表</p>
+</li>
+<li><p>储存鱼漂的时候，<code>commit</code>就会报错，这类 <code>commit</code>储存的是 <code>drift</code>表</p>
+</li>
+</ul>
+<p>查 <code>google</code>确实查到了是 <code>mysql</code>编码的问题，</p>
+<ul>
+<li><p>尝试1：修改 <code>mysql</code>编码模式为 <code>utf8</code>，结果：无效</p>
+</li>
+<li><p>尝试2：修改已创建的 <code>fisher</code>数据库的编码模式为 <code>utf8</code>，结果：无效</p>
+</li>
+<li><p>尝试3：修改<code>mysql</code>连接方式<code>SQLALCHEMY_DATABASE_URI = &#39;mysql+cymysql://username:password@localhost:3306/fisher?charset=utf8&#39;</code>，结果：无效</p>
+</li>
+<li><p>尝试4：修改</p>
+</li>
+<li><p>尝试4：删除 <code>fisher</code>数据库，重新让 <code>sqlalchemy</code>建立数据表，结果：<strong>有效</strong></p>
+</li>
+</ul>
+<p>原因嘛，猜测为<code>drift</code>表的编码模式出现了问题。</p>
+<p>至于为什么其他表的编码模式没问题，只有 <code>drift</code>这个搞不清楚，以后在捉摸吧。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><code>SQL</code>操作</p>
+</li>
+<li><p>释放资源</p>
+</li>
+</ul>
+<p>使用</p>
+<ul>
+<li><code>try</code></li>
+<li><code>except</code> </li>
+<li><code>finally</code></li>
+</ul>
+<p>无论出现什么异常，最终都会执行<code>final</code>语句，不会浪费资源，很优雅<br>另一种方式就是使用<strong>with语句</strong></p>
+<h3 id="9-进程和线程"><a href="#9-进程和线程" class="headerlink" title="9. 进程和线程"></a>9. 进程和线程</h3><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a><strong>进程</strong></h4><p>进程：是竞争计算机资源的基本单位</p>
+<ul>
+<li>每一个应用程序至少需要一个进程</li>
+<li>进程是分配资源的</li>
+<li>多进程管理的资源是不能相互访问的</li>
+<li><strong>多进程</strong>资源共享需要使用<strong>进程通信技术</strong><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a><strong>线程</strong></h4>线程：是进程的一部分，一个进程可以有一个或多个线程</li>
+<li>线程：利用 <code>cpu</code> 执行代码</li>
+<li>线程属于进程</li>
+<li>线程不拥有资源，但是可以访问进程的资源</li>
+<li>多线程可以更加充分的利用 <code>cpu</code> 的性能优势</li>
+<li>多个线程共享一个进程的资源，就会造成进程不安全</li>
+</ul>
+<h4 id="GIL"><a href="#GIL" class="headerlink" title="GIL"></a><strong>GIL</strong></h4><p><strong>全局解释器锁</strong>（英语：<code>Global Interpreter Lock</code>，缩写<strong>GIL</strong>）</p>
+<ul>
+<li><p><code>python</code>解释器</p>
+<ul>
+<li><code>cpython</code>：有GIL</li>
+<li><code>jpython</code>：无GIL</li>
+</ul>
+</li>
+<li><p><strong>锁</strong></p>
+<ul>
+<li><strong>细粒度锁</strong>：是程序员主动添加的</li>
+<li><strong>粗粒度锁</strong>：<strong>GIL</strong>，多核 <code>cpu</code> 只有 <code>1</code> 个线程执行，一定程度上保证了线程安全<ul>
+<li>还有特例情况（无法保证线程安全）<blockquote>
+<p>例： <code>a += 1</code></p>
+<ul>
+<li>在 <code>python</code> 解释器中会被翻译成 <code>bytecode</code>(字节码)，<code>a += 1</code> 可能会被翻译成多段 <code>bytecode</code>，如果解释器正在执行多段 <code>bytecode</code> 其中一段的时候被挂起去执行第二个线程，等第二个线程执行完之后再回来，接着执行 <code>a += 1</code> 剩下的几段 <code>bytecode</code> 的时候就不能保证线程安全了。</li>
+<li>如果 <code>a += 1</code> 这段代码的多段 <code>bytecode</code> 会一直执行完（不会中断），则可以保证线程安全，但是<strong>GIL</strong>做不到，它只能认一段段的 <code>bytecode</code>，它是以 <code>bytecode</code> 为基本单位来执行的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>python</code>多线程到底是不是鸡肋？</p>
+<blockquote>
+<p>node.js 是单进程、单线程的语言 </p>
+</blockquote>
+<ul>
+<li><code>cpu</code>密集型程序：一段代码的大部分执行时间是消耗在 <code>cpu</code> 计算上的程序<ul>
+<li>例如：圆周率的计算、视频的解码</li>
+</ul>
+</li>
+<li><code>IO</code>密集型程序：一段代码的大部分执行时间是消耗在<strong>查询数据库</strong>、<strong>请求网络资源</strong>、<strong>读写文件</strong>等 <code>IO</code> 操作上的程序<ul>
+<li>现实中目前写的绝大多数程序都是<code>IO</code>密集型的程序</li>
+</ul>
+</li>
+<li><code>python</code>多线程在 <code>IO</code> 密集型程序里具有一定意义，但是不适合<code>cpu</code>密集型程序</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-多线程"><a href="#10-多线程" class="headerlink" title="10. 多线程"></a>10. 多线程</h3><p>在多线程的情况下，多个请求传入进来，如果用同一个变量名<code>request</code>来命名多个线程里的请求会造成混乱，该如何处理？</p>
+<ul>
+<li>可以用字典来处理（字典是<code>python</code>中非常依赖的一种数据结构）<ul>
+<li><code>request = &#123;key1:value1, key2:value2, key3:value3, ...&#125;</code></li>
+<li>多线程的每个线程都有它的唯一标识<code>thread_key</code></li>
+<li>解决方案：<code>request = &#123;thread_key1:Request1, thread_key2:Request2, thread_key3:Request3, ...&#125;</code>，一个变量指向的是字典的数据结构，字典的内部包含不同的线程创建的不同的<code>Request</code>实例化对象</li>
+<li>线程隔离<ul>
+<li>用不同的线程<code>id</code>号作为键，其实就是<strong>线程隔离</strong></li>
+<li>不同的线程在字典中有不同的状态，各个线程的状态都被保存在字典中，互不干扰</li>
+<li><strong>不同线程</strong>操作<strong>线程隔离</strong>的对象时，互不影响<blockquote>
+<p>线程<code>t1</code>操作<code>L.a</code>（对象L的属性a）与线程<code>t2</code>操作<code>L.a</code>（对象L的属性a）<br>两者是互不干扰的，各自进行各自的操作</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="普通对象"><a href="#普通对象" class="headerlink" title="普通对象"></a>普通对象</h4><ul>
+<li><strong>不同线程操作普通对象的情况</strong><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    b = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_obj = A()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span>():</span></span><br><span class="line">    <span class="comment"># 新线程</span></span><br><span class="line">    my_obj.b = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">new_t = threading.Thread(target=worker, name=<span class="string">&#x27;my_test_thread&#x27;</span>)</span><br><span class="line">new_t.start()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 主线程</span></span><br><span class="line">print(my_obj.b)</span><br><span class="line"><span class="comment"># 新线程的修改影响到了主线程的打印结果，因为对象A只是普通对象，不是线程隔离的对象</span></span><br></pre></td></tr></table></figure>
+<h4 id="线程隔离对象"><a href="#线程隔离对象" class="headerlink" title="线程隔离对象"></a>线程隔离对象</h4></li>
+<li><strong>不同线程操作线程隔离对象的情况</strong><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> werkzeug.local <span class="keyword">import</span> Local</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># class A(Local):</span></span><br><span class="line"><span class="comment">#     b = 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_obj = Local()</span><br><span class="line">my_obj.b = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span>():</span></span><br><span class="line">    <span class="comment"># 新线程</span></span><br><span class="line">    my_obj.b = <span class="number">2</span></span><br><span class="line">    print(<span class="string">&#x27;in new thread b is:&#x27;</span> + <span class="built_in">str</span>(my_obj.b))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">new_t = threading.Thread(target=worker, name=<span class="string">&#x27;my_test_thread&#x27;</span>)</span><br><span class="line">new_t.start()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 主线程</span></span><br><span class="line">print(<span class="string">&#x27;in main thread b is:&#x27;</span> + <span class="built_in">str</span>(my_obj.b))</span><br><span class="line"><span class="comment"># 新线程对my_obj.b的修改不影响主线程的打印结果，因为my_obj是线程隔离的对象</span></span><br></pre></td></tr></table></figure></li>
+<li><code>from werkzeug.local import Local</code>，<code>Local</code>是<code>werkzeug</code>包里面的，不是<code>flask</code>的</li>
+<li><code>LocalStack</code>是可以用来做线程隔离的栈，封装了<code>Local</code>对象，把<code>Local</code>对象作为自己的一个属性，从而实现线程隔离的栈结构<ul>
+<li><code>Local</code>是一个可以用来做线程隔离的对象，使用字典的方式实现线程隔离</li>
+<li><code>stack</code>是栈结构</li>
+</ul>
+</li>
+</ul>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a><strong>封装</strong></h4><ul>
+<li><strong>软件世界里的一切都是由封装来构建的，没有什么是封装解决不了的问题！</strong></li>
+<li><strong>如果一次封装解决不了问题，那么就再来一次！</strong></li>
+<li><strong>编程也是一种艺术，代码风格要含蓄！</strong></li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132321.jpg"></p>
+<h4 id="LocalStack"><a href="#LocalStack" class="headerlink" title="LocalStack"></a><code>LocalStack</code></h4><h5 id="作为栈"><a href="#作为栈" class="headerlink" title="作为栈"></a>作为栈</h5><blockquote>
+<p>基本上来讲，要实现<strong>栈</strong>结构，必须要实现<code>push</code>、<code>pop</code>、<code>top</code>这三个操作<br><code>push</code> 推入栈<br><code>top</code> 取栈顶元素，不弹出该元素<br><code>pop</code> 取栈顶元素，并弹出该元素<br><strong>栈</strong>结构只能取栈顶元素（后进先出）<br>（如果栈可以随意的按照下标去结构中的元素，那么<strong>栈</strong>和<strong>列表</strong>之类的数据结构有什么区别呢？）<br><strong><code>规律：很多数据结构，实际上就是限制了某些能力</code></strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> werkzeug.local <span class="keyword">import</span> LocalStack</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = LocalStack()</span><br><span class="line">s.push(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(s.top)</span><br><span class="line">print(s.top)</span><br><span class="line">print(s.pop())</span><br><span class="line">print(s.top)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s.push(<span class="number">1</span>)</span><br><span class="line">s.push(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">print(s.top)</span><br><span class="line">print(s.top)</span><br><span class="line">print(s.pop())</span><br><span class="line">print(s.top)</span><br><span class="line">----------------------------------------------</span><br><span class="line">执行结果：</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">None</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="作为线程隔离对象"><a href="#作为线程隔离对象" class="headerlink" title="作为线程隔离对象"></a>作为线程隔离对象</h5><blockquote>
+<p>两个线程拥有两个栈，是相互隔离的，互不干扰</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> werkzeug.local <span class="keyword">import</span> LocalStack</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">my_stack = LocalStack() <span class="comment"># 实例化具有线程隔离属性的LocalStack对象</span></span><br><span class="line">my_stack.push(<span class="number">1</span>)</span><br><span class="line">print(<span class="string">&#x27;in main thread after push, value is:&#x27;</span> + <span class="built_in">str</span>(my_stack.top))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span>():</span></span><br><span class="line">    <span class="comment"># 新线程</span></span><br><span class="line">    print(<span class="string">&#x27;in new thread before push, value is:&#x27;</span> + <span class="built_in">str</span>(my_stack.top))</span><br><span class="line">    <span class="comment"># 因为线程隔离，所以在主线程中推入1跟其他线程无关，故新线程中的栈顶是没有值的（None）</span></span><br><span class="line">    my_stack.push(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">&#x27;in new thread after push, value is:&#x27;</span> + <span class="built_in">str</span>(my_stack.top))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">new_t = threading.Thread(target=worker, name=<span class="string">&#x27;my_new_thread&#x27;</span>)</span><br><span class="line">new_t.start()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主线程</span></span><br><span class="line">print(<span class="string">&#x27;finally, in main thread value is:&#x27;</span> + <span class="built_in">str</span>(my_stack.top))</span><br><span class="line"><span class="comment"># 因为线程隔离，在新线程中推入2不影响主线程栈顶值得打印</span></span><br><span class="line">------------------------------------------------------------------------------------</span><br><span class="line">执行结果：</span><br><span class="line"><span class="keyword">in</span> main thread after push, value <span class="keyword">is</span>:<span class="number">1</span></span><br><span class="line"><span class="keyword">in</span> new thread before push, value <span class="keyword">is</span>:<span class="literal">None</span></span><br><span class="line"><span class="keyword">in</span> new thread after push, value <span class="keyword">is</span>:<span class="number">2</span></span><br><span class="line"><span class="keyword">finally</span>, <span class="keyword">in</span> main thread value <span class="keyword">is</span>:<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="经典面试问题"><a href="#经典面试问题" class="headerlink" title="经典面试问题"></a><strong>经典面试问题</strong></h5><blockquote>
+<ol>
+<li><code>flask</code>使用<code>LocalStack</code>是为了隔离什么对象？<br>答：这个问题很简单 ，什么对象被推入栈中就是为了隔离什么对象，<code>AppContext</code>（应用上下文）和<code>RequestContext</code>（请求上下文）被推入栈中，所以是为了隔离<code>AppContext</code>（应用上下文）和<code>RequestContext</code>（请求上下文）</li>
+<li>为什么要隔离这些对象？<br>表面原因：在多线程的环境下，每个线程都会创建一些对象，如果我们不把这些对象做成线程隔离的对象，那么很容易发生混淆，一旦发生混淆之后，就会造成我们程序运行的错误<br>根本原因：我们需要用一个变量名，同时指向多个线程创建的多个实例化对象，这是不可能的。但是我们可以做到当前线程在引用到<code>request</code>这个变量名的时候，可以正确的寻找到当前线程（它自己）创建的实例化对象。</li>
+<li>什么是线程隔离的对象和被线程隔离的对象？<br><code>LocalStack</code>和<code>Local</code>是<strong>线程隔离的对象</strong><br><code>AppContext</code>（应用上下文）和<code>RequestContext</code>（请求上下文）是<strong>被线程隔离的对象</strong></li>
+<li><code>AppContext</code>（应用上下文）和<code>Flask</code>核心对象的区别？<br>这两个是两个对象，<code>Flask</code>核心对象<code>app</code>将作为一个属性存在于<code>AppContext</code>（应用上下文）下！！！</li>
+<li><code>Flask</code>的核心对象可以有多个吗？<br><code>Flask</code>核心对象在全局里只有一个。因为<code>app</code>是在入口文件里创建的，入口文件是在主线程里去执行的，所以以后无论启动多少个线程，都不会执行<code>create_app()</code>了。</li>
+</ol>
+</blockquote>
+<ul>
+<li><strong>使用线程隔离的意义</strong>：<code>使当前线程能够正确引用到他自己所创建的对象，而不是引用到其他线程所创建的对象</code></li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132324.jpg"><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132326.jpg"></p>
+<h3 id="11-flask开启多线程的方法"><a href="#11-flask开启多线程的方法" class="headerlink" title="11. flask开启多线程的方法"></a>11. <code>flask</code>开启多线程的方法</h3><p>在入口文件将<code>threaded=True</code>开启<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132329.jpg"></p>
+<h3 id="12-ViewModel层的作用"><a href="#12-ViewModel层的作用" class="headerlink" title="12. ViewModel层的作用"></a>12. <code>ViewModel</code>层的作用</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132332.jpg"></p>
+<ul>
+<li>页面所需数据结构与<strong>原始数据结构</strong>是一一对应的时候：<ul>
+<li>原始数据可以直接传给页面</li>
+</ul>
+</li>
+<li>页面所需数据结构与<strong>原始数据结构</strong>不一致：<ul>
+<li>需要<code>ViewModel</code>对原始数据结构进行<code>裁剪</code>、<code>修饰</code>、<code>合并</code></li>
+</ul>
+</li>
+</ul>
+<p>因为原始数据并不一定能满足客户端显示的要求，<code>ViewModel</code>给了调整数据的机会，不同的页面对数据差异化的要求，可以在<code>ViewModel</code>里进行集中处理。</p>
+<blockquote>
+<p>将<code>author</code>列表转换成字符串再传给客户端：<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132334.jpg"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132337.jpg"><br><strong>返回<code>author</code>列表的灵活性要比返回字符串高</strong>，返回列表，客户端可以根据需求使用不同的符号将作者分割链接，但是字符串就限制了客户端的选择。<br>对于返回客户端<code>author</code>数据的格式，<code>web</code>编程经验的个人建议：</p>
+<ul>
+<li>如果我们正在做的是单页面前后端分离的应用程序，建议<code>author</code>保持列表的形式直接返回到客户端去，让客户端使用<code>JavaScript</code>来操作或者解析列表。</li>
+<li>如果是在做网站的话，建议<code>author</code>在<code>ViewModel</code>里处理。</li>
+</ul>
+<p>原因：<code>JavaScript</code>处理这些事情非常方便，但如果是模板渲染的方式来渲染<code>html</code>的话，我们先把数据处理好，直接往模板里填充会是更好的选择！<br><strong>数据在哪里处理，可以根据实际情况而定！</strong></p>
+</blockquote>
+<h3 id="13-面向对象"><a href="#13-面向对象" class="headerlink" title="13. 面向对象"></a>13. 面向对象</h3><h4 id="面向对象的类"><a href="#面向对象的类" class="headerlink" title="面向对象的类"></a><code>面向对象</code>的类</h4><ul>
+<li>描述自己的特征（数据）<ul>
+<li>使用类变量、实例变量来描述自己的特征</li>
+</ul>
+</li>
+<li>行为<ul>
+<li>用方法来定义类的行为</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>对面向对象理解不够深刻的同学经常写出只有行为没有特征的类，他们所写的类里大量的都是方法而没有类变量、实例变量，这种类的本质还是<code>面向过程</code>，因为面向过程的思维方式是人类最为熟悉的一种思维方式，所以比较容易写出面向过程的类。<br><code>面向过程</code>的基本单位是函数，<code>面向对象</code>的基本单位是类<br>虽然使用了<code>class</code>关键字并且将一些方法或者函数封装到<code>class</code>内部，但是并没有改变这种面向过程的实质。<br><code>面向对象</code>是一种思维方式，并不在于你的代码是怎么写的，如果说你的思维方式出现错误，那你肯定是写不出面向对象的代码的。</p>
+</blockquote>
+<ul>
+<li>如何去审视自己的类？去判断我们写出来的类到底是不是一个<code>伪面向对象</code>？<ul>
+<li>如果一个类有大量的<strong>可以被标注为</strong><code>classmethod</code>或者<code>staticmethod</code> 的静态方法，那么你的类封装的是不好的，并没有充分利用面向对象的特性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-代码解释权的反转"><a href="#14-代码解释权的反转" class="headerlink" title="14. 代码解释权的反转"></a>14. 代码解释权的反转</h3><ul>
+<li>代码的解释权不再由函数的编写方所定义的，而是把解释的权利交给了函数的调用方<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132341.jpg"></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> jsonify(books）</span><br><span class="line"><span class="comment"># 报错，因为books是一个对象，对象时无法进行序列化的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> jsonify(books.__dict__)</span><br><span class="line"><span class="comment"># 将books取字典之后同样会报错，因为books里面包含对象，所包含的对象无法进行序列化</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> json.dumps(books, default=<span class="keyword">lambda</span> o: o.__dict__)</span><br><span class="line"><span class="comment"># 最后使用json.dumps()，完美解决问题</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在<code>json.dumps()</code>的内部处理这些别人传过来的参数的时候，我们是不知道怎么去解释它的,所以我们把解释权交给函数的调用方，由函数的调用方把不能序列化的类型转化为可以序列化的类型，转移解释权的思维使用<code>函数式编程</code>是很容易编写的。在设计<code>json.dumps()</code>的时候要求函数的调用方传递进来一个函数，传递进来的函数它的具体的实现细节是由函数的调用方编写的，我们不需要关心函数内部具体的实现细节，一旦遇到了不能序列化的对象就调用<code>func(obj)</code>函数，让<code>func(obj)</code>负责把不能序列化的类型转化为可序列化的类型，我们只需要关注<code>return</code>的结果就行了</p>
+</blockquote>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132343.jpg"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132346.jpg"></p>
+<h3 id="15-单页面和网站的区别"><a href="#15-单页面和网站的区别" class="headerlink" title="15. 单页面和网站的区别"></a>15. 单页面和网站的区别</h3><blockquote>
+<p>经典面试问题：<br>单页面和普通网站的区别？</p>
+<ul>
+<li><code>单页面</code>：<ol>
+<li>并不一定只有一个页面；</li>
+<li>最大的特点在于数据的渲染是在客户端进行的；</li>
+<li>单页面应用程的业务逻辑，也就是说数据的运算主要还是集中在客户端，用<code>JS</code>去操作的。</li>
+</ol>
+</li>
+<li><code>多页面普通网站</code>：大多数情况下数据的渲染或者模板的填充是在服务端进行的。</li>
+</ul>
+</blockquote>
+<h4 id="普通网站"><a href="#普通网站" class="headerlink" title="普通网站"></a><strong>普通网站</strong></h4><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132352.jpg"><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132355.jpg"></p>
+<h4 id="单页面"><a href="#单页面" class="headerlink" title="单页面"></a><strong>单页面</strong></h4><ul>
+<li>单页面中<code>html</code>也是静态资源</li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132357.jpg"><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132359.jpg"></p>
+<h3 id="16-flask静态文件访问原理"><a href="#16-flask静态文件访问原理" class="headerlink" title="16. flask静态文件访问原理"></a>16. <code>flask</code>静态文件访问原理</h3><ul>
+<li><p>在实例化<code>flask</code>对象的时候，可以指定<code>static_folder</code>（静态文件目录）、<code>static_url_path</code>（静态文件访问路由）</p>
+<blockquote>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132402.jpg"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132404.jpg"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132407.jpg"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132409.jpg" alt="img"><br><code>_static_folder</code>和<code>_static_url_path</code>默认值为<code>None</code></p>
+</blockquote>
+</li>
+<li><p><code>blueprint</code>（蓝图）的静态资源操作与<code>flask</code>核心对象操作一样<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132416.jpg"></p>
+</li>
+</ul>
+<h3 id="17-模板文件的位置与修改方案"><a href="#17-模板文件的位置与修改方案" class="headerlink" title="17. 模板文件的位置与修改方案"></a>17. 模板文件的位置与修改方案</h3><p><code>templates</code>文件位置可以由<code>template_folder</code>指定模板文件路径</p>
+<ul>
+<li>需求：将字典填充到<code>html</code>里，再将填充之后的<code>html</code>返回到客户端去</li>
+</ul>
+<p><code>flask</code>为了让我们能够在模板里面很好的解析和展示数据，它引入了一个模板引擎<code>Jinja2</code></p>
+<blockquote>
+<p>像<code>Jinja</code>这种可以帮助我们在<code>html</code>中渲染和填充数据的语言通常被称为<code>模板语言</code></p>
+</blockquote>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132417.jpg"></p>
+<p>在<code>Jinja</code>里有两个流程控制语句是经常用到的：（<code>Jinja</code>流程控制语句都必须写在<code>{% %}</code>里面）</p>
+<ul>
+<li><p><code>if</code>语句（条件语句）</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> data.age &lt; 18 %&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><span class="template-variable">&#123;&#123; data.name &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">elif</span></span> data.age == 18%&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span>do some thing<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">else</span></span> %&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><span class="template-variable">&#123;&#123; data.age &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>for in</code>语句（循环控制语句）</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> foo <span class="keyword">in</span> [1,2,3,4,5] %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; foo &#125;&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>999<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> key, value <span class="keyword">in</span> data.items() %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="comment">&#123;# 注意for后面跟的是键值对，用逗号分开。#&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="comment">&#123;# data后面要加上iterms()，要确保是个可迭代对象，否则会报错 #&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; key &#125;&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; value &#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="模板继承的用法"><a href="#模板继承的用法" class="headerlink" title="模板继承的用法"></a>模板继承的用法</h4><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132420.jpg"></p>
+<ol>
+<li><p>写好一级<code>html</code>页面：<code>layout.html</code> ，包含<code>block</code>模块。<img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132423.jpg"></p>
+</li>
+<li><p>在需要继承的<code>html</code>页面顶端导入基础<code>html</code>：</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% raw %&#125;&#123;% extends ‘layout.html&#x27; %&#125;&#123;% endraw %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% raw %&#125;&#123;&#123; super() &#125;&#125;&#123;% endraw %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 关键字可以继承一级<code>html</code>页面中的<code>block</code>模块的内容，不使用的话只能替换，无法继承。<img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132424.jpg"></p>
+</li>
+</ol>
+<h4 id="模板语言的过滤器"><a href="#模板语言的过滤器" class="headerlink" title="模板语言的过滤器"></a>模板语言的过滤器</h4><p>过滤器的基本用法是在关键是后面加上竖线 <code>|</code></p>
+<ul>
+<li><p><code>default</code>过滤器：是用来判断属性是否存在的，当访问一个不存在的属性时，<code>default</code>后面的赋值才会被显示，当访问一个存在的属性时，<code>default</code>后面的赋值不会被显示。</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="comment">&#123;# data.name data.age 存在，data.school 不存在#&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-variable">&#123;&#123; data.school | default=(&#x27;未名&#x27;) &#125;&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>|</code> 有点像<code>linux</code>里的管道符号，其表达的意思是<code>值得传递</code></p>
+</li>
+</ul>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="comment">&#123;# data.name = None， data.age 存在，data.school 不存在 #&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-variable">&#123;&#123; data.name == None | default=(&#x27;未名&#x27;) &#125;&#125;</span></span><br><span class="line"><span class="comment">&#123;# 页面最终返回的结果是 True，竖线并不是表示前面的语句成立，就执行后面的语句</span></span><br><span class="line"><span class="comment">竖线表示的是值的传递，前面等式成立为 True，将 值True 传给后面的语句，default判断出 True是存在的，所以页面返回的是 True #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>更复杂的示例：</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="comment">&#123;# data.name = None， data.age 存在，data.school 不存在 #&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-variable">&#123;&#123; data.school | default(data.school) | default=(&#x27;未名&#x27;) &#125;&#125;</span></span><br><span class="line"><span class="comment">&#123;# 页面最终返回的结果是未名</span></span><br><span class="line"><span class="comment">第一个 default 首先判断第一个 data.school 是否存在，不存在</span></span><br><span class="line"><span class="comment">然后 defuult 再对其括号内的 data.school 求值，不存在</span></span><br><span class="line"><span class="comment">然后再将值传给第二个 default，因为接收到的是不存在的结果</span></span><br><span class="line"><span class="comment">所以第二个 default 会把 &#x27;未名&#x27; 显示出来 #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>length</code>过滤器（长度过滤器）：是用来判断长度的<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="comment">&#123;# data.name、data.age 存在 #&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-variable">&#123;&#123; data | length() &#125;&#125;</span></span><br><span class="line"><span class="comment">&#123;# 页面最终的返回结果为 2 #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="18-反向构建URL"><a href="#18-反向构建URL" class="headerlink" title="18. 反向构建URL"></a>18. 反向构建<code>URL</code></h3><p>反向构建<code>url</code>使用的是<code>url_for</code>，使用方法：</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; url_for(&#x27;static&#x27;, filename=&#x27;test.css&#x27;) &#125;&#125;</span></span><br><span class="line"><span class="comment">&#123;# static 是静态文件，test.css 是需要加载的 css文件 #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>凡是涉及到<code>url</code>生成的时候，建议都使用<code>url_for</code>，例如<code>CSS</code>文件的加载、<code>JS</code>文件的加载、图片的加载，包括视图函数里重定向的时候一样可以使用<code>url_for</code>来生成</strong></p>
+<ul>
+<li>加载<code>css</code>文件的方法<ul>
+<li>使用硬路径<ul>
+<li>缺点：当服务器域名地址、域名端口等需要改动过的时候非常麻烦<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://localhost/5000/static/test.css&quot;</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用相对路径<ul>
+<li>缺点：当需要修改静态资源（css、js等）路径的时候非常麻烦<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;../static/test.css&quot;</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用反向构建<code>url</code>的方法<ul>
+<li>非常方便、完美解决问题<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123; url_for(&#x27;static&#x27;, filename=&#x27;test.css&#x27;) &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="19-Messaging-Flash消息闪现"><a href="#19-Messaging-Flash消息闪现" class="headerlink" title="19. Messaging Flash消息闪现"></a>19. <code>Messaging Flash</code>消息闪现</h3><h4 id="消息闪现的用法"><a href="#消息闪现的用法" class="headerlink" title="消息闪现的用法"></a>消息闪现的用法</h4><ul>
+<li>导入<code>flash</code>函数：<code>from flask import flash</code></li>
+<li>在视图函数中调用<code>flash(message, category=&#39;message&#39;)</code>函数：  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flash(<span class="string">&#x27;你好，这里是消息闪现!&#x27;</span>, category=<span class="string">&#x27;errors&#x27;</span>)</span><br><span class="line">flash(<span class="string">&#x27;Hello, this is messaging flash!&#x27;</span>, category=<span class="string">&#x27;warning&#x27;</span>)</span><br><span class="line">flash(<span class="string">&#x27;你好，这里是消息闪现!&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li>在<code>html</code>页面使用模板语言使用<code>get_flashed_messages()</code>方法获得需要闪现的消息<ul>
+<li>问题1：如何获取<code>get_flashed_messages()</code>函数的调用结果呢？</li>
+<li>按照<code>python</code>惯有的操作思维，先定义一个变量，再引用这个变量就可以获得这个函数的调用结果了。</li>
+<li>问题2：在模板语言里如何定义一个变量？<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="comment">&#123;# 使用`set`关键字定义一个变量 #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">set</span> messages = get_flashed_messages %&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; messages &#125;&#125;</span></span><br><span class="line"><span class="comment">&#123;# 正常调用 messages #&#125;</span></span><br><span class="line"><span class="xml">   </span></span><br><span class="line"><span class="xml">-------------------------------------------</span></span><br><span class="line"><span class="xml">[&#x27;你好，这里是消息闪现!&#x27;, &#x27;Hello, this is messaging flash!&#x27;, &#x27;你好，这里是消息闪现!&#x27;]</span></span><br><span class="line"><span class="comment">&#123;# 页面最终返回结果 #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>需要在配置文件里配置<code>SECRET_KEY</code>才能正确显示消息闪现<ul>
+<li><code>SECRET_KEY</code>本身就是一串字符串，但是要尽可能的保证它是独一无二的，换句话说<code>SECRET_KEY</code>就是一个秘钥</li>
+<li>当<code>flask</code>需要去操作加密数据的时候，它需要读取<code>SECRET_KEY</code>，并且把秘钥运用到它的一系列算法中，最终生成加密数据</li>
+<li><code>flask</code>消息闪现需要用到<code>session</code>，<code>flask</code>里面的<code>session</code>是客户端的不是服务端的，所以说加密对<code>flask</code>来说是极其重要的，所以说我们需要给应用程序配置<code>SECRET_KEY</code></li>
+<li>服务端的数据是相对比较安全的，但是如果数据是储存在客户端的，那么最好把数据加密，因为客户端是不能信任的，很容易被篡改</li>
+</ul>
+</li>
+</ul>
+<h4 id="block变量作用域"><a href="#block变量作用域" class="headerlink" title="block变量作用域"></a><code>block</code>变量作用域</h4><p>在一个<code>block</code>里定义的变量的作用于只存在于该<code>block</code>中，不能在其他<code>block</code>中使用</p>
+<h4 id="with语句变量作用域"><a href="#with语句变量作用域" class="headerlink" title="with语句变量作用域"></a><code>with</code>语句变量作用域</h4><p>模板语言里的<code>with</code>语句内定义的变量，只能在<code>with</code>语句内部使用，不能在外部使用</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">with</span></span> messages = get_flashed_messages() %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-variable">&#123;&#123; messages &#125;&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endwith</span></span> %&#125;</span></span><br><span class="line"><span class="comment">&#123;# messages 变量只能在 with 语句内部使用 #&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Filtering Flash Messages<br>Optionally you can pass a list of categories which filters the results of get_flashed_messages(). This is useful if you wish to render each category in a separate block.</strong></p>
+</blockquote>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">with</span></span> errors = get_flashed_messages(category_filter=[&quot;error&quot;]) %&#125;</span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> errors %&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;alert-message block-message error&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;close&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>×<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">            </span><span class="template-tag">&#123;%- <span class="name"><span class="name">for</span></span> msg <span class="keyword">in</span> errors %&#125;</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><span class="template-variable">&#123;&#123; msg &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">            </span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> -%&#125;</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endwith</span></span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="20-搜索页面详解"><a href="#20-搜索页面详解" class="headerlink" title="20. 搜索页面详解"></a>20. 搜索页面详解</h3><p>建议：</p>
+<ul>
+<li>加载<code>CSS</code>文件的时候，一般写在<code>html</code>文件的顶部</li>
+<li>加载<code>JS</code>文件的时候，一般写在<code>html</code>文件的底部</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookViewModel</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, book</span>):</span></span><br><span class="line">        self.title = book[<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">        self.publisher = book[<span class="string">&#x27;publisher&#x27;</span>]</span><br><span class="line">        self.author = <span class="string">&#x27;丶&#x27;</span>.join(book[<span class="string">&#x27;author&#x27;</span>])</span><br><span class="line">        self.pages = book[<span class="string">&#x27;pages&#x27;</span>] <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">        self.price = book[<span class="string">&#x27;price&#x27;</span>]</span><br><span class="line">        self.summary = book[<span class="string">&#x27;summary&#x27;</span>] <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">        self.image = book[<span class="string">&#x27;image&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intro</span>(<span class="params">self</span>):</span></span><br><span class="line">        intros = <span class="built_in">filter</span>(<span class="keyword">lambda</span> x: <span class="literal">True</span> <span class="keyword">if</span> x <span class="keyword">else</span> <span class="literal">False</span>,</span><br><span class="line">                        [self.author, self.publisher, self.price])</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27; / &#x27;</span>.join(intros)</span><br><span class="line">        <span class="comment"># filter 为过滤器    </span></span><br><span class="line">        <span class="comment"># lambda 表达式</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>filter</code>函数（过滤器）：<br>过滤规则是由<code>lambda</code>表达式来定义的，<br>如果<code>lambda</code>表达式某一项数据是<code>False</code>,那么该项数据就会被过滤掉；<br>如果返回的是<code>Ture</code>，该项数据会被保留。</p>
+</blockquote>
+<p>在<code>html</code>页面使用模板语言调用<code>intro</code>的数据：</p>
+<figure class="highlight jinja"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">	</span><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span></span><br><span class="line"><span class="xml">	</span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> book <span class="keyword">in</span> books.books %&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row col-padding&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123; url_for(&#x27;web.book_detail&#x27;, isbn=book.isbn) &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-2&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;book-img-small shadow&quot;</span> <span class="attr">src</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123; book.image &#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-7 flex-vertical description-font&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123; book.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="comment">&#123;#                    &lt;span&gt;&#123;&#123; [book.author | d(&#x27;&#x27;), book.publisher | d(&#x27;&#x27;, true) , &#x27;￥&#x27; + book.price | d(&#x27;&#x27;)] | join(&#x27; / &#x27;) &#125;&#125;&lt;/span&gt;#&#125;</span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><span class="template-variable">&#123;&#123; book.intro &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;summary&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123; book.summary | default(&#x27;&#x27;, true) &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span></span><br><span class="line"><span class="xml"> 		</span><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>页面最终的展示效果：<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132427.jpg"></p>
+<blockquote>
+<p>因为搜索结果页面展示的时候，需要展示<code>作者</code>、<code>出版社</code>、<code>价格</code>并将这三项数据使用<code>/</code>连接，但是获取的数据并不是都有这三项数据，或者原始数据包含该项数据，但是该项数据为<code>空</code>，那么就会造成<code>曹雪芹//23.00元</code>这种情况，所以为了解决这个问题，引入了<code>intro</code>函数，我们在<code>intro</code>函数里判断三项原始数据是否存在且是否为空，若存在且不为空则返回数据，如果存在且为空则返回<code>False</code>，如果不存在则返回<code>False</code>，过滤完成后得到一个<code>intros</code>列表，最后使用<code>return</code>语句将<code>intros</code>列表使用<code>/</code>连接起来再返回。</p>
+</blockquote>
+<h4 id="property装饰器"><a href="#property装饰器" class="headerlink" title="@property装饰器"></a><code>@property</code>装饰器</h4><p>使用<code>@property</code>是让<code>intro</code>函数可以作为属性的方式访问，就是将类的方法转换为属性</p>
+<ul>
+<li><p>模板语言里 intro 作为<code>函数</code>的形式访问：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% raw %&#125;&#123;&#123; book.intro() &#125;&#125;&#123;% endraw %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模板语言里 intro 作为<code>属性</code>的形式访问：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">&#123;% raw %&#125;&#123;&#123; book.intro &#125;&#125;&#123;% endraw %&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>前文示例中的<code>intro</code>是数据，应该用属性访问的方式来获取数据，而不应该用行为的方式来表达数据</p>
+</blockquote>
+</li>
+</ul>
+<p>对象的两个特性：</p>
+<ul>
+<li>数据是用来描述它的特征的</li>
+<li>方法（或者函数）是用来描述它的行为的</li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132429.jpg"></p>
+<h3 id="21-业务模型"><a href="#21-业务模型" class="headerlink" title="21. 业务模型"></a>21. 业务模型</h3><ul>
+<li><code>book</code>模型</li>
+<li><code>user</code>模型</li>
+<li><code>gift</code>模型：展示用户与书籍之间关系的</li>
+</ul>
+<blockquote>
+<p>如何在<code>gift</code>模型中表示<code>user</code>呢？<br>在<code>gift</code>模型里面引用<code>user</code>模型，<code>sqlalchemy</code>提供了<code>relationship</code>函数用来表明引用的关系。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, Integer, Boolean, ForeignKey, String</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> relationship</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.models.base <span class="keyword">import</span> Base</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Gift</span>(<span class="params">Base</span>):</span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    user = relationship(<span class="string">&#x27;User&#x27;</span>)</span><br><span class="line">    uid = Column(Integer, ForeignKey(<span class="string">&#x27;user.id&#x27;</span>))</span><br><span class="line">    isbn = Column(String(<span class="number">15</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 因为书籍的数据是从yushu.im的 API 获取的，不是从数据库获取的，所以不能从数据库关联</span></span><br><span class="line">    <span class="comment"># 赠送书籍的 isbn 编号是可以重复的，原因很简单</span></span><br><span class="line">    <span class="comment"># 例如：A 送给 B 挪威的森林；C 也可以送给 D 挪威的森林。</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 从数据库关联 book 模型的写法跟关联 user 模型的写法一样</span></span><br><span class="line">    <span class="comment"># book = relationship(&#x27;Book&#x27;)</span></span><br><span class="line">    <span class="comment"># bid = Column(Integer, ForeignKey(&#x27;book.id&#x27;))</span></span><br><span class="line">    launched = Column(Boolean, default=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 表明书籍有没有赠送出去，默认 False 未赠送出去</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="假删除"><a href="#假删除" class="headerlink" title="假删除"></a>假删除</h4><p>业务模型最终都会在数据库生成一条一条的记录</p>
+<ul>
+<li>物理删除：直接从数据库里删除记录<ul>
+<li>缺点：删除之后找不回来</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>互联网有时候需要分析用户的行为：<br>一个用户曾经要赠送一份礼物，后来他把赠送礼物取消了，不想再赠送书籍了。<br>如果把这条记录直接从数据库里删除之后，是没有办法对用户的历史行为进行分析的<br>所以大多是情况都不会采用物理删除，而是用<code>假删除</code>或者<code>软删除</code></p>
+</blockquote>
+<p><code>假删除</code>或者<code>软删除</code>：是新增加一个属性<code>status</code>，用<code>status</code>表示这条数据是否被删除</p>
+<blockquote>
+<p><code>status = Column(SmallInteger, default=1)</code><br><code>1</code>表示保留记录，<code>0</code>表示删除记录<br>通过更改<code>status</code>的状态在决定是否展示这条记录，实际上这条数据一直存在于数据库当中<br>基本上所有模型都需要<code>status</code>属性，所以将<code>status</code>写在基类里，通过继承使所有模型获得<code>status</code>属性</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, Integer, SmallInteger</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __abstract__ =  <span class="literal">True</span>    <span class="comment"># 作用：不让 sqlalchemy 创建 Base 数据表</span></span><br><span class="line">    create_time = Column(<span class="string">&#x27;create_time&#x27;</span>, Integer)</span><br><span class="line">    status = Column(SmallInteger, default=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建<code>Base</code>之后，<code>sqlalchemy</code>会自动创建<code>Base</code>数据表，但是我们并没有在<code>Base</code>类里定义<code>primary_key</code>，所以运行时会报错。创建<code>Base</code>类只是想让模型继承它，并不想创建<code>Base</code>数据表（没有需求，没有任何意义）。在<code>Base</code>类里加入<code>__abstract__ =  True</code>可以让<code>sqlalchemy</code>不去创建数据表</p>
+</blockquote>
+<h3 id="22-用户注册"><a href="#22-用户注册" class="headerlink" title="22. 用户注册"></a>22. 用户注册</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132432.jpg"></p>
+<ul>
+<li><code>request.form</code>可以获取用户提交的表单信息</li>
+<li><code>wtforms.validators.DataRequired</code>验证，也就是代表了该字段为必填项，表单提交时必须非空。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wtforms <span class="keyword">import</span> Form, StringField, PasswordField</span><br><span class="line"><span class="keyword">from</span> wtforms.validators <span class="keyword">import</span> DataRequired, Length, Email</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegisterForm</span>(<span class="params">Form</span>):</span></span><br><span class="line">    email = StringField(validators=[DataRequired(), Length(<span class="number">8</span>, <span class="number">64</span>), Email(message=<span class="string">&#x27;电子邮件不符合规范&#x27;</span>)])</span><br><span class="line">    password = PasswordField(validators=[DataRequired(message=<span class="string">&#x27;密码不可以为空,请输入你的密码&#x27;</span>), Length(<span class="number">6</span>, <span class="number">32</span>)])</span><br><span class="line">    nickname = StringField(validators=[DataRequired(), Length(<span class="number">2</span>, <span class="number">10</span>, message=<span class="string">&#x27;昵称至少需要两个字符，最多10个字符&#x27;</span>)])</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="用户密码加密"><a href="#用户密码加密" class="headerlink" title="用户密码加密"></a>用户密码加密</h4><p>使用<code>werkzeug.security</code>包里的<code>generate_password_hash</code>函数对用户密码加密</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> werkzeug.security <span class="keyword">import</span> generate_password_hash</span><br><span class="line"></span><br><span class="line">user.password = generate_password_hash(form.password.data)</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改数据库表单的名称"><a href="#修改数据库表单的名称" class="headerlink" title="修改数据库表单的名称"></a>修改数据库表单的名称</h4><p>默认情况下，在模型里定义的字段的名字就是生成的数据库表单的名字</p>
+<ul>
+<li><p>修改生成的数据库表名称的方法：</p>
+<ul>
+<li>使用<code>__tablename__</code>修改</li>
+</ul>
+</li>
+<li><p>修改生成的数据库表字段名称的方法：</p>
+<ul>
+<li><code>传入字符串</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.models.base <span class="keyword">import</span> Base</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">Base</span>):</span></span><br><span class="line">    __tablename__ = <span class="string">&#x27;user&#x27;</span>  <span class="comment"># 添加 __tablename__ 指定生成的数据库表名为 user</span></span><br><span class="line">    _password = Column(<span class="string">&#x27;password&#x27;</span>)  <span class="comment"># 在 Column 里传递字符串指定表字段的名字 </span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    nickname = Column(String(<span class="number">24</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    phone_number = Column(String(<span class="number">18</span>), unique=<span class="literal">True</span>)</span><br><span class="line">    confirmed = Column(Boolean, default=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="python动态赋值"><a href="#python动态赋值" class="headerlink" title="python动态赋值"></a><code>python</code>动态赋值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@web.route(<span class="params"><span class="string">&#x27;/register&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span>():</span></span><br><span class="line">    form = RegisterForm(request.form)   <span class="comment"># 实例化注册表单，获取用户提交的表单</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span> <span class="keyword">and</span> form.validate():</span><br><span class="line">        user = User()           <span class="comment"># 实例化用户</span></span><br><span class="line">        user.set_attrs(form)    <span class="comment"># 将真实用户与服务器用户绑定，相应属性赋值</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;auth/register.html&#x27;</span>, form=&#123;<span class="string">&#x27;data&#x27;</span>: &#123;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>set_attrs</code>使用了<code>python</code>作为动态语言的优势，在基类<code>Base</code>里复写了<code>set_attrs</code>方法，所有模型都继承了<code>set_attrs</code>方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span>(<span class="params">db.Model</span>):</span></span><br><span class="line">    __abstract__ =  <span class="literal">True</span></span><br><span class="line">    create_time = Column(<span class="string">&#x27;create_time&#x27;</span>, Integer)</span><br><span class="line">    status = Column(SmallInteger, default=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_attrs</span>(<span class="params">self, attrs_dict</span>):</span></span><br><span class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> attrs_dict.items():</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">hasattr</span>(self, key) <span class="keyword">and</span> key != <span class="string">&#x27;id&#x27;</span>:  <span class="comment"># 主键 id 不能修改</span></span><br><span class="line">                <span class="built_in">setattr</span>(self, key, value)</span><br><span class="line">    <span class="comment"># set_attrs 接收一个字典类型的参数，如果字典里的某一个 key 与模型里的某一个属性相同</span></span><br><span class="line">    <span class="comment"># 就把字典里 key 所对应的值赋给模型的相关属性</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="自定义验证器"><a href="#自定义验证器" class="headerlink" title="自定义验证器"></a>自定义验证器</h4><p>如何校验业务逻辑相关的规则？（使用自定义验证器）</p>
+<blockquote>
+<p>比如：<code>email</code>符合电子邮箱规范，但是假如数据库里已经存在了一个同名的<code>email</code>，这种情况该怎么处理？大多数同学在写代码的时候也会进行业务性质的校验，但是很多人都会把业务性质的校验写到视图函数里面去。建议：<strong>业务性质的校验也应该放到<code>form</code>里进行统一校验</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wtforms <span class="keyword">import</span> Form, StringField, PasswordField</span><br><span class="line"><span class="keyword">from</span> wtforms.validators <span class="keyword">import</span> DataRequired, Length, Email, ValidationError</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.models.user <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegisterForm</span>(<span class="params">Form</span>):</span></span><br><span class="line">    email = StringField(validators=[</span><br><span class="line">        DataRequired(), Length(<span class="number">8</span>, <span class="number">64</span>), Email(message=<span class="string">&#x27;电子邮件不符合规范&#x27;</span>)])</span><br><span class="line"></span><br><span class="line">    password = PasswordField(validators=[</span><br><span class="line">        DataRequired(message=<span class="string">&#x27;密码不可以为空,请输入你的密码&#x27;</span>), Length(<span class="number">6</span>, <span class="number">32</span>)])</span><br><span class="line"></span><br><span class="line">    nickname = StringField(validators=[</span><br><span class="line">        DataRequired(), Length(<span class="number">2</span>, <span class="number">10</span>, message=<span class="string">&#x27;昵称至少需要两个字符，最多10个字符&#x27;</span>)])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 自定义验证器，验证 email</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate_email</span>(<span class="params">self, field</span>):</span></span><br><span class="line">        <span class="keyword">if</span> User.query.filter_by(email=field.data).first():</span><br><span class="line">            <span class="keyword">raise</span> ValidationError(<span class="string">&#x27;电子邮件已被注册&#x27;</span>)</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># 自定义验证器，验证 nickname</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate_nickname</span>(<span class="params">self, field</span>):</span></span><br><span class="line">        <span class="keyword">if</span> User.query.filter_by(nickname=field.data).first():</span><br><span class="line">            <span class="keyword">raise</span> ValidationError(<span class="string">&#x27;该昵称已被注册&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a><code>cookie</code></h4><p><code>cookie</code>本来的机制：哪个网站写入的<code>cookie</code>，哪个网站才能获取这个<code>cookie</code></p>
+<blockquote>
+<p>也有很多技术实现跨站<code>cookie</code>共享</p>
+</blockquote>
+<p><code>cookie</code>的用途：</p>
+<ul>
+<li>用户票据的保存</li>
+<li>广告的精准投放</li>
+</ul>
+<h4 id="用户验证"><a href="#用户验证" class="headerlink" title="用户验证"></a>用户验证</h4><p>建议：将用户密码验证的过程放在用户模型里，而不要放在视图函数里</p>
+<ul>
+<li>邮箱验证<ul>
+<li>直接在数据库查询邮箱</li>
+</ul>
+</li>
+<li>密码验证<ul>
+<li><ol>
+<li>现将用户提交的明文密码加密</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>再与数据库储存的加密密码进行比对</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> werkzeug.security <span class="keyword">import</span> check_password_hash</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_password</span>(<span class="params">self, raw</span>):</span></span><br><span class="line">    <span class="keyword">return</span> check_password_hash(self._password, raw)</span><br><span class="line">    <span class="comment"># raw 为用户提交的明文密码</span></span><br><span class="line">    <span class="comment"># self._password 为数据库储存的加密的密码</span></span><br><span class="line">    <span class="comment"># 使用 check_password_hash 函数可以直接进行加密验证</span></span><br><span class="line">    <span class="comment"># 验证过程：</span></span><br><span class="line">    <span class="comment"># 1.先将明文密码 raw 加密；</span></span><br><span class="line">    <span class="comment"># 2.再与数据库里的密码进行比对；</span></span><br><span class="line">    <span class="comment"># 3.如果相同则返回 True，如果不相同则返回 False</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="用户登录成功"><a href="#用户登录成功" class="headerlink" title="用户登录成功"></a>用户登录成功</h4><p>用户登陆成功之后：</p>
+<ol>
+<li>需要为用户生成一个票据</li>
+<li>并且将票据写入<code>cookie</code>中</li>
+<li>还要负责读取和管理票据<blockquote>
+<p>所以说整个登录机制是非常繁琐的，自己去实现一整套的<code>cookie</code>管理机制是非常不明智的，<br>幸运的是<code>flask</code>提供了一个插件，可以完全使用过这个插件来管理用户的登录信息</p>
+</blockquote>
+</li>
+</ol>
+<h5 id="使用flask-login插件管理用户的登录信息"><a href="#使用flask-login插件管理用户的登录信息" class="headerlink" title="使用flask-login插件管理用户的登录信息"></a>使用<code>flask-login</code>插件管理用户的登录信息</h5><ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install flask-login</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>插件初始<br>因为<code>flask-login</code>插件是专为<code>flask</code>定制的插件，所以需要在<code>app</code>目录下的<code>init.py</code>文件中将插件初始化</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_login <span class="keyword">import</span> LoginManager</span><br><span class="line"></span><br><span class="line">login_manager = LoginManager()</span><br><span class="line"><span class="comment"># 实例化 LoginManager</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span>():</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    app.config.from_object(<span class="string">&#x27;app.secure&#x27;</span>)</span><br><span class="line">    app.config.from_object(<span class="string">&#x27;app.setting&#x27;</span>)</span><br><span class="line">    register_blueprint(app)</span><br><span class="line"></span><br><span class="line">    db.init_app(app)</span><br><span class="line">    login_manager.init_app(app)</span><br><span class="line">    <span class="comment"># 初始化 login_manager</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 写法一：传入关键字参数</span></span><br><span class="line">    <span class="comment"># db.create_all(app=app)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 写法二：with语句 + 上下文管理器</span></span><br><span class="line">    <span class="keyword">with</span> app.app_context():</span><br><span class="line">        db.create_all()</span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>保存用户的票据信息<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_login <span class="keyword">import</span> login_user</span><br><span class="line"></span><br><span class="line"><span class="meta">@web.route(<span class="params"><span class="string">&#x27;/login&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>():</span></span><br><span class="line">    form = LoginForm(request.form)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span> <span class="keyword">and</span> form.validate():</span><br><span class="line">        user = User.query.filter_by(email=form.email.data).first()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> user <span class="keyword">and</span> user.check_password(form.password.data):</span><br><span class="line">            login_user(user, remember=<span class="literal">True</span>)</span><br><span class="line">            <span class="comment"># remember=True 表示免密登录，flask默认免密登录的有效时长为365天</span></span><br><span class="line">            <span class="comment"># 如果需要更改免密登录的有效时长，则可以在 flask 的配置文件中设置 REMENBER_COOKIE_DURATION 的值</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            flash(<span class="string">&#x27;账号不存在或密码错误&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;auth/login.html&#x27;</span>, form=form)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里并不直接操作<code>cookie</code>，而是通过<code>login_user(user)</code>间接的把用户票据写入到<code>cookie</code>中。<br>票据到底是什么？我们往<code>cookie</code>里写入的又是什么？</p>
+<ul>
+<li>我们往<code>login_user(user)</code>里传入了一个我们自己定义的<code>user</code>模型，那么是不是说<code>login_user(user)</code>把我们用户模型里所有的数据全部写入到<code>cookie</code>中了呢？<br>并不是，因为这个模型是我们自己定义的，我们自己定义的数据可能非常的多，全部写入不现实；而且其中的一些信息是根本不需要写入<code>cookie</code>中的。</li>
+<li>那么最关键的、最应该写入<code>cookie</code>中的是什么信息？是用户的<code>id</code>号！因为<code>id</code>号才能代表用户的身份</li>
+<li>那么<code>login_user(user)</code>怎么知道我们自己定义的<code>user</code>模型下面这么多个属性里，哪一个才是代表用户身份信息的<code>id</code>号呢?<br>所以<code>flask_login</code>这个插件要求在<code>user</code>模型下定义一系列的可以获取用户相应属性的方法，这样<code>flask_login</code>可以直接调用这些方法去获取模型的属性，而不用去识别用户属性</li>
+<li>可以继承<code>flask_login</code>插件里<code>UserMixin</code>基类，从而获得这些方法（获取模型属性的方法），避免重复写。此种方法<strong>对模型里属性的名称有硬性要求</strong>，比如<code>id</code>不能为<code>id</code>，因为调用的时候会继承<code>UserMixin</code>里的方法，<code>UserMixin</code>方法里是写死了的，如果属性名称不一样需要在<code>user</code>模型里覆写获取属性的相关方法。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132435.jpg"></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h4 id="访问权限控制"><a href="#访问权限控制" class="headerlink" title="访问权限控制"></a>访问权限控制</h4><p>网站的视图函数大致分为两类：</p>
+<ul>
+<li>需要用户登录才能访问</li>
+<li>不需要登录即可访问</li>
+</ul>
+<blockquote>
+<p>如果需要限制一个视图函数需要登录才能访问，怎么办？<br>如果仅仅是将用户信息写入到<code>cookie</code>中，我们完全不需要引入第三方插件，但是如果考虑到要对某些视图函数做权限的控制的话，第三方插件就非常有用了。<br>对于一个用户管理插件而言，最复杂的实现的地方就在于对权限的控制</p>
+</blockquote>
+<p>使用第三方插件的装饰器来进行登录权限的控制：</p>
+<ol>
+<li>在视图函数前加上装饰器<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132436.jpg"></li>
+</ol>
+<h4 id="重定向攻击"><a href="#重定向攻击" class="headerlink" title="重定向攻击"></a>重定向攻击</h4><ol>
+<li>当用户访问一个需要登录的视图函数的时候，会自动跳转到登录页面（生成附加<code>next</code>信息的登录页面<code>url</code>）<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132438.jpg"></li>
+<li>登录页面的<code>url</code>后面会添加<code>next</code>信息，例如：<br><code>http://127.0.0.1:5000/login?next=%2Fmy%2Fgifts</code><br><code>next</code>表示的就是登陆完成后所需要跳转的页面（重定向），一般是定向为原来需要访问的页面</li>
+<li>如果用人恶意篡改<code>next</code>信息，例如：<br><code>http://127.0.0.1:5000/login?next=http://www.baidu.com</code><br>使用该链接登录之后就会跳转到百度页面，这种被称为<code>重定向攻击</code></li>
+<li>那么如何防止这种重定向攻击呢？<br>需要在视图函数中判断<code>next</code>的内容是否为<code>/</code>开头，因为如果是<code>/</code>开头的话表明还是在我们域名内部跳转，要跳转到其他域名的话必须以<code>http://</code>开头<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132440.jpg"><blockquote>
+<p><code>next.startswith()</code>函数可以判断<code>next</code>信息是否以<code>/</code>开头</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="23-wish模型"><a href="#23-wish模型" class="headerlink" title="23. wish模型"></a>23. <code>wish</code>模型</h3><h4 id="1-分析得到wish模型几乎和gift一模一样，所以直接复制过来稍微改一下就行了"><a href="#1-分析得到wish模型几乎和gift一模一样，所以直接复制过来稍微改一下就行了" class="headerlink" title="1. 分析得到wish模型几乎和gift一模一样，所以直接复制过来稍微改一下就行了"></a>1. 分析得到<code>wish</code>模型几乎和<code>gift</code>一模一样，所以直接复制过来稍微改一下就行了</h4><h4 id="2-点击赠送此书和加入到心愿清单要求用户登录，在这两个视图函数前加上-login-required"><a href="#2-点击赠送此书和加入到心愿清单要求用户登录，在这两个视图函数前加上-login-required" class="headerlink" title="2. 点击赠送此书和加入到心愿清单要求用户登录，在这两个视图函数前加上@login_required"></a>2. 点击<code>赠送此书</code>和<code>加入到心愿清单</code>要求用户登录，在这两个视图函数前加上<code>@login_required</code></h4><pre><code>- 赠送此书：`save_to_gift`
+- 加入到心愿清单：`save_to_wish`</code></pre>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132442.jpg"></p>
+<h4 id="3-gift还有uid属性需要赋值，uid从哪里获取呢"><a href="#3-gift还有uid属性需要赋值，uid从哪里获取呢" class="headerlink" title="3. gift还有uid属性需要赋值，uid从哪里获取呢?"></a>3. <code>gift</code>还有<code>uid</code>属性需要赋值，<code>uid</code>从哪里获取呢?</h4><p>当一个用户登录之后，我们可以通过第三方用户登录管理插件<code>flask_login</code>的<code>current_user</code>获取当前用户的<code>id</code>，<code>current_user</code>为什么可以获取当前用户呢？因为之前我们在<code>user</code>模型里定义了<code>get_user</code>方法，该方法可以让我们通过<code>uid</code>获取用户模型，所以这里的<code>current_user</code>本质上就是一个实例化的<code>user</code>模型，所以可以用<code>current_user.id</code>获取当前用户的<code>uid</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> login_manager</span><br><span class="line"></span><br><span class="line"><span class="meta">@login_manager.user_loader</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_user</span>(<span class="params">uid</span>):</span></span><br><span class="line">    <span class="keyword">return</span> User.query.get(<span class="built_in">int</span>(uid))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@web.route(<span class="params"><span class="string">&#x27;/gifts/book/&lt;isbn&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_to_gifts</span>(<span class="params">isbn</span>):</span></span><br><span class="line">    gift = Gift()</span><br><span class="line">    gift.isbn = isbn</span><br><span class="line">    gift.uid = current_user.<span class="built_in">id</span></span><br><span class="line">    db.session.add(gift)</span><br><span class="line">    db.session.commit(gift)     <span class="comment"># 将数据写入到数据库</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-鱼豆"><a href="#4-鱼豆" class="headerlink" title="4. 鱼豆"></a>4. 鱼豆</h4><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132444.jpg"><br>为了后期方便修改上传一本书所获得的鱼豆数量，所以将上传一本书所获得的鱼豆数量设定为变量写到配置文件里，再在需要的时候读取配置文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEANS_UPDATE_ONE_BOOK = <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">current_user.beans += current_app.config[<span class="string">&#x27;BEANS_UPDATE_ONE_BOOK&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-前面第3点中的save-to-gift视图函数有很多问题"><a href="#5-前面第3点中的save-to-gift视图函数有很多问题" class="headerlink" title="5. 前面第3点中的save_to_gift视图函数有很多问题"></a>5. 前面第3点中的<code>save_to_gift</code>视图函数有很多问题</h4><ul>
+<li><p><code>isbn</code>编号没有验证</p>
+<ul>
+<li>不清楚传入的<code>isbn</code>编号符不符合<code>isbn</code>规范</li>
+<li>不清楚传入的<code>isbn</code>编号是否已存在与数据库当中<ul>
+<li>如果这本书不在数据库，则需要上传之后才能赠送</li>
+</ul>
+</li>
+<li>不清楚传入的<code>isbn</code>编号是否已经存在于赠送清单中<ul>
+<li>如果这本书在赠送清单，则不需要加入赠送清单了</li>
+</ul>
+</li>
+<li>不清楚传入的<code>isbn</code>编号是否已经存在于心愿清单中<ul>
+<li>如果这本在心愿清单，表示用户没有这本书，那么用户就无法赠送这本书</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在<code>user</code>模型的内部添加判断书籍能否添加到赠送清单的条件：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>(<span class="params">UserMixin, Base</span>):</span></span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">can_save_to_list</span>(<span class="params">self, isbn</span>):</span></span><br><span class="line">        <span class="keyword">if</span> is_isbn_or_key(isbn) != <span class="string">&#x27;isbn&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        yushu_book = YuShuBook()</span><br><span class="line">        yushu_book.search_by_isbn(isbn)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> yushu_book.first():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 不允许一个用户同时赠送多本相同的图书</span></span><br><span class="line">        <span class="comment"># 一个用户不能同时成为一本图书的赠送者和索要者</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 这本图书既不在赠送清单中也不再心愿清单中才能添加</span></span><br><span class="line">        gifting = Gift.query.filter_by(isbn=isbn, uid=self.<span class="built_in">id</span>, lunched=<span class="literal">False</span>).first()</span><br><span class="line">        wishing = Wish.query.filter_by(isbn=isbn, uid=self.<span class="built_in">id</span>, lunched=<span class="literal">False</span>).first()</span><br><span class="line">        <span class="keyword">if</span> gifting <span class="keyword">and</span> wishing:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在<code>save_to_gift</code>视图函数中调用判断条件的函数来判断是否将书籍添加到赠送清单:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@web.route(<span class="params"><span class="string">&#x27;/gifts/book/&lt;isbn&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_to_gifts</span>(<span class="params">isbn</span>):</span></span><br><span class="line">    <span class="keyword">if</span> current_user.can_save_to_list(isbn):</span><br><span class="line">        gift = Gift()</span><br><span class="line">        gift.isbn = isbn</span><br><span class="line">        gift.uid = current_user.<span class="built_in">id</span></span><br><span class="line">        current_user.beans += current_app.config[<span class="string">&#x27;BEANS_UPDATE_ONE_BOOK&#x27;</span>]</span><br><span class="line">        db.session.add(gift)</span><br><span class="line">        db.session.commit(gift)     <span class="comment"># 将数据写入到数据库</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        flash(<span class="string">&#x27;这本书已添加至你的赠送清单或已存在与你的心愿清单,请不要重复添加&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong><code>can_save_to_list</code>写在<code>user</code>里正不正确？</strong><br><code>can_save_to_list</code>是用来做校验的，之前做校验的时候都是建议大家把校验放在<code>Form</code>里，为什么这里没有写在<code>Form</code>里呢？其实这个原因就在于编程是没有定论的，不是说只要是校验的都要全部放在<code>Form</code>里，而是要根据你的实际情况来选择，放在<code>Form</code>里有放在<code>Form</code>里的好处，放在<code>user</code>模型里有放在<code>user</code>模型里的好处。你把<code>can_save_to_list</code>看做参数的校验，放在<code>Form</code>里是没有错的，但是这个<code>can_save_to_list</code>可不可以看做是用户的行为呢？也可以看做是用户的行为，既然是用户的行为，那么放在<code>user</code>模型里也是没有错的。而且放在<code>user</code>模型里是有好处的，好处就是它的复用性会更强一些，以后如果需要相同搞的判断你的时候，放在<code>Form</code>校验里用起来是很不方便的，但是如果放在<code>user</code>模型里用起来是相当方便的。<br>所以说呢要根据实际情况而定，编程是没有定论的，只要你能找到充分的依据，那么你就可以这么做。</p>
+</blockquote>
+<h4 id="6-事物"><a href="#6-事物" class="headerlink" title="6. 事物"></a>6. 事物</h4><p>事物是数据库里的概念，但是放到模型的方式里，它也是存在的。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132447.jpg"></p>
+<p>这里是操作了两张数据表:</p>
+<ul>
+<li><code>gift</code>表</li>
+<li><code>user</code>表</li>
+</ul>
+<p>如果在操作完<code>gift</code>表之后突然程序中断了，<code>user</code>表中的<code>beans</code>并没有加上，这样就会造成数据库数据的异常。所以说我们必须要保证要么两个数据表同时操作，要么都不操作，这样才能保证我们数据的完整性。<br>那么这样在数据库保证数据一致性的方法叫做<code>事物</code></p>
+<blockquote>
+<p>那么如何使用<code>sqlalchemy</code>来进行事物的操作？<br>其实<code>sqlalchemy</code>就是天然支持这种事物的，其实我们这种写法已经用到事物，为什么呢？因为在<code>db.session.commit(gift)</code>前面的所有操作，都是真正的提交到数据库里去，一直到调用<code>db.session.commit(gift)</code>才提交的。<br>道理是这个道理，但是上述代码还是有问题的，那就是没有执行数据库的<code>rollback</code>回滚操作</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    gift = Gift()</span><br><span class="line">    gift.isbn = isbn</span><br><span class="line">    gift.uid = current_user.<span class="built_in">id</span></span><br><span class="line">    current_user.beans += current_app.config[<span class="string">&#x27;BEANS_UPDATE_ONE_BOOK&#x27;</span>]</span><br><span class="line">    db.session.add(gift)</span><br><span class="line">    db.session.commit(gift)     <span class="comment"># 将数据写入到数据库</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    db.session.rollback()</span><br><span class="line">    <span class="keyword">raise</span> e</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么一定要执行<code>db.session.rollback()</code>？<br>如果说执行<code>db.session.commit(gift)</code>的时候，出现了错误，而我们有没有进行回滚操作，不仅仅这次的插入操作失败了，还有后续的所有插入操作都会失败。<br>建议：以后只要进行<code>db.session.commit()</code>操作都要用<code>try except</code>将其包裹起来</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    ...</span><br><span class="line">    db.session.add(gift)</span><br><span class="line">    db.session.commit(gift)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    db.session.rollback()</span><br><span class="line">    <span class="keyword">raise</span> e</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-python-conetentmanager"><a href="#7-python-conetentmanager" class="headerlink" title="7. python @conetentmanager"></a>7. <code>python @conetentmanager</code></h4><p>思考问题：对于<code>db.session.commit()</code>我们可能在整个项目的很多地方都需要使用到，每次写<code>db.session.commit()</code>的时候都要重复写这样一串代码，那么有没有什么方法可以避免写这样重复的代码呢？</p>
+<ul>
+<li>认识<code>python @conetentmanager</code><br><code>@conetentmanager</code>给了我们一个机会，让我们可以把原来不是上下文管理器的类转化为上下文管理器。<br>假如<code>MyResource</code>是<code>flask</code>提供给我们的或者是其他第三方类库提供给我们的话，我们去修改别人的源码，在源码里添加<code>__enter__</code>方法和<code>__exit__</code>方法这样合适吗？显然不合适。但是我们可以在<code>MyResource</code>的外部把<code>MyResource</code>包装成上下文管理器，</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyResource</span>:</span></span><br><span class="line">    <span class="comment"># def __enter__(self):</span></span><br><span class="line">    <span class="comment">#     print(&#x27;connect to resource&#x27;)</span></span><br><span class="line">    <span class="comment">#     return self</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment"># def __exit__(self, exc_type, exc_val, exc_tb):</span></span><br><span class="line">    <span class="comment">#     print(&#x27;close resource connection&#x27;)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;query data&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># with MyResource as r:</span></span><br><span class="line"><span class="comment">#     r.query()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Make_Resource</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;connect to resource&#x27;</span>)</span><br><span class="line">    <span class="keyword">yield</span> MyResource()</span><br><span class="line">    print(<span class="string">&#x27;close resource connection&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> Make_Resource() <span class="keyword">as</span> r:</span><br><span class="line">    r.query()</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------</span><br><span class="line">运行结果：</span><br><span class="line">connect to resource</span><br><span class="line">query data</span><br><span class="line">close resource connection</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>带有<code>yield</code>关键字的函数叫做<code>生成器</code><br><code>yield</code>关键字可以让函数在处理到<code>yield</code>返回<code>MyResource</code>之后处于<code>中断</code>的状态，然后让程序在外面执行完<code>r.query()</code>之后再次回到<code>yield</code>这里执行后面的代码。</p>
+</blockquote>
+<p>我们整体来看下，这里使用<code>@conetentmanager</code>之后与正常使用<code>with</code>语句的代码到底是减少了还是增多了？<br>很多教程里都说<code>@conetentmanager</code>这个内置的装饰器可以简化上下文管理器的定义，但是我不这么认为，我认为这种做法是完全不正确的。本身的<code>@conetentmanager</code>装饰器在理解上就是比较抽象的，其实还不如<code>__enter__</code>和<code>__exit__</code>方法来的直接。</p>
+<ul>
+<li>灵活运用<code>@conetentmanager</code></li>
+</ul>
+<p>需求场景：我现在需要打印一本书的名字《且将生活一饮而尽》，书名前后需要使用书名号《》将书名括起来。这个书名是我从数据库里查出来的，我们在数据库里保存书名的时候肯定不会在书名前后加上书名号，我现在取出来了，我想让它在显示的时候加上书名号，怎么办呢？有没有什么办法可以自动把书名号加上呢？<br>答：可以使用<code>@conetentmanager</code>内置装饰器轻松的在书名的前后加上书名号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;《且将生活一饮而尽》&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">book_mark</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;《&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">yield</span></span><br><span class="line">    print(<span class="string">&#x27;》&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> book_mark():</span><br><span class="line">    print(<span class="string">&#x27;且将生活一饮而尽&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">-----------------------------------------------</span><br><span class="line">运行结果：</span><br><span class="line">《且将生活一饮而尽》</span><br><span class="line">《且将生活一饮而尽》</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<code>@conetentmanager</code>重构代码<br>我们最核心的代码是<code>db.session.commit()</code>，但是我现在想在<code>db</code>下面新增一个方法，然后我们用<code>with</code>语句去调用<code>db</code>下面我们自己定义的方法，就可以实现自动在前后加上<code>try</code>和<code>except</code>。<blockquote>
+<p><code>db</code>是<code>sqlalchemy</code>第三方插件的，我们如何在第三方类库里面新增加一个方法呢？<br>很简单，继承<code>sqlalchemy</code></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong>小技巧</strong>：<br>有时候我们在给类定义子类的时候，子类的名字非常难取，那么子类的名字难取，那不如我们先更改父类的名字，然后将之前父类的名字给子类（使用<code>from import</code>更改父类的名字）<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132454.jpg"></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@web.route(<span class="params"><span class="string">&#x27;/gifts/book/&lt;isbn&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_to_gifts</span>(<span class="params">isbn</span>):</span></span><br><span class="line">    <span class="keyword">if</span> current_user.can_save_to_list(isbn):</span><br><span class="line">        <span class="comment"># try:</span></span><br><span class="line">        <span class="keyword">with</span> db.auto_commit():</span><br><span class="line">            gift = Gift()</span><br><span class="line">            gift.isbn = isbn</span><br><span class="line">            gift.uid = current_user.<span class="built_in">id</span></span><br><span class="line">            current_user.beans += current_app.config[<span class="string">&#x27;BEANS_UPDATE_ONE_BOOK&#x27;</span>]</span><br><span class="line">            db.session.add(gift)</span><br><span class="line">        <span class="comment">#     db.session.commit(gift)     # 将数据写入到数据库</span></span><br><span class="line">        <span class="comment"># except Exception as e:</span></span><br><span class="line">        <span class="comment">#     db.session.rollback()</span></span><br><span class="line">        <span class="comment">#     raise e</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        flash(<span class="string">&#x27;这本书已添加至你的赠送清单或已存在与你的心愿清单,请不要重复添加&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-为create-time赋值"><a href="#8-为create-time赋值" class="headerlink" title="8. 为create_time赋值"></a>8. 为<code>create_time</code>赋值</h4><p>我们发现<code>gift</code>数据库里有一个<code>create_time</code>字段，但是并没有值，为什么没有值呢？<br>我们回想一个，数据库里有字段，那肯定是在我们定义模型的时候定义了该字段。<code>create_time</code>是在我们模型的基类<code>Base</code>里定义的。</p>
+<p><code>create_time</code>表示用户当前行为的发生时间，该怎么给<code>create_time</code>赋值呢？<br><code>create_time</code>表示当前模型生成和保存的时间。用户发生行为，用户是模型的实例化，所以肯定是在用户模型的实例属性里给<code>create_time</code>赋值，调用实例属性的时候就是用户发生行为的时候，所以我们可以在<code>Base</code>里定义<code>__init__</code>初始化函数，来赋值。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132456.jpg"></p>
+<blockquote>
+<p>导入<code>datetime</code>： <code>from datetime import datetime</code><br><code>datetime.now()</code>表示获取当前时间<br><code>timestamp()</code>表示转化为时间戳的格式</p>
+</blockquote>
+<blockquote>
+<p><strong>注意</strong>：<br>类的<strong>类变量</strong>与类的<strong>实例变量</strong>的的区别：<br>类的类变量是发生在类的定义的过程中，并不是发生在对象实例化的过程中；<br>类的实例变量是发生在对象实例化的过程中。<br>区别示例：<br>如果我们在上述定义<code>create_time</code>的时候将其定义在<code>create_time = Column(&#39;create_time&#39;, Integer, default=int(datetime.now().timestamp()))</code>，那么将会导致数据库里所有的<code>create_time</code>都是同一个时间（创建基类<code>Base</code>的时间），很显然这种做法是错误的。</p>
+</blockquote>
+<h4 id="9-ajax技术"><a href="#9-ajax技术" class="headerlink" title="9.ajax技术"></a>9.<code>ajax</code>技术</h4><p>对于这种：原来在什么页面，由于我们要提交某些信息，最后又要回到这个页面的这种操作，很多情情况下我们可以使用<code>ajax</code>技术。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132459.jpg"></p>
+<blockquote>
+<p><code>ajax</code>是前段的技术，做网站归最网站，但是也要善于使用<code>ajax</code>技术来改善我们服务器的性能。</p>
+</blockquote>
+<p>在上述过程不使用<code>ajax</code>技术的时候，最消耗服务器性能的是<code>book_detail</code>，<code>book_detail</code>又要把详情页面模板渲染再返回，这个模板渲染是最消耗服务器性能的。</p>
+<p><strong>解决办法</strong>：把整个页面当做静态文件缓存起来，也是很多网站经常用到的一种技术。缓存起来之后，直接把页面从缓存读取出来再返回回去就行了。</p>
+<h4 id="10-将数据库里的时间戳转换为正常的年月日"><a href="#10-将数据库里的时间戳转换为正常的年月日" class="headerlink" title="10. 将数据库里的时间戳转换为正常的年月日"></a>10. 将数据库里的时间戳转换为正常的年月日</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">数据库时间戳 --&gt; python时间对象</span><br><span class="line">python时间对象 --&gt;正常时间</span><br></pre></td></tr></table></figure>
+
+<p><code>time=single.create_time.strftime(&#39;%Y-%m-%d&#39;)</code><br><code>create_time</code>是一个整数，整数下面是没有<code>strftime()</code>方法的，只有<code>python</code>的时间类型才有<code>strftime()</code>方法，所以需要先把<code>create_time</code>转化为<code>python</code>的时间类型对象。</p>
+<p>因为<code>create_time</code>是所有模型都有的属性，所以建议在模型的基类里进行转换。使用<code>fromtimestamp()</code>函数转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_datetime</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">if</span> self.create_time:</span><br><span class="line">        <span class="keyword">return</span> datetime.fromtimestamp(self.create_time)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__map_to_trade</span>(<span class="params">self, single</span>):</span></span><br><span class="line">    <span class="keyword">if</span> single.create_datetime:</span><br><span class="line">        time = single.create_datetime.strftime(<span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        time = <span class="string">&#x27;未知&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(</span><br><span class="line">        user_name=single.user.nickname,</span><br><span class="line">        time=time,</span><br><span class="line">        <span class="built_in">id</span>=single(<span class="built_in">id</span>)</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h4 id="11-再次提到MVC"><a href="#11-再次提到MVC" class="headerlink" title="11. 再次提到MVC"></a>11. 再次提到<code>MVC</code></h4><ul>
+<li><p><code>MVC</code>：<br><code>M</code>：模型层，对应<code>Models</code>，例如：<code>book</code>模型、<code>user</code>模型、<code>gift</code>模型、<code>wish</code>模型<br><code>V</code>：视图层，对应<code>Template</code>模板<br><code>C</code>：控制层，对应视图函数<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132501.jpg" alt="img"></p>
+</li>
+<li><p><code>Django</code>里的<code>MVT</code>：<br><code>M</code>：模型层<br><code>V</code>：控制层<br><code>T</code>：视图层</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>经典面试问题</strong>：<br>业务逻辑应该写在<code>MVC</code>的哪一层里？<br>答：业务逻辑应该写在<code>M</code>模型层里<br>很多同学会回答业务逻辑应该写在<code>C</code>控制层里面，这个答案是错误的。<br>那是因为他们没有搞清楚模型层和<code>数据层</code>的区别，在早期的时候，数据层的概念确实是存在的，它的全称应该叫做<code>数据持久化层</code>。<br><code>数据持久化层</code>它的主要作用是什么？<br>以前我们没有<code>ORM</code>，当我们的模型层要使用数据的时候，它是有可能需要使用到不同的数据库的，比如有些数据是储存在<code>Oracle</code>、有些数据是储存在<code>MySQL</code>里的、还有些数据是储存在<code>MongoDB</code>里的，由于这些数据的数据源不通，有时候它们的一些具体的<code>SQL</code>的操作方法也不同，但是为了让我们模型使用更加舒服，要保持一个不同数据库的统一调用接口，我们需要用数据层来做封装。但是我们<code>ORM</code>就不需要关注底层接口的，<code>ORM</code>已经帮我们做好了封装。比如我们的<code>SQLAlchemy</code>，它自身就可以完成对接不同的数据库。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132502.jpg"></p>
+</blockquote>
+<blockquote>
+<p><strong>小知识</strong>：<br><code>Model</code>模型层是可以分层的，在<strong>复杂的业务逻辑</strong>里我们可以在<code>Model</code>模型层里进一步的细分为<code>Model</code>、<code>Logic</code>、<code>Service</code><br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132505.jpg"></p>
+</blockquote>
+<h4 id="12-复写filter-by"><a href="#12-复写filter-by" class="headerlink" title="12. 复写filter_by"></a>12. 复写<code>filter_by</code></h4><ul>
+<li><strong>问题背景</strong>：<br>我们之前所有的查询语句里都是有个严重的错误的，那么这个错误在什么地方呢？<br>我们项目里采用的数据删除方式不是物理删除，而是软删除，而软删除是通过一个状态标示位<code>status</code>来表示这条数据是否已被删除，如果我们在查询的时候不加上这个关键条件<code>status=1</code>的话，那么我们查询出来的结果会包括已经被我们删掉的数据</li>
+<li><strong>解决方法</strong>：<br>我们确实可以在每个<code>filter_by</code>里面加上<code>status=1</code>的搜索条件，但是这样会很繁琐。换种思维方式，既然我要做数据库的查询，那么我的目的就是要查询没有被删除的数据。我们所有的查询条件都是传入到<code>filter_by</code>这个查询函数里的，那么我们其实是可以考虑改写<code>filter_by</code>这个函数内部的相关代码从而让我们的查询条件可以自动覆盖<code>status=1</code>。<br>问题是这个<code>filter_by</code>函数不是我们自己定义的，它是第三方库<code>SQLAlchemy</code>提供的，最容易想到的方案就是继承相关的类，然后用自己的实现方法去覆盖这个<code>filter_by</code>函数。<br>如果我们要去覆盖类库里面的相关对象的话，一定要搞清楚这个类库对象的继承关系。</li>
+</ul>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132508.jpg"></p>
+<blockquote>
+<p><strong>小知识</strong>：</p>
+<ul>
+<li>上图中的<code>**kwargs</code>实际上就是一组查询条件：<code>isbn=isbn, launched=False, uid=current_user.id</code>类似这种，我们只需要在这组查询条件里添加上<code>status=1</code>是不是就可以了？</li>
+<li>那么<code>**kwargs</code>到底是什么呢?<br>这就比较考验同学的<code>python</code>基础，我们在<code>python</code>基础教程里面已经说过了<code>**kwargs</code>是一个字典，既然是字典那就好处理了。我们直接使用字典添加键值对的方式把<code>status=1</code>添加上就行了，<code>kwargs[&#39;status&#39;] = 1</code>。<br>但是我们这里最好判断一下，万一别人在使用的时候传入了<code>status=1</code>，我们就没有必要赋值了。就是使用判断字典中是否存在该键的普通方法。</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">&#x27;status&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> kwargs.keys():</span><br><span class="line">    kwargs[<span class="string">&#x27;status&#x27;</span>] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>以上只是实现了自己的逻辑，我们还需要完成原有的<code>filter_by</code>的逻辑。<br>调用基类下面<code>filter_by</code>方法就可以了<code>super(Query, self).filter_by(**kwargs)</code></li>
+<li><strong>注意：原有<code>filter_by</code>传入的参数 \</strong>kwargs 是有双星号的，这里的双星号也不能少，否则会出现错误。在传入一个字典的时候必须对这个字典进行解包，使用双星号解包。**<br>最后因为原有<code>filter_by</code>函数有<code>return</code>语句，所以我们也需要添加是<code>return</code>。</li>
+<li>自定义的<code>Query</code>还没有替换<code>BaseQuery</code>，那么怎么使用<code>Query</code>替换原有的<code>BaseQuery</code>呢？<br>查看源码得知：<code>flask_sqlalchemy</code>里的<code>SQLAlchemy</code>的构造函数里是允许我们传入一个我们自己的<code>BaseQuery</code>的。<br>所以我们只需要在实例化的时候传入我们自定义的<code>Query</code>就可以了。</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db = SQLAlchemy(query_class=Query)</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="13-复杂SQL语句的编写方案"><a href="#13-复杂SQL语句的编写方案" class="headerlink" title="13. 复杂SQL语句的编写方案"></a>13. 复杂<code>SQL</code>语句的编写方案</h4><p>问题背景：<br>前面我们已经完成了搜索结果页面和图书详情页面，下面我们来完成最近上传页面。最近上传也是我们网站的首页，最近上传页面的规则如下图：<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-132510.jpg" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> current_app</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, Integer, Boolean, ForeignKey, String</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> relationship</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.models.base <span class="keyword">import</span> Base</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Gift</span>(<span class="params">Base</span>):</span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer, primary_key=<span class="literal">True</span>)</span><br><span class="line">    user = relationship(<span class="string">&#x27;User&#x27;</span>)</span><br><span class="line">    uid = Column(Integer, ForeignKey(<span class="string">&#x27;user.id&#x27;</span>))</span><br><span class="line">    isbn = Column(String(<span class="number">15</span>), nullable=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># book = relationship(&#x27;Book&#x27;)</span></span><br><span class="line">    <span class="comment"># bid = Column(Integer, ForeignKey(&#x27;book.id&#x27;))</span></span><br><span class="line">    launched = Column(Boolean, default=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 默认值False表示书籍未赠送出去</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recent</span>(<span class="params">self</span>):</span></span><br><span class="line">        recent_gift = Gift.query.filter_by(launched=<span class="literal">False</span>).group_by(</span><br><span class="line">            Gift.isbn).order_by(</span><br><span class="line">            Gift.create_time).limit(</span><br><span class="line">            current_app.config[<span class="string">&#x27;RECENT_BOOK_COUNT&#x27;</span>]).distinct().<span class="built_in">all</span>()</span><br><span class="line">        <span class="keyword">return</span> recent_gift</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>小技巧</strong>：</p>
+<ul>
+<li>第一个条件：显示30条<br>使用<code>limit(30)</code>函数筛选</li>
+<li>第二个条件：按照时间倒序排序<br>使用<code>order_by(Gift.create_time)</code>函数倒序排序</li>
+<li>第三个条件：除去书名相同的书籍<br>在<code>MySQL</code>中有个<code>distinct()</code>函数来去重，同样在<code>SQLAlchemy</code>中同样有<code>distinct()</code>函数为我们进行去重操作。在<code>MySQL</code>中如果你想去重的话必须先<strong>分组</strong>，<strong>分组</strong>要用的是<code>group_by()</code>函数，因为我们是要除去相同书名的书籍，实际上也就是相同<code>isbn</code>的书籍，所以我们按照<code>isbn</code>来进行分组。</li>
+</ul>
+</blockquote>
+<h4 id="14-链式调用"><a href="#14-链式调用" class="headerlink" title="14. 链式调用"></a>14. 链式调用</h4><p>观察上述写法：<code>filter_by().group_by().order_by()</code><br>这种写法在优秀代码编写方案里面叫做<strong>链式调用</strong>。链式调用在很多语言里是经常被使用的一种方式。</p>
+<p>链式调用的<strong>特点</strong>：</p>
+<ul>
+<li><strong>主体</strong><ul>
+<li>在上述代码中主体是<code>Query</code>对象</li>
+</ul>
+</li>
+<li>通常有<strong>子函数</strong><ul>
+<li>在上述写代码中子函数就是<code>filter_by()</code>、<code>group_by()</code>、<code>order_by()</code></li>
+<li>子函数和<code>Query</code>之间最大的特点是什么？各个子函数都会返回主体<code>Query</code></li>
+</ul>
+</li>
+<li>必须要有<strong>触发语句</strong><ul>
+<li>上述代码中的触发语句就是<code>all()</code>，还有类似的<code>first()</code></li>
+<li>一般整个链式调用遇到触发语句之后才会生成<code>SQL</code>语句去数据库里查询</li>
+</ul>
+</li>
+</ul>
+<p>链式调用的<strong>优点</strong>：</p>
+<ul>
+<li>提供了极大的灵活性。</li>
+</ul>
+<p>我们再来分析一下把<code>rencent</code>函数放到<code>Gift</code>模型下面的合理性？</p>
+<p><code>Gift</code>模型按照我们的常规的思维可以把它理解成数据库里面的一条记录。那么既然<code>Gift</code>代表的是一条记录，一条记录里面有这样的<code>rencent</code>取最近的很多条记录会感觉非常的不合理，如果<code>rencent</code>是一个实例方法的话，放在<code>Gift</code>下面确实是不合适的，因为一个被实例化的<code>Gift</code>对象代表的是一个礼物，一个礼物里面有取多个礼物的方法确实是不合适的，但是如果说我们把<code>rencent</code>实例方法变成类方法的话，放在我们<code>Gift</code>类下面，那么就是合适的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recent</span>(<span class="params">self</span>):</span></span><br><span class="line">    recent_gift = Gift.query.filter_by(launched=<span class="literal">False</span>).group_by(</span><br><span class="line">        Gift.isbn).order_by(</span><br><span class="line">        Gift.create_time).limit(</span><br><span class="line">      current_app.config[<span class="string">&#x27;RECENT_BOOK_COUNT&#x27;</span>]).distinct().<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> recent_gift</span><br></pre></td></tr></table></figure>
+
+<p>将<strong>实例方法</strong>改写成<strong>类方法</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recent</span>(<span class="params">cls</span>):</span></span><br><span class="line">        recent_gift = Gift.query.filter_by(launched=<span class="literal">False</span>).group_by(</span><br><span class="line">            Gift.isbn).order_by(</span><br><span class="line">            Gift.create_time).limit(</span><br><span class="line">            current_app.config[<span class="string">&#x27;RECENT_BOOK_COUNT&#x27;</span>]).distinct().<span class="built_in">all</span>()</span><br><span class="line">        <span class="keyword">return</span> recent_gift</span><br></pre></td></tr></table></figure>
+
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/04/12/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B01/">https://www.klause.cn/2019/04/12/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B01/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/flask/">
+                                    <span class="chip bg-color">flask</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-04-12T20-37-11',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/12/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B02/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/3.jpg" class="responsive-img" alt="fisher2">
+                        
+                        <span class="card-title">fisher2</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/fisher/" class="post-category">
+                                    fisher
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/12/Python%20Flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/flask%20%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%80%BB%E7%BB%93/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="flask 高级编程总结">
+                        
+                        <span class="card-title">flask 高级编程总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/fisher/" class="post-category">
+                                    fisher
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

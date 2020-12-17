@@ -1,0 +1,1404 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第11章 Python的高级语法与用法, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第11章 Python的高级语法与用法 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第11章 Python的高级语法与用法</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                入门与进阶
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-03-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>本章节我们揭开Python进阶部分的高级特性，详细讲解枚举、闭包，并对函数式编程做出介绍。</p>
+<a id="more"></a>
+
+<h3 id="11-1-枚举其实是一个类"><a href="#11-1-枚举其实是一个类" class="headerlink" title="11-1 枚举其实是一个类"></a>11-1 枚举其实是一个类</h3><p>枚举可以用来表示不同的类型。将一个类继承 <code>Enum</code>，它就会变成一个枚举类。</p>
+<ul>
+<li>枚举的<strong>标签</strong>和<strong>数值</strong>是<strong>一对一</strong>的关系</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="number">2</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(Vip.YELLOW, Vip.GREEN, Vip.BLACK, Vip.RED)</span><br><span class="line">--------------------------------------------------------</span><br><span class="line">Vip.YELLOW Vip.GREEN Vip.BLACK Vip.RED</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>Vip</code> 是一个普通的类，那么打印出的结果应该是1，2，3，4。</p>
+<p>但是实际上打印出的就是变量名，这也正是枚举类的意义所在。我们看代码的时候，其实并不关心 YELLOW 的数值是多少，YELLOW 的数值是 1 或者 2 或者 3，对于写代码或者读代码来说是没有任何意义的，因为我们最直观的要的是类型，我们看到 YELLOW 这个词就知道它指代的是黄钻类型，看到 GREEN 我们就知道是绿钻，对于普通的 Enum 来说，我们知道变量背后所代表的意义就行了。</p>
+<p>枚举的意义重在它的标签（YELLOW、GREEN、BLACK、RED就是标签），而不是在于它的数值（1、2、3、4是它的数值）。实际上我们可以将这些数值替换成任意的数据类型，只要满足不相同即可。比如换成：<code>&#39;a&#39;、&#39;b&#39;、&#39;c&#39;、&#39;d&#39;</code>。</p>
+<h3 id="11-2-枚举和普通类相比有什么优势"><a href="#11-2-枚举和普通类相比有什么优势" class="headerlink" title="11-2 枚举和普通类相比有什么优势"></a>11-2 枚举和普通类相比有什么优势</h3><p>字典、普通类与枚举相比的缺点：</p>
+<ul>
+<li>字典、普通类是可变的；<br>也就是说我们可以在代码里修改字典的值或者普通类变量的值，但是<strong>类型</strong>一但被确定下来之后是不应该被改变的。这是我们在定义枚举变量的时候使用全部字母大写的意义，大写表示<strong>常量</strong>，常量是不应该被改变的。</li>
+<li>字典、普通类没有防止相同值的功能；<br>字典的 key 虽然不可以重复，但是字典的 value 是可以重复的，还有普通类的值也是可以重复的，但是实际上我们所要创建的类型是不允许重复的，比如我们用<strong>黄钻</strong>这个词来表示<strong>黄钻类型</strong>，又冒出个<strong>绿钻</strong>也可以表示<strong>黄钻类型</strong>，很显然会混淆视听。</li>
+</ul>
+<p>显而易见，枚举类的优势：</p>
+<ul>
+<li>不可变</li>
+<li>可以防止重复</li>
+</ul>
+<h3 id="11-3-枚举类型、枚举名称与枚举值"><a href="#11-3-枚举类型、枚举名称与枚举值" class="headerlink" title="11-3 枚举类型、枚举名称与枚举值"></a>11-3 枚举类型、枚举名称与枚举值</h3><p>枚举类型、枚举名称、枚举值相关的操作如下例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="number">2</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印枚举类型</span></span><br><span class="line">print(<span class="built_in">type</span>(Vip.YELLOW), Vip.YELLOW)</span><br><span class="line"><span class="comment"># 枚举名称通过 .name 获取</span></span><br><span class="line">print(<span class="built_in">type</span>(Vip.YELLOW.name), Vip.YELLOW.name)</span><br><span class="line"><span class="comment"># 枚举值通过 .value 获取</span></span><br><span class="line">print(<span class="built_in">type</span>(Vip.YELLOW.value), Vip.YELLOW.value)</span><br><span class="line"><span class="comment"># 通过枚举名称可以获取枚举类型</span></span><br><span class="line">print(Vip[<span class="string">&#x27;YELLOW&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过遍历打印枚举类型</span></span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> Vip:</span><br><span class="line">    print(v)</span><br><span class="line">--------------------------------------------------------</span><br><span class="line">&lt;enum <span class="string">&#x27;Vip&#x27;</span>&gt; Vip.YELLOW</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">str</span>&#x27;&gt; <span class="title">YELLOW</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">int</span>&#x27;&gt; 1</span></span><br><span class="line"><span class="class"><span class="title">Vip</span>.<span class="title">YELLOW</span></span></span><br><span class="line"><span class="class"><span class="title">Vip</span>.<span class="title">YELLOW</span></span></span><br><span class="line"><span class="class"><span class="title">Vip</span>.<span class="title">GREEN</span></span></span><br><span class="line"><span class="class"><span class="title">Vip</span>.<span class="title">BLACK</span></span></span><br><span class="line"><span class="class"><span class="title">Vip</span>.<span class="title">RED</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="11-4-枚举的比较运算"><a href="#11-4-枚举的比较运算" class="headerlink" title="11-4 枚举的比较运算"></a>11-4 枚举的比较运算</h3><p>两个枚举之间支持：</p>
+<ul>
+<li>等值比较，不支持大小比较</li>
+<li>身份比较</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="number">2</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    APPLE = <span class="number">1</span></span><br><span class="line">    ORANGE = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">result = Vip.GREEN == Vip.GREEN</span><br><span class="line">result1 = Vip.GREEN == Vip.YELLOW</span><br><span class="line">result2 = Vip.GREEN <span class="keyword">is</span> Vip.GREEN</span><br><span class="line">result3 = Vip.GREEN <span class="keyword">is</span> Vip.YELLOW</span><br><span class="line"><span class="comment"># 不同枚举类之间也可以比较，但是结果肯定是 False</span></span><br><span class="line">result4 = Vip.GREEN == Fruit.APPLE</span><br><span class="line">print(result, result1, result2, result3, result4)</span><br><span class="line">---------------------------------------------------</span><br><span class="line"><span class="literal">True</span> <span class="literal">False</span> <span class="literal">True</span> <span class="literal">False</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="11-5-枚举注意事项"><a href="#11-5-枚举注意事项" class="headerlink" title="11-5 枚举注意事项"></a>11-5 枚举注意事项</h3><h4 id="枚举的别名"><a href="#枚举的别名" class="headerlink" title="枚举的别名"></a>枚举的别名</h4><p>枚举里，两个枚举名称可以指向一个枚举值，第二个枚举名称可以理解为第一个枚举名称的别名。示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    YELLOW_ALIAS = <span class="number">1</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(Vip.YELLOW, Vip.YELLOW_ALIAS)</span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> Vip:</span><br><span class="line">    print(v)</span><br><span class="line">----------------------------------------------</span><br><span class="line">Vip.YELLOW Vip.YELLOW</span><br><span class="line">Vip.YELLOW</span><br><span class="line">Vip.BLACK</span><br><span class="line">Vip.RED</span><br></pre></td></tr></table></figure>
+
+<h4 id="枚举的遍历"><a href="#枚举的遍历" class="headerlink" title="枚举的遍历"></a>枚举的遍历</h4><p>别名指向的枚举值并不是独立存在的，所以遍历的时候别名是不会打印出来的，结果如上例所示。</p>
+<p>如果我们需要将别名也一起打印出怎么办呢？</p>
+<p>使用<code>枚举类.__members__.items()</code>遍历的出来的是元组类型：</p>
+<ul>
+<li>元组的第一个元素是枚举名称：</li>
+<li>第二个元素是枚举值；</li>
+</ul>
+<p>如果你不像得到这么复杂的结果，可以直接使用<code>枚举类.__members__</code>遍历得到枚举名称。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    YELLOW_ALIAS = <span class="number">1</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> Vip.__members__.items():</span><br><span class="line">    print(<span class="built_in">type</span>(v), v)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> Vip.__members__:</span><br><span class="line">    print(<span class="built_in">type</span>(v), v)</span><br><span class="line">----------------------------------------------</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">tuple</span>&#x27;&gt; (<span class="params"><span class="string">&#x27;YELLOW&#x27;</span>, &lt;Vip.YELLOW: <span class="number">1</span>&gt;</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">tuple</span>&#x27;&gt; (<span class="params"><span class="string">&#x27;YELLOW_ALIAS&#x27;</span>, &lt;Vip.YELLOW: <span class="number">1</span>&gt;</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">tuple</span>&#x27;&gt; (<span class="params"><span class="string">&#x27;BLACK&#x27;</span>, &lt;Vip.BLACK: <span class="number">3</span>&gt;</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">tuple</span>&#x27;&gt; (<span class="params"><span class="string">&#x27;RED&#x27;</span>, &lt;Vip.RED: <span class="number">4</span>&gt;</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">str</span>&#x27;&gt; <span class="title">YELLOW</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">str</span>&#x27;&gt; <span class="title">YELLOW_ALIAS</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">str</span>&#x27;&gt; <span class="title">BLACK</span></span></span><br><span class="line"><span class="class">&lt;<span class="title">class</span> &#x27;<span class="title">str</span>&#x27;&gt; <span class="title">RED</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="11-6-枚举转换"><a href="#11-6-枚举转换" class="headerlink" title="11-6 枚举转换"></a>11-6 枚举转换</h3><p>在数据库存储枚举类型的时候有两种选择：</p>
+<ul>
+<li>存储枚举值</li>
+<li>存储枚举名称</li>
+</ul>
+<p>建议使用存储枚举值的方式，因为数字更加简洁，并且它所占用数据库的空间会更小一些。</p>
+<p>那么问题来了，从数据库里查询出来的具体数字如何转化为枚举类型呢？</p>
+<p><strong>将数字传入枚举类就可以直接返回对应的枚举类型。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="number">2</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Vip(<span class="number">1</span>)</span><br><span class="line">print(a)</span><br><span class="line">------------------------------</span><br><span class="line">Vip.YELLOW</span><br></pre></td></tr></table></figure>
+
+<p>这里其实并不是一个真正的类型转化（真正的类型转换：<code>a = str(1)</code>），这里只是使用数值访问枚举类型的一种方案。</p>
+<h3 id="11-7-枚举小结"><a href="#11-7-枚举小结" class="headerlink" title="11-7 枚举小结"></a>11-7 枚举小结</h3><h4 id="父类是-Enum"><a href="#父类是-Enum" class="headerlink" title="父类是 Enum"></a>父类是 Enum</h4><p>当枚举类继承的是<code>Enum</code>的时候， 混合不同类型定义枚举类是没有问题的，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="string">&#x27;str&#x27;</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Vip(<span class="string">&#x27;str&#x27;</span>)</span><br><span class="line">print(a)</span><br><span class="line">---------------------</span><br><span class="line">Vip.GREEN</span><br></pre></td></tr></table></figure>
+
+<h4 id="父类是-IntEnum"><a href="#父类是-IntEnum" class="headerlink" title="父类是 IntEnum"></a>父类是 IntEnum</h4><p>当枚举类继承的是<code>IntEnum</code>的时候，<code>IntEnum</code>要求枚举值必须是整形数字，否则会报错。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> IntEnum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">IntEnum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="number">2</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Vip(<span class="number">1</span>)</span><br><span class="line">print(a)</span><br><span class="line">----------------------------</span><br><span class="line">Vip.YELLOW</span><br></pre></td></tr></table></figure>
+
+<h4 id="unique-装饰器"><a href="#unique-装饰器" class="headerlink" title="unique 装饰器"></a>unique 装饰器</h4><p>当枚举类使用了<code>@unique</code>装饰器的时候，<code>@unique</code>要求枚举值必须不能重复，也就说<strong>不能存在别名</strong>，否则会报错。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> IntEnum, unique</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@unique</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">IntEnum</span>):</span></span><br><span class="line">    YELLOW = <span class="number">1</span></span><br><span class="line">    GREEN = <span class="number">1</span></span><br><span class="line">    BLACK = <span class="number">3</span></span><br><span class="line">    RED = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Vip(<span class="number">1</span>)</span><br><span class="line">print(a)</span><br><span class="line">-------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/Users/39.py&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Vip</span>(<span class="params">IntEnum</span>):</span></span><br><span class="line">  File <span class="string">&quot;/Users/enum.py&quot;</span>, line <span class="number">834</span>, <span class="keyword">in</span> unique</span><br><span class="line">    (enumeration, alias_details))</span><br><span class="line">ValueError: duplicate values found in &lt;enum &#x27;Vip&#x27;&gt;: GREEN -&gt; YELLOW</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>知识扩展：</p>
+<p>枚举类型在 Python 里是如何实现的？</p>
+<p>枚举类型在 Python 里是以一种<strong>单例模式</strong>实现的。也就是说对于枚举类型来说，你是不能进行实例化的。这也是枚举类象相对于普通类的区别。对它实例化是没有意义的，因为它是使用单例模式实现的。</p>
+</blockquote>
+<blockquote>
+<p>七月心语：</p>
+<p>23中设计模式：单例模式</p>
+<p>对于想了解设计模式的同学，不建议去买设计模式的书去看，然后使劲的在那里看，这个是不建议的。设计模式的出现是为了解决软件工程里<strong>频繁变化的问题</strong>而产生的一种解决方案。大家还是需要把它带入到实践中去学习设计模式。换句话说，如果你问设计模式是不是必须的？那么我认为它不是必须的。</p>
+<p>以我的经验来看，如果你在一个小公司到处使用所谓的设计模式，反而会对项目的工程造成负面的效果。</p>
+<p>为什么呢？因为项目的成员或者你的同事可能并不懂你写的所谓的设计模式。设计模式的出现是为了防止你的代码出现频繁的变化，但是在一家小公司里，代码重新写、重新重构或者改的乱七八糟，这种情况实在是太正常了。这不是说是一个人能去解决的，这需要团队的所有成员对代码的质量有个共同的认识。如果说你尝试用设计模式的方式去解决团队代码混乱的问题，我觉得这不是一个好的办法，因为难度实在是太大了。</p>
+<p>你看到很多人跟你吹设计模式多好多好，但我觉得实际情况无非是两种：</p>
+<ol>
+<li>根本就没用到设计模式，只不过大家都说设计模式好，然后呢为了提升自己的格调，所以说他也说设计模式好；</li>
+<li>确实是用到设计模式，而且设计模式也帮助到了他的团队解决很对问题。但是前提条件是他团队的每个人都很优秀，都对代码的质量和美观有一定的认识。在这样的前提条件下面设计模式确实是非常有用的。</li>
+</ol>
+<p>我的建议是在编程的初期不要过多的关注设计模式，等你写了两三年、三四年代码之后，如果你确实是一个不满足于只实现业务，而是会经常去关注你自己写的代码质量高不高，如果你确定你是这样的程序员的话，那么设计模式就比较适合你，因为它确实可以帮你解决很多烦恼和问题。 如果你写了几年代码，你还是只关注业务功能的实现，仅仅是把业务功能写完就完事了，那么我觉得设计模式可能真的与你无缘了。</p>
+<p>你要知道把一段业务逻辑平铺直叙的直接写下来，和用这种设计模式来构建代码，它们在初始阶段所花的成本绝对是不一样的，设计模式的优势只有在日后的很长一段时间之内才能体现出来。所以说你要衡量一下所花的时间成本到底值不值得。有时候出现了一个业务的变更，我们只需要改一个变量就能解决问题，如果说我们套用设计模式的话还需要给它补一个类，因为我们说过了扩展式开放的，修改是关闭的，如果严格按照这样一种设计模式来的话，有时候是得不偿失的。</p>
+<p><strong>最后一个建议</strong>：</p>
+<p>如果你是一个做<strong>产品</strong>的，我说的这个产品有点类似与平台而不是说项目，就是说你做的项目是可以给别人提供服务的，对于这样一种产品呢，我建议大家使用设计模式，如果你只是写一个小项目呢，我并不建议大家过多的纠结于设计模式。</p>
+<p>因为对于<strong>项目</strong>来说，它的生命周期并不长，特别是在现在比较快节奏的时代，我说的项目可能并不是大家理解上的项目，我说的项目是那种纯粹靠业务逻辑支撑起来的项目，没有太多技术含量，像这样的项目确实不建议大家使用设计模式。另外一种平台化的东西，相对于项目来说生命周期确实要长一些。</p>
+</blockquote>
+<h3 id="11-8-进阶内容开场白"><a href="#11-8-进阶内容开场白" class="headerlink" title="11-8 进阶内容开场白"></a>11-8 进阶内容开场白</h3><p>在学习枚举知识之前我们已经可以利用所学习的知识来构建任何你想构建相关问题的解决方案了，因为在 Python2 的时候是没有枚举类型的，是在 Python3 才添加上去的。所以说枚举并不是一个必须、必不可少的解决问题的语法。这个和我们的类和函数是不太一样的，类和函数如果你不会的话，我觉得代码是没办法写下去的。其实也不能说的这么绝对，即使是你不懂类和对象的话呢，你只有函数和模块依然可以编写代码解决问题，只不过只用函数和模块，它不适合构建大型项目，所以说你加入类和对象之后就不一样了，可以把功能用<strong>面向对象</strong>的方式去构建，这样比较适合我们去构建一些中大型的项目。</p>
+<p>那么问题来了。</p>
+<p>既然我们掌握这些基础的知识之后就可以编写代码来构建我们的应用程序，那么我们为什么还需要一些高阶的知识来支撑我们的代码呢?</p>
+<p>我们讨论这个问题必须要跳出语言的范畴，它并不是指 Python 一门语言是这样的。我们讨论的是编程的基础知识与高阶知识关系的问题。基础知识可以让我们写出代码，但是基础知识并不能让我们写出优质的、可维护的代码。</p>
+<p>高阶知识主要用于编程的哪些方面？</p>
+<ul>
+<li>如果你只是一个业务流程或者说是业务逻辑的开发者，不考虑太多封装性，那么我觉得高阶知识对你来说可能用处并不大；</li>
+<li>如果你是包、类库的开发者，拟开发的包、类库需要提供给其他人来使用的话，那么高阶知识对你来说就是非常有用的。</li>
+</ul>
+<h3 id="11-9-一切皆对象"><a href="#11-9-一切皆对象" class="headerlink" title="11-9 一切皆对象"></a>11-9 一切皆对象</h3><h4 id="一切皆对象"><a href="#一切皆对象" class="headerlink" title="一切皆对象"></a>一切皆对象</h4><blockquote>
+<p>函数式编程的概念</p>
+</blockquote>
+<p>在其他语言里：函数只是一段可执行的代码，并不是对象，不能实例化。</p>
+<p>在 Python 里：函数是对象，对象是可以实例化的。</p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><h5 id="作为变量"><a href="#作为变量" class="headerlink" title="作为变量"></a>作为变量</h5><ul>
+<li>可以将函数赋值给一个变量</li>
+</ul>
+<h5 id="作为参数"><a href="#作为参数" class="headerlink" title="作为参数"></a>作为参数</h5><ul>
+<li>可以将函数作为另一个函数的参数</li>
+</ul>
+<h5 id="作为返回结果"><a href="#作为返回结果" class="headerlink" title="作为返回结果"></a>作为返回结果</h5><ul>
+<li>可以将函数作为另一个函数的返回结果</li>
+</ul>
+<h3 id="11-10-什么是闭包"><a href="#11-10-什么是闭包" class="headerlink" title="11-10 什么是闭包"></a>11-10 什么是闭包</h3><h4 id="闭包三要素"><a href="#闭包三要素" class="headerlink" title="闭包三要素"></a>闭包三要素</h4><p><strong>闭包</strong>必须满足三个条件：</p>
+<ol>
+<li>必须是一个嵌套函数</li>
+<li>嵌套函数必须引用一个外部的、非全局的、局部变量</li>
+<li>闭包必须返回嵌套函数</li>
+</ol>
+<p><strong>满足这三个条件之后，<code>Python</code>会将嵌套函数、环境变量绑定在一起成型闭包，以后无论何时调用该闭包函数的时候，该环境变量都保持不变，因为该环境变量已经被绑定给嵌套函数了。</strong></p>
+<p><strong>闭包 = 函数 + 环境变量</strong>（嵌套函数定义时的外部变量，且不能是全局变量），闭包示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 闭包函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function1</span>():</span></span><br><span class="line">    a = <span class="number">10</span>					<span class="comment"># 局部变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">function2</span>(<span class="params">x</span>):</span>		<span class="comment"># 满足条件一：嵌套函数</span></span><br><span class="line">        <span class="keyword">return</span> a * x * x	<span class="comment"># 满足条件二：引用外部的局部变量 a</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> function2		<span class="comment"># 满足条件三：返回嵌套函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = function1()</span><br><span class="line">print(f(<span class="number">2</span>))</span><br><span class="line">-------------------------------------</span><br><span class="line"><span class="number">40</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="闭包的意义"><a href="#闭包的意义" class="headerlink" title="闭包的意义"></a>闭包的意义</h4><p>闭包保存的是一个环境，它把函数当时调用时候的现场保存起来了，并不仅仅只是返回函数。</p>
+<!--实际上这段话出自11-11节，但我觉得放在这里更合适-->
+
+<blockquote>
+<p>这一点对于函数的调用来说是非常重要的。如果你只返回函数，而不返回函数调用时现场的相关环境变量的话，那么你的<strong>函数调用结果</strong>其实是非常容易<strong>受外部变量影响</strong>的。也就是说你很难保证你函数运行的正确性。</p>
+</blockquote>
+<p>闭包并不是必须的。它只是说可以帮助你去精简或者说让你在代码的架构上面更加的合理，它是一种辅助的编程方式。</p>
+<p>闭包只是一种思维方式的不同，是属于函数式编程的一种。</p>
+<!--实际上这段话出自11-13节，但我觉得放在这里更合适-->
+
+
+
+<h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>闭包的环境变量是保存在<code>闭包函数.__closure__</code>内置变量里面的，可以使用<code>闭包函数.__closure__[0].cell_contents</code>将闭包的环境变量取出来，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function1</span>():</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">function2</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">return</span> a * x * x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> function2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = <span class="number">5</span></span><br><span class="line">f = function1()</span><br><span class="line">print(f(<span class="number">2</span>))</span><br><span class="line">print(f.__closure__)</span><br><span class="line">print(f.__closure__[<span class="number">0</span>].cell_contents)</span><br><span class="line">------------------------------------------------</span><br><span class="line"><span class="number">40</span></span><br><span class="line">(&lt;cell at <span class="number">0x1055680a8</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x1054e1680</span>&gt;,)</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="非闭包情况"><a href="#非闭包情况" class="headerlink" title="非闭包情况"></a>非闭包情况</h4><ul>
+<li><p>引用的变量在嵌套函数内部，这不是闭包，相当于就是返回一个函数，该函数能正常得到它想要的所有参数，并没有形成闭包；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function1</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">function2</span>(<span class="params">x</span>):</span></span><br><span class="line">        a = <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> a * x * x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> function2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = function1()</span><br><span class="line">print(f(<span class="number">2</span>))</span><br><span class="line">---------------------------------------</span><br><span class="line"><span class="number">40</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用嵌套函数内部变量且存在同名全局变量，因为 a 就在嵌套函数内部，所以该嵌套函数能得到它所需的所有参数，并不需要去外部环境寻找 a，所以全局变量 a 的定义不影响结果；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function1</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">function2</span>(<span class="params">x</span>):</span></span><br><span class="line">        a = <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> a * x * x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> function2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = <span class="number">5</span></span><br><span class="line">f = function1()</span><br><span class="line">print(f(<span class="number">2</span>))</span><br><span class="line">---------------------------------------</span><br><span class="line"><span class="number">40</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用的是外部的全局变量，因为嵌套函数在内部找不到 a，会一层一层往外找，最后找到全局变量 a，因为没有形成闭包所以不会绑定外部的环境变量 a = 10，所以 a 的值会被后面的赋值表达式改为 5，调用的时候 a = 5</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function1</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">function2</span>(<span class="params">x</span>):</span></span><br><span class="line">        <span class="keyword">return</span> a * x * x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> function2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = <span class="number">5</span></span><br><span class="line">f = function1()</span><br><span class="line">print(f(<span class="number">2</span>))</span><br><span class="line">------------------------------------------</span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+<h3 id="11-11-一个事例看看闭包"><a href="#11-11-一个事例看看闭包" class="headerlink" title="11-11 一个事例看看闭包"></a>11-11 一个事例看看闭包</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f2</span>():</span></span><br><span class="line">        a = <span class="number">20</span></span><br><span class="line">        print(a)</span><br><span class="line">        </span><br><span class="line">	<span class="comment"># 此时 a 为f1函数内的 a</span></span><br><span class="line">    print(a)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 此时 a 为f2函数内的 a</span></span><br><span class="line">    f2()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 此时 a 为f1函数内的 a</span></span><br><span class="line">    print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f1()</span><br><span class="line">--------------------</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="11-12-闭包的经典误区"><a href="#11-12-闭包的经典误区" class="headerlink" title="11-12 闭包的经典误区"></a>11-12 闭包的经典误区</h3><p>f1 不是闭包的原因：</p>
+<ol>
+<li>f1 虽然嵌套了 f2，但是 f1 并没有返回 f2；</li>
+<li>f2 内部重新定义了变量 a，并没有引用 f2 的环境变量 a。</li>
+</ol>
+<p>下面将代码改动一下，让 f1 返回 f2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f2</span>():</span></span><br><span class="line">        a = <span class="number">20</span></span><br><span class="line">        print(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = f1()</span><br><span class="line">print(f)</span><br><span class="line">print(f.__closure__)</span><br><span class="line">---------------------------</span><br><span class="line">&lt;function f1.&lt;<span class="built_in">locals</span>&gt;.f2 at <span class="number">0x10f484840</span>&gt;</span><br><span class="line"><span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p>改动之后 f1 还不是闭包，原因在于f2 内部重新定义了变量 a，并没有引用 f2 的环境变量 a，接着改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f2</span>():</span></span><br><span class="line">        print(a)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f = f1()</span><br><span class="line">print(f)</span><br><span class="line">print(f.__closure__)</span><br><span class="line">print(f.__closure__[<span class="number">0</span>].cell_contents)</span><br><span class="line">-------------------------------</span><br><span class="line">&lt;function f1.&lt;<span class="built_in">locals</span>&gt;.f2 at <span class="number">0x101912840</span>&gt;</span><br><span class="line">(&lt;cell at <span class="number">0x1016a60a8</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10161f680</span>&gt;,)</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>完美形成闭包。</p>
+<h3 id="11-13-出个题-用闭包解决"><a href="#11-13-出个题-用闭包解决" class="headerlink" title="11-13 出个题,用闭包解决!"></a>11-13 出个题,用闭包解决!</h3><p>简化旅行者行走的路线为直线，要求设计函数返回旅行者的步数，起点坐标为0，走得步数用x 表示</p>
+<p>x = 3，result = 3</p>
+<p>x = 5，result = 8</p>
+<p>x = 2，result = 10</p>
+<p>。。。。</p>
+<h3 id="11-14-我先用非闭包解决一下"><a href="#11-14-我先用非闭包解决一下" class="headerlink" title="11-14 我先用非闭包解决一下"></a>11-14 我先用非闭包解决一下</h3><h4 id="global"><a href="#global" class="headerlink" title="global"></a>global</h4><ul>
+<li>如果在函数中需要给<strong>全局变量</strong>赋值，则需要使用<code>global</code>关键字声明。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 上一步所在的位置</span></span><br><span class="line">last = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">go</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">global</span> last</span><br><span class="line">    result = last + x</span><br><span class="line">    last = result</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(go(<span class="number">3</span>))</span><br><span class="line">print(go(<span class="number">5</span>))</span><br><span class="line">print(go(<span class="number">6</span>))</span><br><span class="line">----------------------------</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="11-15-再用闭包解决一下"><a href="#11-15-再用闭包解决一下" class="headerlink" title="11-15 再用闭包解决一下"></a>11-15 再用闭包解决一下</h3><h4 id="nonlocal"><a href="#nonlocal" class="headerlink" title="nonlocal"></a>nonlocal</h4><ul>
+<li>使用<code>nonlocal</code>关键字声明一个变量不是本地局部变量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">origin = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">factory</span>(<span class="params">pos</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">go</span>(<span class="params">step</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> pos</span><br><span class="line">        new_pos = pos + step</span><br><span class="line">        pos = new_pos</span><br><span class="line">        <span class="keyword">return</span> new_pos</span><br><span class="line">    <span class="keyword">return</span> go</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tourist = factory(origin)</span><br><span class="line">print(tourist.__closure__, tourist.__closure__[<span class="number">0</span>].cell_contents)</span><br><span class="line">print(tourist(<span class="number">3</span>))</span><br><span class="line">print(tourist.__closure__, tourist.__closure__[<span class="number">0</span>].cell_contents)</span><br><span class="line">print(tourist(<span class="number">4</span>))</span><br><span class="line">print(tourist.__closure__, tourist.__closure__[<span class="number">0</span>].cell_contents)</span><br><span class="line">print(tourist(<span class="number">5</span>))</span><br><span class="line">print(tourist.__closure__, tourist.__closure__[<span class="number">0</span>].cell_contents)</span><br><span class="line">-------------------------------</span><br><span class="line">(&lt;cell at <span class="number">0x10ff180a8</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10fe91540</span>&gt;,) <span class="number">0</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">(&lt;cell at <span class="number">0x10ff180a8</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10fe915a0</span>&gt;,) <span class="number">3</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line">(&lt;cell at <span class="number">0x10ff180a8</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10fe91620</span>&gt;,) <span class="number">7</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line">(&lt;cell at <span class="number">0x10ff180a8</span>: <span class="built_in">int</span> <span class="built_in">object</span> at <span class="number">0x10fe916c0</span>&gt;,) <span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>七月心语：</p>
+<p>大家觉得函数式编程怎么样？我相信绝大多数同学都还是会感觉到困惑，会觉得这样一种编程体验非常烧脑子非常糟糕，这个并不是说函数式编程不好，其实我们这样的一种函数式编程的方式比起直接用全局变量的方式还是要好很多的。如果大家读过《代码大全2》这本书，其实这本书或者是很多的编程教科书里面都强调过经量少的去使用全局变量，代码里过多的使用全局变量是一个非常糟糕的行为，上例中你是在 go 函数内去改变全局变量，<strong>你怎么能保证其他的函数不回去保证全局变量呢？</strong>每一个函数都有可能改变全局变量，这就将导致你的函数没有自封闭性，它无法保证它自身的结果，它非常容易受另外函数的影响，如果它受其他函数的影响的话，那么这个函数的意义根本就是无从谈起的。</p>
+<p>闭包的实现就好了很多，没有使用全局变量。</p>
+</blockquote>
+<h3 id="11-16-小谈函数式编程"><a href="#11-16-小谈函数式编程" class="headerlink" title="11-16 小谈函数式编程"></a>11-16 小谈函数式编程</h3><blockquote>
+<p>七月心语：</p>
+<p>我大概接触<strong>闭包</strong>比较多的有两个语言，一个是 Python，另外一个是 JavaScript。Python 对于闭包的定义强调的是环境变量。JavaScript 对于闭包的切入点，有个很重要的一点，它认为闭包可以实现<strong>在一个函数的外部间接的调用函数内部的变量</strong>（在外部函数的外部调用外部函数的变量，这个变量也就是我们所说的内部函数的环境变量）。</p>
+<p>闭包保存环境变量的问题，它会导致什么问题呢？因为你的环境变量一直是常驻内存里的，它极容易造成内存泄漏，所以说大家在使用的时候一定要注意。因为你的环境变量为了保持它的状态，它肯定是要常驻内存的，所以说对于常驻内存的变量或者函数的定义，大家一定要小心使用。</p>
+<p>内存泄漏的问题，在服务器里面其实相对还好，但是如果你是在 JavaScript 里操作浏览器的时候，由于环境变量常驻内存，非常消耗内存，极容易引起浏览器的卡顿和缓慢，会影响用户体验。</p>
+</blockquote>
+<p>函数式编程没有好与不好，它有它的优点，也有它的缺点。闭包只是函数式编程的一种。我们后面讲 lambda 表达式的时候，大家会看到，函数式编程的思想也可以在我们现在主流思想里得到很好地应用，确实函数式编程有时候使用起来确实是很方便的。所以大家要区分开，闭包不等于函数式编程，闭包只是函数式编程的一种应用。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/03/14/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC11%E7%AB%A0%20Python%E7%9A%84%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95%E4%B8%8E%E7%94%A8%E6%B3%95/">https://www.klause.cn/2019/03/14/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC11%E7%AB%A0%20Python%E7%9A%84%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95%E4%B8%8E%E7%94%A8%E6%B3%95/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-03-14T21-10-04',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/03/14/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC12%E7%AB%A0%20%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9A%20%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E3%80%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="第12章 函数式编程： 匿名函数、高阶函数、装饰器">
+                        
+                        <span class="card-title">第12章 函数式编程： 匿名函数、高阶函数、装饰器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本章节进一步介绍函数式编程的lambda、mapeduce、filter以及装饰器
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-03-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    入门与进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/11/Python/python%20%E7%94%9F%E6%88%90%E5%99%A8%E8%AF%A6%E8%A7%A3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="python 生成器详解">
+                        
+                        <span class="card-title">python 生成器详解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech/" class="post-category">
+                                    Tech
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/markdown/">
+                        <span class="chip bg-color">markdown</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%94%9F%E6%88%90%E5%99%A8/">
+                        <span class="chip bg-color">生成器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

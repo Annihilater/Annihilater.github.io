@@ -1,0 +1,1375 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第9章 高级部分：面向对象, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第9章 高级部分：面向对象 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第9章 高级部分：面向对象</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                入门与进阶
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-04-15
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>本章讲详细讲解面向对象的概念。包括面向对象的三大特性（继承、封装、多态）、类的基本构成元素、python的内置类属性、方法重写、运算符重载、静态方法等</p>
+<a id="more"></a>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144408.jpg" alt="image-20181028011632220"></p>
+<h3 id="9-1-类的定义"><a href="#9-1-类的定义" class="headerlink" title="9-1 类的定义"></a>9-1 类的定义</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>类<code>()</code>里传入的参数和函数<code>()</code>里传入的参数是不一样的；</li>
+<li>类最基本的作用就是封装代码；</li>
+<li>类下面的函数一定要传入<code>self</code>，否则在调用的时候会报错；</li>
+<li>在函数的内部使用类定义的变量，必须使用<code>self.variable</code>，否则也会报错；</li>
+<li>类只负责定义对象及其行为，不负责执行，需要在类的外部执行类的行为，在类的内部调用类的行为（方法或者函数）是错误的。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_file</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;name: &#x27;</span> + self.name)</span><br><span class="line">        print(<span class="string">&#x27;age: &#x27;</span> + <span class="built_in">str</span>(self.age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student = Student()</span><br><span class="line">student.print_file()</span><br><span class="line">----------------------------------------------</span><br><span class="line">name: </span><br><span class="line">age: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="9-2-浅谈函数与方法的区别"><a href="#9-2-浅谈函数与方法的区别" class="headerlink" title="9-2 浅谈函数与方法的区别"></a>9-2 浅谈函数与方法的区别</h3><p>其实方法和函数并没有明确的界限。区别只是在理解上的区别。</p>
+<p><strong>方法</strong>：是面向对象里的概念，面向对象更加关注的是设计，所以方法是属于设计层面的。</p>
+<p><strong>函数</strong>：是面向过程里面概念，程序运行、过程式的一种称谓。</p>
+<p><strong>变量</strong>：当变量直接出现在模块下面，我们称之为变量；</p>
+<p><strong>数据成员</strong>：当变量出现在类下面，在 python 里更多的称之为数据成员。</p>
+<p>数据成员这样的一个词汇更多体现的是类的封装性。</p>
+<h3 id="9-3-类与对象"><a href="#9-3-类与对象" class="headerlink" title="9-3 类与对象"></a>9-3 类与对象</h3><p><strong>类</strong>：是现实世界或思维世界中的实体在计算机中的反映，它将数据以及这些数据上的操作封装在一起。</p>
+<blockquote>
+<p>行为没有找对主题是很多同学在设计面向对象的时候，最容易忽略的问题，这也是导致你的面向对象的设计不合格的主要原因之一。</p>
+</blockquote>
+<p>类就像是模板一样，通过类可以生产很多实例对象。</p>
+<h3 id="9-4-构造函数"><a href="#9-4-构造函数" class="headerlink" title="9-4 构造函数"></a>9-4 构造函数</h3><p>作用：让类模板生成不同的对象。</p>
+<p>构造函数只能返回 None，不能强制返回其他类型，否则会报错。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;student&#x27;</span>)</span><br><span class="line">        <span class="comment"># return &#x27;stident&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student = Student()</span><br><span class="line">a = student.__init__()</span><br><span class="line">print(a)</span><br><span class="line">print(<span class="built_in">type</span>(a))</span><br><span class="line">------------------------------</span><br><span class="line">student</span><br><span class="line">student</span><br><span class="line"><span class="literal">None</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">NoneType</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>强制给<code>__init__</code>返回非<code>None</code>类型会报错</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;student&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;stident&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student = Student()</span><br><span class="line">a = student.__init__()</span><br><span class="line">print(a)</span><br><span class="line">print(<span class="built_in">type</span>(a))</span><br><span class="line">--------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">student</span><br><span class="line">  File <span class="string">&quot;/Users/16.py&quot;</span>, line <span class="number">19</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    student = Student()</span><br><span class="line">TypeError: __init__() should <span class="keyword">return</span> <span class="literal">None</span>, <span class="keyword">not</span> <span class="string">&#x27;str&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="9-5-区别模块变量与类中的变量"><a href="#9-5-区别模块变量与类中的变量" class="headerlink" title="9-5 区别模块变量与类中的变量"></a>9-5 区别模块变量与类中的变量</h3><p><strong>模块变量</strong>：是写在模块下面的，模块变量的作用域是整个模块</p>
+<p><strong>类变量</strong>：是写在泪下面的，类变量的作用域是类</p>
+<h3 id="9-6-类变量与实例变量"><a href="#9-6-类变量与实例变量" class="headerlink" title="9-6 类变量与实例变量"></a>9-6 类变量与实例变量</h3><p><strong>类变量</strong>：是和类相关的变量</p>
+<p><strong>实例变量</strong>：是和对象相关的变量</p>
+<h3 id="9-7-类与对象的变量查找顺序"><a href="#9-7-类与对象的变量查找顺序" class="headerlink" title="9-7 类与对象的变量查找顺序"></a>9-7 类与对象的变量查找顺序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">print(student1.__dict__)</span><br><span class="line">print(Student.__dict__)</span><br><span class="line">print(<span class="string">&#x27;student1.name:&#x27;</span> + student1.name)</span><br><span class="line">print(<span class="string">&#x27;Student.name:&#x27;</span> + Student.name)</span><br><span class="line">-------------------------------------------</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;__module__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;__init__&#x27;</span>: &lt;function Student.__init__ at <span class="number">0x10146b840</span>&gt;, <span class="string">&#x27;do_homework&#x27;</span>: &lt;function Student.do_homework at <span class="number">0x10146b950</span>&gt;, <span class="string">&#x27;__dict__&#x27;</span>: &lt;attribute <span class="string">&#x27;__dict__&#x27;</span> of <span class="string">&#x27;Student&#x27;</span> objects&gt;, <span class="string">&#x27;__weakref__&#x27;</span>: &lt;attribute <span class="string">&#x27;__weakref__&#x27;</span> of <span class="string">&#x27;Student&#x27;</span> objects&gt;, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">student1.name:小王</span><br><span class="line">Student.name:bob</span><br></pre></td></tr></table></figure>
+
+<p>上例尝试打印实例对象 <code>student1</code> 不存在的变量 <code>name</code>，但是打印出来的是类 <code>Student</code>的变量 <code>name</code>。</p>
+<p>原因：当我们尝试去访问实例变量，<code>Python</code>首先会在对象的实例变量列表里去查找到底有没有 <code>name</code>变量，如果没有的话<code>Python</code>并不会返回 <code>None</code>，<code>Python</code>会继续到类变量列表里寻找。如果在类变量里也没用找到，<code>Python</code>会到该类的父类里继续寻找，一层一层的往上查找，直至找完，最后还是没有找到的话会报错<code>AttributeError: &#39;Student&#39; object has no attribute xxx</code>。</p>
+<h3 id="9-8-self与实例方法"><a href="#9-8-self与实例方法" class="headerlink" title="9-8 self与实例方法"></a>9-8 self与实例方法</h3><ul>
+<li>如果在类下面创建一个实例方法的话，必须在方法的第一个参数传入 <code>self</code>。这个 <code>self</code>是 <code>Python</code>规定的参数，和我们自定义的参数是不同的。这个 <code>self</code>的名字可以随意更改，<code>Python</code>会默认第一个参数为 <code>self</code></li>
+<li><code>self</code>代表的实例对象本身，跟类是没关系的</li>
+</ul>
+<blockquote>
+<p>构造函数可以看做特殊的实例方法。构造函数和实例方法的区别：</p>
+<ol>
+<li>调用的方式不同</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        print(name, age, self.name, self.age)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用构造函数</span></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line"><span class="comment"># 调用实例方法</span></span><br><span class="line">student1.do_homework()</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>意义不同<ul>
+<li>实例方法的主要作用是用于描述类的行为</li>
+<li>构造函数的意义在于初始化类的各种特征</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>上节的示例使用 <code>self</code>就可以正确的给实例变量赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        print(name, age, self.name, self.age)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">print(student1.__dict__)</span><br><span class="line">print(Student.__dict__)</span><br><span class="line">print(<span class="string">&#x27;student1.name:&#x27;</span> + student1.name)</span><br><span class="line">print(<span class="string">&#x27;Student.name:&#x27;</span> + Student.name)</span><br><span class="line">----------------------------------------------</span><br><span class="line">小王 <span class="number">18</span> 小王 <span class="number">18</span></span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;__module__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;bob&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">0</span>, <span class="string">&#x27;__init__&#x27;</span>: &lt;function Student.__init__ at <span class="number">0x10bae2840</span>&gt;, <span class="string">&#x27;do_homework&#x27;</span>: &lt;function Student.do_homework at <span class="number">0x10bae2950</span>&gt;, <span class="string">&#x27;__dict__&#x27;</span>: &lt;attribute <span class="string">&#x27;__dict__&#x27;</span> of <span class="string">&#x27;Student&#x27;</span> objects&gt;, <span class="string">&#x27;__weakref__&#x27;</span>: &lt;attribute <span class="string">&#x27;__weakref__&#x27;</span> of <span class="string">&#x27;Student&#x27;</span> objects&gt;, <span class="string">&#x27;__doc__&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">student1.name:小王</span><br><span class="line">Student.name:bob</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="9-9-在实例方法中访问实例变量与类变量"><a href="#9-9-在实例方法中访问实例变量与类变量" class="headerlink" title="9-9 在实例方法中访问实例变量与类变量"></a>9-9 在实例方法中访问实例变量与类变量</h3><blockquote>
+<ol>
+<li><ul>
+<li></li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>在实例方法中访问实例变量<br>必须使用 <code>self.变量名</code>的方式访问</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name1, age1</span>):</span></span><br><span class="line">        self.name = name1</span><br><span class="line">        self.age = age1</span><br><span class="line">        print(self.__dict__)</span><br><span class="line">        print(self.name, self.age)</span><br><span class="line">        print(<span class="string">&#x27;分割线-------------------&#x27;</span>)</span><br><span class="line">        print(name, age)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">--------------------------------------------</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>&#125;</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">小王 <span class="number">18</span></span><br><span class="line">分割线-------------------</span><br><span class="line">  File <span class="string">&quot;/Users/18.py&quot;</span>, line <span class="number">25</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">  File <span class="string">&quot;/Users/18.py&quot;</span>, line <span class="number">19</span>, <span class="keyword">in</span> __init__</span><br><span class="line">    print(name, age)</span><br><span class="line">NameError: name <span class="string">&#x27;name&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<p>代码解释：</p>
+<p><code>self.name</code>确实访问到了对象额实例变量<code>name</code>，并且打印出来了。    但是第二个 <code>name</code>读取的并不是对象的实例变量，它读取的是形参 <code>name</code>，后来我们将形参 <code>name</code>改名为 <code>name1</code>，它就访问不到形参了，所以才会报错。我们打印了实例对象 <code>self</code>的变量列表，<code>self</code>确实含有 <code>name</code>这个变量，但是却没有访问到。</p>
+<p>这里就是需要强调的误区，在实例方法的内部通过直接通过变量名 <code>name</code>去进行<code>__dict__</code>的查找是不行的。<code>__dict__</code>的查找机制仅仅发生在<strong>该实例变量在类的外部被调用的时候</strong>。</p>
+<ol>
+<li>在实例方法中访问类变量</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    sum1 = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name1, age1</span>):</span></span><br><span class="line">        self.name = name1</span><br><span class="line">        self.age = age1</span><br><span class="line">        <span class="comment"># 在实例方法的内部通过类名.类变量的方式访问类变量</span></span><br><span class="line">        print(<span class="string">&#x27;Student.sum1:&#x27;</span> + <span class="built_in">str</span>(Student.sum1))</span><br><span class="line">        <span class="comment"># 在实例方法的内部通过 self.__class__.类变量 的方式访问类变量</span></span><br><span class="line">        print(<span class="string">&#x27;self.__class__.sum1:&#x27;</span> + <span class="built_in">str</span>(self.__class__.sum1))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line"><span class="comment"># 在类外部通过类名.类变量的方式访问类变量</span></span><br><span class="line">print(<span class="string">&#x27;Student.name:&#x27;</span> + Student.name)</span><br><span class="line">-------------------------------------------------</span><br><span class="line">Student.sum1:<span class="number">0</span></span><br><span class="line">self.__class__.sum1:<span class="number">0</span></span><br><span class="line">Student.name:bob</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在类<strong>外部</strong>通过<code>类名.类变量</code>的方式访问类变量</li>
+<li>在实例方法的<strong>内部</strong>通过<code>类名.类变量</code>的方式访问类变量</li>
+<li>在实例方法的<strong>内部</strong>通过 <code>self.__class__</code>类变量 的方式访问类变量</li>
+</ul>
+<h3 id="9-10-类方法"><a href="#9-10-类方法" class="headerlink" title="9-10 类方法"></a>9-10 类方法</h3><p>类方法：在定义方法的 <code>def</code>上面加上装饰器<code>@classmethod</code></p>
+<ul>
+<li>类方法传入的第一个参数是 <code>cls</code>，很容易看出 <code>cls</code>就是 <code>class</code>的简写，<code>cls</code>代表的是类本身<br>这个 <code>cls</code>也可以改成其他任意的名称，<code>Python</code>会默认第一个参数为 <code>cls</code></li>
+<li>主要作用：操作与类相关的变量</li>
+</ul>
+<blockquote>
+<p>实例方法与类方法的区别：</p>
+<ul>
+<li>实例方法关联的是实例对象 <code>self</code></li>
+<li>类方法关联的是类 <code>cls</code>，类方法前面有<code>@classmethod</code></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>误区：</p>
+<p>很多同学会认为，既然我们可以在实例方法中操作类变量，还要类方法干什么？</p>
+<p>这里需要注意的是，这不是一个语法或者功能上的满足的问题，而是你要操作一个和类有关的变量，最正确的方式还是使用类方法。并不是说你使用实例方法不对，但是很多时候在意义上是说不通的。</p>
+</blockquote>
+<p>类对象和实例对象都可以调用类方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="comment"># 班级的学生总数</span></span><br><span class="line">    sum_students = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        <span class="comment"># 使用类对象调用类方法</span></span><br><span class="line">        Student.plus_sum()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plus_sum</span>(<span class="params">cls</span>):</span></span><br><span class="line">        <span class="comment"># 调用一次该方法，学生总数就增加1</span></span><br><span class="line">        cls.sum_students += <span class="number">1</span></span><br><span class="line">        print(<span class="string">&#x27;班级的学生总数:&#x27;</span> + <span class="built_in">str</span>(cls.sum_students))</span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">student2 = Student(<span class="string">&#x27;小红&#x27;</span>, <span class="number">16</span>)</span><br><span class="line">student3 = Student(<span class="string">&#x27;小黑&#x27;</span>, <span class="number">19</span>)</span><br><span class="line">print(<span class="string">&#x27;分割线1----------------&#x27;</span>)</span><br><span class="line"><span class="comment"># 使用类对象调用类方法</span></span><br><span class="line">Student.plus_sum()</span><br><span class="line">print(<span class="string">&#x27;分割线2----------------&#x27;</span>)</span><br><span class="line"><span class="comment"># 使用实例对象调用类方法</span></span><br><span class="line">student1.plus_sum()</span><br><span class="line">----------------------------------------------------------</span><br><span class="line">班级的学生总数:<span class="number">1</span></span><br><span class="line">班级的学生总数:<span class="number">2</span></span><br><span class="line">班级的学生总数:<span class="number">3</span></span><br><span class="line">分割线<span class="number">1</span>----------------</span><br><span class="line">班级的学生总数:<span class="number">4</span></span><br><span class="line">分割线<span class="number">2</span>----------------</span><br><span class="line">班级的学生总数:<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="9-11-静态方法"><a href="#9-11-静态方法" class="headerlink" title="9-11 静态方法"></a>9-11 静态方法</h3><p>静态方法：需要在定义方法 <code>def</code>上面加上装饰器<code>@staticmethod</code></p>
+<ul>
+<li>静态方法不强制传入参数（类方法需要传 <code>cls</code>，实例方法需要传 <code>self</code>）</li>
+<li>类、实例对象都可以访问静态方法</li>
+<li>静态方法内部可以访问类变量，但是不能访问实例变量</li>
+</ul>
+<blockquote>
+<p>七月心语：</p>
+<p>不建议经常使用静态方法，因为静态方法语面向对象的关联性非常弱，跟类和对象关系不大，它和普通的函数几乎是没有任何区别的。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="comment"># 班级的学生总数</span></span><br><span class="line">    sum_students = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        Student.plus_sum()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>():</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plus_sum</span>(<span class="params">cls</span>):</span></span><br><span class="line">        cls.sum_students += <span class="number">1</span></span><br><span class="line">        print(cls.sum_students)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">x, y</span>):</span></span><br><span class="line">        result = x + y</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">print(<span class="string">&#x27;实例对象访问静态方法：&#x27;</span>)</span><br><span class="line">student1.do_homework()</span><br><span class="line">print(<span class="string">&#x27;类对象访问静态方法：&#x27;</span>)</span><br><span class="line">Student.do_homework()</span><br><span class="line">print(<span class="string">&#x27;实例对象访问类方法：&#x27;</span>)</span><br><span class="line">student1.plus_sum()</span><br><span class="line">print(<span class="string">&#x27;类对象访问类方法：&#x27;</span>)</span><br><span class="line">Student.plus_sum()</span><br><span class="line">------------------------------------------------------</span><br><span class="line"><span class="number">1</span></span><br><span class="line">实例对象访问静态方法：</span><br><span class="line">homework</span><br><span class="line">类对象访问静态方法：</span><br><span class="line">homework</span><br><span class="line">实例对象访问类方法：</span><br><span class="line"><span class="number">2</span></span><br><span class="line">类对象访问类方法：</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="9-12-成员可见性：公开和私有"><a href="#9-12-成员可见性：公开和私有" class="headerlink" title="9-12 成员可见性：公开和私有"></a>9-12 成员可见性：公开和私有</h3><p>类的变量是类非常重要的特征数据，所以说如果要修改一个类的特征数据，不应该通过直接访<strong>问类变量的方式</strong>改变变量的状态，而是应该通过<strong>类自己的方法</strong>来完成对类变量状态的更改。</p>
+<p>原因：我们可以在方法里对传入的参数做一些判断，如果传入的参数不符合数据状态的要求，就会拦截并返回适当的信息，这样就对数据起到了保护作用。</p>
+<blockquote>
+<p>七月心语：</p>
+<p>规范确实是这样的，但是实际情况可能会有所不同。如果一个类下面有几十个变量的话，我们要给每一个变量配一个类似与 <code>marking</code>这样的方法来做变量读写的话，其实是一件非常麻烦的事情，有时候我自己写代码的时候，为了偷懒，我也不会去写类似 <code>marking</code>这样的方法，有时候就直接访问类变量修改类变量的状态了，那是因为我非常类的内部结构才会做出这样的操作。</p>
+<p>那么这个 <code>marking</code>方法的意义是什么呢？</p>
+<p>这个作用就在于，如果你的类是提供给别人使用的，别人是不知道你的类内部机制和规则的。他也许会认为你的 <code>score</code>可以是负分，所以这种情况下，通过类的方法来操作类变量的方式是很有必要的。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="comment"># 班级的学生总数</span></span><br><span class="line">    sum_students = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        Student.plus_sum()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">marking</span>(<span class="params">self, score</span>):</span></span><br><span class="line">        <span class="keyword">if</span> score &lt; <span class="number">0</span>:</span><br><span class="line">            result = <span class="string">&#x27;不能给学生打负分&#x27;</span></span><br><span class="line">        <span class="keyword">elif</span> score &gt; <span class="number">100</span>:</span><br><span class="line">            result = <span class="string">&#x27;学生的分数不能高于100分&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.score = score</span><br><span class="line">            result = self.score</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">res = student1.marking(<span class="number">89</span>)</span><br><span class="line">print(res)</span><br><span class="line">----------------------------------------------------</span><br><span class="line"><span class="number">89</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>私有：</p>
+<p>一般地，如果变量或者方法的开头是双下划线<code>__</code>，<code>Python</code>都会认为这个变量或者方法是私有的。</p>
+<blockquote>
+<p>如果一个方法或者变量开头和结尾都有双下滑线<code>__</code>，<code>Python</code> 则不会认为该变量或者该方法是私有的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="comment"># 班级的学生总数</span></span><br><span class="line">    sum_students = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line">    __school__ = <span class="string">&#x27;希望小学&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line">        Student.plus_sum()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__marking__</span>(<span class="params">self, score</span>):</span></span><br><span class="line">        <span class="keyword">if</span> score &lt; <span class="number">0</span>:</span><br><span class="line">            result = <span class="string">&#x27;不能给学生打负分&#x27;</span></span><br><span class="line">        <span class="keyword">elif</span> score &gt; <span class="number">100</span>:</span><br><span class="line">            result = <span class="string">&#x27;学生的分数不能高于100分&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.score = score</span><br><span class="line">            result = self.score</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">res = student1.__marking__(<span class="number">89</span>)</span><br><span class="line">print(res)</span><br><span class="line">print(Student.__school__)</span><br><span class="line">--------------------------------------------</span><br><span class="line"><span class="number">89</span></span><br><span class="line">希望小学</span><br></pre></td></tr></table></figure>
+
+<p>尽量不要将变量名前后都加上双下划线，因为这是 <code>Python</code>内置变量的命名方式。</p>
+</blockquote>
+<h3 id="9-13-没有什么是不能访问"><a href="#9-13-没有什么是不能访问" class="headerlink" title="9-13 没有什么是不能访问"></a>9-13 没有什么是不能访问</h3><p>其实 <code>Python</code>并没有严格意义上的私有变量，因为 <code>Python</code>的私有变量也是可以访问的。</p>
+<p><code>Python</code>在储存私有变量的时候，只是将私有变量的变量名做了更改之后在保存的，如果我们直接使用<code>实例对象.更改之后的私有变量名</code>的方式来访问该私有变量，那么这个私有变量是可以访问的。</p>
+<blockquote>
+<p><code>Python</code>改名私有变量的方式：</p>
+<p><strong>单下划线+类名+双下划线+变量名</strong>：<strong>_类名__私有变量名</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>():</span></span><br><span class="line">    <span class="comment"># 班级的学生总数</span></span><br><span class="line">    sum_students = <span class="number">0</span></span><br><span class="line">    name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line">    age = <span class="number">0</span></span><br><span class="line">    school = <span class="string">&#x27;希望小学&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.__score = <span class="number">0</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        Student.plus_sum()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">marking</span>(<span class="params">self, score</span>):</span></span><br><span class="line">        <span class="keyword">if</span> score &lt; <span class="number">0</span>:</span><br><span class="line">            result = <span class="string">&#x27;不能给学生打负分&#x27;</span></span><br><span class="line">        <span class="keyword">elif</span> score &gt; <span class="number">100</span>:</span><br><span class="line">            result = <span class="string">&#x27;学生的分数不能高于100分&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.__score = score</span><br><span class="line">            result = self.__score</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>)</span><br><span class="line">res = student1.marking(<span class="number">89</span>)</span><br><span class="line">print(res)</span><br><span class="line">print(student1.__dict__)</span><br><span class="line"><span class="comment"># 访问私有变量</span></span><br><span class="line">print(student1._Student__score)</span><br><span class="line"><span class="comment"># 定义了新的变量 __score</span></span><br><span class="line">student1.__score = -<span class="number">1</span></span><br><span class="line">print(student1.__score)</span><br><span class="line">print(student1.__dict__)</span><br><span class="line">-------------------------------------------------</span><br><span class="line"><span class="number">89</span></span><br><span class="line">&#123;<span class="string">&#x27;_Student__score&#x27;</span>: <span class="number">89</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>&#125;</span><br><span class="line"><span class="number">89</span></span><br><span class="line">-<span class="number">1</span></span><br><span class="line">&#123;<span class="string">&#x27;_Student__score&#x27;</span>: <span class="number">89</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>, <span class="string">&#x27;__score&#x27;</span>: -<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释：</p>
+<p>上述结果中的<code>_Student__score</code>变量就是 <code>Python</code>将我们定义的私有变量<code>__score</code>改名之后的变量名。</p>
+<h3 id="9-14-继承"><a href="#9-14-继承" class="headerlink" title="9-14 继承"></a>9-14 继承</h3><p><code>Python</code>允许多继承：一个子类可以继承多个父类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span>():</span></span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="built_in">str</span>(self.age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>(<span class="params">Human</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age, school</span>):</span></span><br><span class="line">        <span class="comment"># 类调用实例方法的时候需要显式的传入实例对象</span></span><br><span class="line">        Human.__init__(self, name, age)</span><br><span class="line">        <span class="comment"># super().__init__(name, age)</span></span><br><span class="line">        self.school = school</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;希望小学&#x27;</span>)</span><br><span class="line">student1.do_homework()</span><br><span class="line">print(student1.__dict__)</span><br><span class="line"><span class="comment"># 类调用实例方法的时候需要显式的传入实例对象</span></span><br><span class="line">Student.do_homework(student1)</span><br><span class="line"><span class="comment"># 它只要满足有一个参数就可以了，可以传入任意参数</span></span><br><span class="line">Student.do_homework(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">-----------------------------------------</span><br><span class="line">homework</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>, <span class="string">&#x27;school&#x27;</span>: <span class="string">&#x27;希望小学&#x27;</span>&#125;</span><br><span class="line">homework</span><br><span class="line">homework</span><br></pre></td></tr></table></figure>
+
+<p>代码解释：<code>Human.__init__(self, name, age)</code></p>
+<p><code>Human</code>是一个类，<code>Human</code>调用了<code>__init__</code>构造函数，构造函数的实质是一个实例方法，一个类去调用一个实例方法从面向对象的理解方面来讲是不正确的，类是抽象的，对象是具体的，你用一个类去调用一个实例方法是说不通的。但是 <code>Python</code>的灵活就灵活在这里，它虽然认为你的这种做法是没有意义的，但是他并不限制你强行这么做，所以说就出现了用类来强行调用实例方法的特殊的情况。</p>
+<p>为什么在这里需要显式的传入 <code>self</code>，而在实例化的时候不需要传入 <code>self</code>？</p>
+<p>区别在于实例化的时候确实调用了构造函数，这个调用构造函数的调用方是谁？它不是我们自己去调用构造函数，是 <code>Python</code>内部实例化的机制，自动帮我们调用构造函数。所以说在这样的机制下面 <code>Python</code>会帮助我们传入 <code>self</code>。但是再回到当前情况，<code>Human.__init__(self, name, age)</code>就是用类调用了一个实例方法，和实例化的时候调用构造函数是决然不同的，这种情况下面就是一个普通的方法调用，普通方法的调用当然需要把所有的参数都传入进去，不能遗漏 <code>self</code>，没有人会帮你传入 <code>self</code>。</p>
+<p>那么为什么我在使用对象调用<code>do_homework</code>的时候不需要传入 <code>self</code>呢？</p>
+<p>原因在于调用<code>do_homework</code>的时候并不是通过 <code>Student</code>这个类去调用的，我们是通 <code>student1</code>这个实例对象去调用的，<code>self</code>的实质指代的就是实例对象，所以通 <code>student1</code>这个实例对象去调用的时候，<code>Python</code>是知道这个 <code>self</code>指的是谁的，指的就是 <code>student1</code>这个实例对象，<code>Python</code>会自动的把 <code>student1</code>传入到<code>do_homework</code>里面来。</p>
+<h3 id="9-15-子类方法调用父类方法：super关键字"><a href="#9-15-子类方法调用父类方法：super关键字" class="headerlink" title="9-15 子类方法调用父类方法：super关键字"></a>9-15 子类方法调用父类方法：super关键字</h3><p>上节中子类方法调用父类方法的方式确实是可行的，但是不推荐使用这种方式。为什么呢?</p>
+<p>这种方式有明显的缺点：</p>
+<p>如果未来 <code>Student</code>子类不在继承 <code>Human</code>这个父类了，换了一个别的父类来继承的话，那么需要更改的代码有哪些？首先，括号内的父类名字要修改，还有在子类调用父类方法的地方，父类的名称全部都要更换，上面例子只是一个简单的例子，但是我们想想，假如我们有很多函数，每个函数都调用父类的方法呢？那我是不是要把我的代码全部都改一遍？更改类的代码的行为是非常不可取的。</p>
+<blockquote>
+<p>编程里有一个原则叫做开闭原则：</p>
+<p>代码对扩展是开放的，但是对更改自己本身的代码是关闭的。</p>
+</blockquote>
+<p>所以我们不应该为了改变父类而去改变类内部的相关代码。</p>
+<p>下面介绍 <code>super</code>关键字方式调用父类方法：</p>
+<p><code>super</code>字面意思是超级的意思，但是很多时候代表的是父类的关键字。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">super</span>(子类, self).__init__(参数<span class="number">1</span>, 参数<span class="number">2</span>, ...)</span><br><span class="line"><span class="built_in">super</span>().__init__(参数<span class="number">1</span>, 参数<span class="number">2</span>, ...)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span>():</span></span><br><span class="line">    <span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age</span>):</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="built_in">str</span>(self.age))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;This is a parent method&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>(<span class="params">Human</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name, age, school</span>):</span></span><br><span class="line">        <span class="comment"># 七月介绍的方法</span></span><br><span class="line">        <span class="built_in">super</span>(Student, self).__init__(name, age)</span><br><span class="line">        <span class="comment"># pycharm 自动补全的方法</span></span><br><span class="line">        <span class="comment"># super().__init__(name, age)</span></span><br><span class="line">        self.school = school</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_homework</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Student, self).do_homework()</span><br><span class="line">        print(<span class="string">&#x27;homework&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student1 = Student(<span class="string">&#x27;小王&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;希望小学&#x27;</span>)</span><br><span class="line">student1.do_homework()</span><br><span class="line">print(student1.__dict__)</span><br><span class="line">---------------------------------------------------------</span><br><span class="line">This <span class="keyword">is</span> a parent method</span><br><span class="line">homework</span><br><span class="line">&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;小王&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>, <span class="string">&#x27;school&#x27;</span>: <span class="string">&#x27;希望小学&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC9%E7%AB%A0%20%E9%AB%98%E7%BA%A7%E9%83%A8%E5%88%86%EF%BC%9A%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">https://www.klause.cn/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC9%E7%AB%A0%20%E9%AB%98%E7%BA%A7%E9%83%A8%E5%88%86%EF%BC%9A%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-04-15T11-56-09',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC8%E7%AB%A0%20Python%E5%87%BD%E6%95%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/13.jpg" class="responsive-img" alt="第8章 Python函数">
+                        
+                        <span class="card-title">第8章 Python函数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            函数是所有语言中都具备的基本代码组织结构。函数的重要性不言而喻。而对于Python来说，函数的用法及其灵活，远比其他语言要强大很多。本章节讲详细讲述Python函数的定义、调用、序列解包、必须参数、关键字参数、默认参数等诸多内容。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-04-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    入门与进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC1%E7%AB%A0%20python%E5%85%A5%E9%97%A8%E5%AF%BC%E5%AD%A6/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="第1章 python入门导学">
+                        
+                        <span class="card-title">第1章 python入门导学</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            第1章 python入门导学介绍Python的特性、优点、缺点、前景以及课程的内容、重点和特色。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    入门与进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

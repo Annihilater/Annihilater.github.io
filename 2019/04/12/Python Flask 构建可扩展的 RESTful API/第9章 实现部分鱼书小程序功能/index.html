@@ -1,0 +1,1339 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第9章 实现部分鱼书小程序功能, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第9章 实现部分鱼书小程序功能 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第9章 实现部分鱼书小程序功能</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/flask/">
+                                <span class="chip bg-color">flask</span>
+                            </a>
+                        
+                            <a href="/tags/restful/">
+                                <span class="chip bg-color">restful</span>
+                            </a>
+                        
+                            <a href="/tags/api/">
+                                <span class="chip bg-color">api</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/ginger/" class="post-category">
+                                ginger
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-04-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>理论必须结合实践，我们提供一个简单的鱼书小程序，编写他的业务接口，并用小程序来进行API的检验</p>
+<h3 id="9-1-小程序演示API调用效果"><a href="#9-1-小程序演示API调用效果" class="headerlink" title="9-1 小程序演示API调用效果"></a>9-1 小程序演示API调用效果</h3><h3 id="9-2-模糊搜索书籍"><a href="#9-2-模糊搜索书籍" class="headerlink" title="9-2 模糊搜索书籍"></a>9-2 模糊搜索书籍</h3><ol>
+<li><p>新建 <code>search</code>视图函数，如何来设计 <code>search</code>视图函数呢？既然是搜索图书，必定要吧搜索的参数传到视图函数中。我们以前这些参数的传递要么在 <code>POST</code> 中要么在 <code>URL</code> 路径中。但是如果说我希望把关键字参数加在问号后面以查询参数的传递方式传递到视图函数中，那么我们该如何接收<code>q</code>这个查询参数？<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130259.jpg" alt="image-20190108165308222"></p>
+</li>
+<li><p>老规矩：不管参数怎么传递，我们肯定是要验证这个参数。编写个 <code>Form</code>来验证它，在 ginger/app/validators/form.py 中：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130311.jpg" alt="image-20190108165909920"></p>
+</li>
+<li><p>下面我们来看看如何将<code>q</code>传入到 <code>Form</code>里面。<code>q</code>参数该如何得到呢？下面方式可以得到。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.args.to_dict()</span><br></pre></td></tr></table></figure>
+
+<p>拿到 <code>q</code>之后，怎么传到 <code>Form</code>里面去呢？我们可以想一想之前我们把参数放在 <code>POST</code>和 <code>HTTP body</code>里面的时候是不需要<strong>显式的</strong>传入到 <code>Form</code>里面去的。我们是在 ginger/app/validators/base.py 里面通过下面方式拿到 <code>HTTP body</code>里面的参数的。</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130331.jpg" alt="image-20190108172241027"></p>
+<p>同样的，我们也可以在 <code>BaseForm</code>里面完成查询参数的获取，使用<code>args = request.args.to_dict()</code>获取参数，再通过<code>**args</code>将参数传递给<code>Form</code>。（<strong>这中参数传递方法其实看源码就知道了，源码里面写的非常清楚</strong>）</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130354.jpg" alt="image-20190108172610467"></p>
+<p>我们测试会发现能够正确的返回<code>q</code>。但是如果不传入 <code>q</code>的话则会报错。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130357.jpg" alt="image-20190109130244889"></p>
+<blockquote>
+<p>小细节：</p>
+<p>我们刚刚是没有在 <code>Headers</code>中增加 <code>Content-Type</code>，但是如果我们在<code>Headers</code>增加了<code>Content-Type</code>的话，并且将<code>Content-Type</code>指定成<code>application/json</code>的话，然后再测试就会报一个内置的错误。这个错误的意思大概就是说 flask 尝试去<strong>反序列化</strong>你传递的这个 <code>json</code>，但是没有找到你传递的这个 <code>json</code>对象，为什么呢？因为我们的 <code>HTTP body</code>里面没有任何的 <code>json</code>对象，所以说 flask找不到，它就会报这个错误。</p>
+<p>为什么不加<code>Content-Type</code>就不会报这个错误呢？原因很简单，因为<code>Content-Type</code>指的是 <code>body</code>里面的参数，你既然制定了<code>Content-Type</code>而 <code>body</code>里面有没有传递任何值，flask 当然会报错。</p>
+<p><strong>解决方法1</strong>：如果你的<code>body</code>里面没有<code>json</code>对象的话，就不要指定<code>Content-Type</code>。<br><strong>解决方法2</strong>：在 ginger/app/validators/base.py 中，使用<code>data = request.get_json(silent=True)</code>获取<code>body</code>的数据即可，括号内的<code>silent=True</code>表示静默处理，也就是 <code>body</code>为空的时候不报错。<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130442.jpg" alt="image-20190109131247364"></p>
+<p>小知识：</p>
+<p>如果一个请求是 <strong>POST</strong> 的话，既可以使用 <code>HTTP body</code> 传参，也可以在 <strong>url 的查询参数</strong>里传参，甚至你可以在两处同时传参。</p>
+</blockquote>
+</li>
+<li><p>新建 ginger/app/module/book.py 文件，内容如下：（<code>keys</code>方法为<code>Book</code>模型默认的输出字段）<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130501.jpg" alt="image-20190109132842243"></p>
+</li>
+<li><p>现在我们要使用<code>Book</code>模型进行数据库的查询和检索，需要注意的是这里要做的查询是<strong>模糊查询</strong>，不能直接等于检索字段查询，所以必须要使用到 <code>sqlalchemy</code>的 <code>like</code>关键字<br><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130534.jpg" alt="image-20190109134859125"></p>
+<ul>
+<li><code>q</code>前后加<code>%</code>是因为在 <code>sql</code>语句里执行模糊搜索的话，就需要在搜索关键字前后加上<code>%</code>；</li>
+<li><code>or_</code>：因为默认情况下 <code>filter</code>里面的两个条件是 <code>and</code>关系，但是现在执行的是模糊检索是<code>或</code>关系，所以使用 <code>sqlalchemy</code>的<code>or_</code>方法；</li>
+<li><code>like</code>：<code>sqlalchemy</code>模糊检索的方法。</li>
+</ul>
+</li>
+</ol>
+<p>最后完美实现模糊搜索！</p>
+<h3 id="9-3-再谈严格型REST的缺陷"><a href="#9-3-再谈严格型REST的缺陷" class="headerlink" title="9-3 再谈严格型REST的缺陷"></a>9-3 再谈严格型REST的缺陷</h3><p>在 ginger/app/api/v1/book.py 内编写书籍详情页的视图函数 <code>detail</code>：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130543.jpg" alt="image-20190109140135552"></p>
+<p>经过 postman 测试的返回数据，很容易发现上节课<code>search()</code>视图函数和<code>detail()</code>视图函数返回的数据结中每一本书的字段是相同的，但是仔细回顾本章第一节中演示的小程序示例，对于 <code>search</code>来说它需要我们返回那么多字段吗？显然不需要，有一个很明显的地方就是<code>summary</code>。<code>summary</code>字段是有大量文本的，但是 <code>summary</code>在 <code>search</code>搜索的结果页面里是完全不需要去展示 <code>summary</code>信息的，只有在书籍详情页里面才需要展示书籍详情页的信息。</p>
+<p>换句话来说 <code>search</code>返回的 <code>summary</code>字段是完全没有用的，它占用了我们服务器的带宽，因为这么多大量的文本其实是很浪费服务器带宽的。那么我们现在的理解是在 <code>search</code>里面返回 <code>summary</code>是不太好的，但是这里就要回到严格型的 RESTFul 的定义上面来。之前就讲过严格型的 REST 的定义是不考虑业务需求需不需要某一个字段的，它是针对资源的，资源里有 <code>summary</code>那么查询的时候就一定会将 <code>summary</code>返回回来。所以说严格型的 REST 并不太适合内部开发。</p>
+<p>怎么解决这个问题呢？我们来看这里有没有什么冲突，我们在 <code>Book</code>模型里面其实是定义好了需要返回的额字段的（<code>keys</code>方法），但是这个字段是个死的字段任何序列化都会返回这个字段。<code>search</code>里面需要精简字段，但是 <code>detail</code>里面需要返回所有字段的。所以我们需要在 <code>search</code>里面将 <code>summary</code>字段去除掉之后再返回：</p>
+<ul>
+<li>解决方法1：因为 Python 语言是动态的，所以你可以去遍历 books 列表，然后将每一个 book 的 summary 字段删除掉，然后再返回；</li>
+<li>解决方法2：可以做一个 <code>ViewModel</code>精简字段之后再返回；</li>
+</ul>
+<p>但是这两种方法都不太好，如果我们可以在 <code>search</code>的 <code>books</code> 和 <code>return</code> 之间灵活的调整已经定义好的模型字段，把 <code>summary</code>删除掉不就行了？例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">books = [book.hide(<span class="string">&#x27;summary&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> book <span class="keyword">in</span> books]</span><br></pre></td></tr></table></figure>
+
+<p>这种方法就很好了，既不影响 <code>detail</code>的返回，又可以隐藏字段返回，相当漂亮，那么这种方法该如何实现呢？下节来实现。</p>
+<h3 id="9-4-实现hide方法"><a href="#9-4-实现hide方法" class="headerlink" title="9-4 实现hide方法"></a>9-4 实现hide方法</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130557.jpg" alt="image-20190109143229974"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130618.jpg" alt="image-20190109143304534"></p>
+<ul>
+<li><code>hide</code>方法必须 <code>return self</code>：<ul>
+<li>不 <code>return</code>的话，<code>books</code>的列表推倒式返回的就是 None，因为列表推倒式的结果取决于<code>book.hide(&#39;summary&#39;)</code>的返回值；</li>
+<li>不能<code>return fields</code>，因为<code>fields</code>是列表，我们需要返回的是模型对象，后面还要将它序列化，如果返回<code>fields</code>列表的话，后面序列化的就是列表，得到的数据会出错。</li>
+</ul>
+</li>
+</ul>
+<p>这样看似已经完美了，其实还有问题，问题在于我们在 postman 里面再次请求调用 <code>search</code>的时候会报错，为什么报错呢？下节来分析。</p>
+<h3 id="9-5-orm-reconstructor-解决模型对象实例化问题"><a href="#9-5-orm-reconstructor-解决模型对象实例化问题" class="headerlink" title="9-5 @orm.reconstructor 解决模型对象实例化问题"></a>9-5 @orm.reconstructor 解决模型对象实例化问题</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130625.jpg" alt="image-20190109144026367"></p>
+<p>首先我们要搞清楚这个 <code>list</code>是什么？这个 <code>list</code>其实就是我们定义的 <code>fields</code>列表，我们要特别注意的是在第一次 <code>remove summary</code>之后没有报错可以正确得到结果，但是在第二次<code>remove summary</code>的时候提示找不到这个字段。这里我要说的是，有时候我们一看错误就知道问题是什么，但是有时候错误提示并不是这么直接它需要考验大家对 Python 基本概念的理解。在这个问题当中第一次 <code>remove</code>的结果影响了第二次，之所以出现这种影响原因就在于 <code>fields</code>定义的是一个<strong>类变量</strong>而不是一个<strong>实例变量</strong>。那这其实就考验大家对类变量和实例变量的理解是否深刻，如果理解的不深刻的话很容易犯这样的错误。类变量的特性是所有实例变量都共有的变量，关键点是共有。</p>
+<p>我们这里使用的是<strong>类变量</strong>来定义<code>fields</code>，如果 book1 中将 <code>summary</code>字段剔除了，那么 book2 中显然就没有 <code>summary</code>字段了，所以才会报刚才的错误。</p>
+<p>我们应该使用<strong>实例变量</strong>来定义 <code>fields</code>字段，这样的话我们在 book1 中修改字段就不会影响到 book2 中的字段。</p>
+<p>我们通常在<code>__init__</code>中定义实例变量，实例变量将保证每一个实例化后的对象都将拥有单独的 <code>fields</code>==副本==。在 ginger/app/modules/book.py 中：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130716.jpg" alt="image-20190109150012049"></p>
+<p>那么这样写了之后有没有问题？看似是没有问题的，实际上还是有问题的。这个问题可能并不是那么好理解。</p>
+<p>如果我们定义一个实例变量，构造函数肯定是要执行的，只有执行了构造函数<code>self.fields</code>才能定义成功。但是在该构造函数处打断点发现，<code>search</code>视图函数式进到断点这里的，换句话说就是这个构造函数是不会执行的，既然不会执行的话这个实例变量的定义就不会成功。</p>
+<p>如果我们在 <code>search</code>视图函数内部添加<code>book = Book()</code>进行手动实例化的话，断点是可以进来的。但是我要说的是，现在我们得到的 book 的实例对象并不是通过这样实例化创建的，我们现在拿到的实例对象是通过 sqlalchemy 创建的，sqlalchemy 创建实例对象的时候并不是通过普通实例化方法创建的，它是通过<strong>元类</strong>动态创建 book 的。</p>
+<p>在 Python 绝大多数的 ORM（sqlalchemy 就是一种 ORM）都是通过元类方式来创建模型对象的。通过元类方式来创建，至少在 sqlalchemy 里面是不会执行构造函数的，那怎么解决这个问题呢？那么这个时候我们就需要用到 sqlalchemy 比较高级的机制，因为它用的比较少，也不能说用的比较少，只不过大多数程序员可能欠缺对代码的追求，所以说很难被用到，所以说在网上搜的时候并不一定能直接搜到解决方案。这就是我所说的，要形成自己代码风格的话有一个必备的能力，就是你要去看文档。文档里面是最原始的、最基础的、最灵活的一些机制的介绍。sqlalchemy 的文档里面其实介绍了关于对象构建和初始化的时候的机制，它明确的说了是不会去执行构造函数的，但是它提供了一种机制<code>@orm.reconstrustor()</code>，一旦我们在构造函数上面打上了这个装饰器，那么在模型对象实例化的时候 sqlalchemy 就会执行该构造函数。</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130735.jpg" alt="image-20190109151857710"></p>
+<h3 id="9-6-重构hide与append"><a href="#9-6-重构hide与append" class="headerlink" title="9-6 重构hide与append"></a>9-6 重构hide与append</h3><h4 id="重构-hide"><a href="#重构-hide" class="headerlink" title="重构 hide"></a>重构 hide</h4><p>现在我们只接受一个 <code>field</code>字段的话，我们只能隐藏一个字段，那么假如说我们需要隐藏一组字段怎么办呢？在 ginger/app/modules/book.py 中：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130748.jpg" alt="image-20190109152303226"></p>
+<p>很显然 <code>keys</code>、<code>hide</code>方法并不属于某一个特定模型的，所以说如果每一个模型都需要隐藏字段的功能搞的话，我们可以将<code>keys</code>、<code>hide</code>提取到基类 <code>Base</code>中。</p>
+<h4 id="增加字段"><a href="#增加字段" class="headerlink" title="增加字段"></a>增加字段</h4><p>在 ginger/app/modules/base.py 中：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130752.jpg" alt="image-20190109152911731"></p>
+<h3 id="9-7-赠送礼物接口"><a href="#9-7-赠送礼物接口" class="headerlink" title="9-7 赠送礼物接口"></a>9-7 赠送礼物接口</h3><p>新建 ginger/app/api/v1/gift.py 文件，创建并注册 <code>gift RedPront</code></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130758.jpg" alt="image-20190109164509010"></p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130800.jpg" alt="image-20190109164357531"></p>
+<p>注意点：</p>
+<ol>
+<li>创建并注册 <code>gift</code> 红图；</li>
+<li>定义路由，必须包含 <code>isbn</code>；</li>
+<li>添加登录保护；</li>
+<li>从登录保护里获取当前登录用户的 <code>uid</code>；</li>
+<li>先要确保要添加心愿的书籍存在；</li>
+<li>再根据 <code>uid</code>、<code>isbn</code>从 <code>gift</code>表查询礼物，判断当前 <code>gift</code> 是否已经存在，如果存在则返回 <code>gift</code> 已经存在心愿清单；</li>
+<li>如果不存在，则实例化 <code>gift</code>，将新 <code>gift</code>添加到数据库。</li>
+</ol>
+<h3 id="9-8-实现获取令牌信息接口"><a href="#9-8-实现获取令牌信息接口" class="headerlink" title="9-8 实现获取令牌信息接口"></a>9-8 实现获取令牌信息接口</h3><p>我们之前写了 <code>get_token</code>获取令牌的接口，那么问题来了：如果我想验证一个令牌是否过期的话，该怎么办呢？目前来说我们没有提供验证令牌的接口，下面我们就在 ginger/app/api/v1/token.py 中添加一个<strong>获取令牌信息的接口</strong>：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130804.jpg" alt="image-20190109175557277"></p>
+<p>在 ginger/app/validators/forms.py 中：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-11-130805.jpg" alt="image-20190118122536706"></p>
+<p>注意点：</p>
+<ol>
+<li><p>设计路由，该接口不需要登录保护</p>
+</li>
+<li><p><code>token</code>从<code>HTTP body</code>里获取，所以需要表单验证</p>
+</li>
+<li><p>获取 <code>token</code></p>
+</li>
+<li><p>反序列化 <code>token</code>，进行<strong>有效期验证报错</strong>和<strong>token 合法性验证报错</strong></p>
+</li>
+<li><p>将时间<code>token</code>时间戳格式的生成时间<code>create_at</code>、过期时间<code>expire_in</code>转为可视化的时间，使用 <code>time</code>模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可视化时间 = time.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, time.localtime(时间戳))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>data[1][&#39;iat&#39;]</code>是序列化时自动添加进去的生成时间</li>
+<li><code>data[1][&#39;exp&#39;]</code>是序列化时自动添加进去的有效时间</li>
+</ul>
+</li>
+<li><p>将返回信息打包到字典</p>
+</li>
+<li><p>返回序列化后的字典</p>
+</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/04/12/Python%20Flask%20%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%20RESTful%20API/%E7%AC%AC9%E7%AB%A0%20%E5%AE%9E%E7%8E%B0%E9%83%A8%E5%88%86%E9%B1%BC%E4%B9%A6%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD/">https://www.klause.cn/2019/04/12/Python%20Flask%20%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%20RESTful%20API/%E7%AC%AC9%E7%AB%A0%20%E5%AE%9E%E7%8E%B0%E9%83%A8%E5%88%86%E9%B1%BC%E4%B9%A6%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/flask/">
+                                    <span class="chip bg-color">flask</span>
+                                </a>
+                            
+                                <a href="/tags/restful/">
+                                    <span class="chip bg-color">restful</span>
+                                </a>
+                            
+                                <a href="/tags/api/">
+                                    <span class="chip bg-color">api</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-04-12T20-30-59',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/12/Python%20Flask%20%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%20RESTful%20API/%E7%AC%AC6%E7%AB%A0%20Token%E4%B8%8EHTTPBasic%E9%AA%8C%E8%AF%81%20%E2%80%94%E2%80%94%20%E7%94%A8%E4%BB%A4%E7%89%8C%E6%9D%A5%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="第6章 Token与HTTPBasic验证 —— 用令牌来管理用户">
+                        
+                        <span class="card-title">第6章 Token与HTTPBasic验证 —— 用令牌来管理用户</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ginger/" class="post-category">
+                                    ginger
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                    <a href="/tags/restful/">
+                        <span class="chip bg-color">restful</span>
+                    </a>
+                    
+                    <a href="/tags/api/">
+                        <span class="chip bg-color">api</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/12/Python%20Flask%20%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%20RESTful%20API/%E7%AC%AC7%E7%AB%A0%20%E6%A8%A1%E5%9E%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="第7章 模型对象的序列化">
+                        
+                        <span class="card-title">第7章 模型对象的序列化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ginger/" class="post-category">
+                                    ginger
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                    <a href="/tags/restful/">
+                        <span class="chip bg-color">restful</span>
+                    </a>
+                    
+                    <a href="/tags/api/">
+                        <span class="chip bg-color">api</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

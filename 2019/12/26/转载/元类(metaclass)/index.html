@@ -1,0 +1,1329 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="元类（metaclass）, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>元类（metaclass） | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">元类（metaclass）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/metaclass/">
+                                <span class="chip bg-color">metaclass</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%85%83%E7%B1%BB/">
+                                <span class="chip bg-color">元类</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Tech/" class="post-category">
+                                Tech
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-26
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="元类-metaclass"><a href="#元类-metaclass" class="headerlink" title="元类(metaclass)"></a>元类(metaclass)</h1><blockquote>
+<p>译注：这是一篇在 Stack overflow 上很热的帖子。<br>    提问者自称已经掌握了有关Python OOP编程中的各种概念，但始终觉得元类(metaclass)难以理解。<br>    他知道这肯定和自省有关，但仍然觉得不太明白，希望大家可以给出一些实际的例子和代码片段以帮助理解，以及在什么情况下需要进行元编程。<br>    于是e-satis同学给出了神一般的回复，该回复获得了985点的赞同点数，更有人评论说这段回复应该加入到Python的官方文档中去。<br>    而e-satis同学本人在 Stack Overflow 中的声望积分也高达64271分。<br>    以下就是这篇精彩的回复（提示：非常长）</p>
+</blockquote>
+<h2 id="类也是对象"><a href="#类也是对象" class="headerlink" title="类也是对象"></a>类也是对象</h2><p>​    在理解元类之前，你需要先掌握Python中的类。<br>​    Python中类的概念借鉴于 Smalltalk ，这显得有些奇特。<br>​    在大多数编程语言中，类就是一组用来描述如何生成一个对象的代码段。<br>​    在Python中这一点仍然成立：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">ObjectCreator</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">…       <span class="keyword">pass</span></span><br><span class="line">…</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_object = ObjectCreator()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(my_object)</span><br><span class="line">&lt;__main__.ObjectCreator <span class="built_in">object</span> at <span class="number">0x8974f2c</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是，Python中的类还远不止如此。类同样也是一种对象。是的，没错，就是对象。<br>    只要你使用关键字 class, Python解释器在执行的时候就会创建一个对象。<br>    下面的代码段：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">ObjectCreator</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">…       <span class="keyword">pass</span></span><br><span class="line">…</span><br></pre></td></tr></table></figure>
+
+<p>将在内存中创建一个对象，名字就是ObjectCreator。<br>    这个对象（类）自身拥有创建对象（类实例）的能力，而这就是为什么它是一个类的原因。<br>    但是，它的本质仍然是一个对象，于是乎你可以对它做如下的操作：</p>
+<ol>
+<li>你可以将它赋值给一个变量</li>
+<li>你可以拷贝它</li>
+<li>你可以为它增加属性</li>
+<li>你可以将它作为函数参数进行传递</li>
+</ol>
+<p>下面是示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(ObjectCreator) <span class="comment"># 你可以打印一个类，因为它其实也是一个对象</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">ObjectCreator</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">def</span> <span class="title">echo</span>(<span class="params">o</span>):</span></span><br><span class="line">…       print(o)</span><br><span class="line">…</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>echo(ObjectCreator) <span class="comment"># 你可以将类做为参数传给函数</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">ObjectCreator</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params"><span class="built_in">hasattr</span>(<span class="params">ObjectCreator, <span class="string">&#x27;new_attribute&#x27;</span></span>)</span>)</span></span><br><span class="line"><span class="class"><span class="title">False</span></span></span><br><span class="line">&gt;&gt;&gt; ObjectCreator.new_attribute = &#x27;foo&#x27; #  你可以为类增加属性</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="built_in">hasattr</span>(ObjectCreator, <span class="string">&#x27;new_attribute&#x27;</span>))</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(ObjectCreator.new_attribute)</span><br><span class="line">foo</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ObjectCreatorMirror = ObjectCreator <span class="comment"># 你可以将类赋值给一个变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(ObjectCreatorMirror())</span><br><span class="line">&lt;__main__.ObjectCreator <span class="built_in">object</span> at <span class="number">0x8997b4c</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态地创建类"><a href="#动态地创建类" class="headerlink" title="动态地创建类"></a>动态地创建类</h2><p>​    因为类也是对象，你可以在运行时动态的创建它们，就像其他任何对象一样。<br>​    首先，你可以在函数中创建类，使用 class 关键字即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">choose_class</span>(<span class="params">name</span>):</span></span><br><span class="line">…       <span class="keyword">if</span> name == <span class="string">&#x27;foo&#x27;</span>:</span><br><span class="line">…           <span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">…               <span class="keyword">pass</span></span><br><span class="line">…           <span class="keyword">return</span> Foo <span class="comment"># 返回的是类，不是类的实例</span></span><br><span class="line">…       <span class="keyword">else</span>:</span><br><span class="line">…           <span class="class"><span class="keyword">class</span> <span class="title">Bar</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">…               <span class="keyword">pass</span></span><br><span class="line">…           <span class="keyword">return</span> Bar</span><br><span class="line">…</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>MyClass = choose_class(<span class="string">&#x27;foo&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(MyClass) <span class="comment"># 函数返回的是类，不是类的实例</span></span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>&#x27;.<span class="title">Foo</span>&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params">MyClass(<span class="params"></span>)</span>) # 你可以通过这个类创建类实例，也就是对象</span></span><br><span class="line"><span class="class">&lt;<span class="title">__main__</span>.<span class="title">Foo</span> <span class="title">object</span> <span class="title">at</span> 0<span class="title">x89c6d4c</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但这还不够动态，因为你仍然需要自己编写整个类的代码。<br>由于类也是对象，所以它们必须是通过什么东西来生成的才对。<br>当你使用 class 关键字时，Python解释器自动创建这个对象。<br>但就和Python中的大多数事情一样，Python仍然提供给你手动处理的方法。<br>还记得内建函数 type 吗？这个古老但强大的函数能够让你知道一个对象的类型是什么，就像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="built_in">type</span>(<span class="number">1</span>))</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;int&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="built_in">type</span>(<span class="string">&quot;1&quot;</span>))</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="built_in">type</span>(ObjectCreator))</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;type&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="built_in">type</span>(ObjectCreator()))</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">ObjectCreator</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>这里， type 有一种完全不同的能力，它也能动态的创建类。 type 可以接受一个类的描述作为参数，然后返回一个类。<br>（我知道，根据传入参数的不同，同一个函数拥有两种完全不同的用法是一件很傻的事情，但这在Python中是为了保持向后兼容性）</p>
+<p>type 可以像这样工作：<br>type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)<br>比如下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">MyShinyClass</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">…       <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>可以手动像这样创建：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>MyShinyClass = <span class="built_in">type</span>(<span class="string">&#x27;MyShinyClass&#x27;</span>, (), &#123;&#125;) <span class="comment"># 返回一个类对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(MyShinyClass)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">MyShinyClass</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params">MyShinyClass(<span class="params"></span>)</span>) #  创建一个该类的实例</span></span><br><span class="line"><span class="class">&lt;<span class="title">__main__</span>.<span class="title">MyShinyClass</span> <span class="title">object</span> <span class="title">at</span> 0<span class="title">x8997cec</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>你会发现我们使用“MyShinyClass”作为类名，并且也可以把它当做一个变量来作为类的引用。<br>类和变量是不同的，这里没有任何理由把事情弄的复杂。<br>type 接受一个字典来为类定义属性，因此</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">…       bar = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>可以翻译为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>Foo = <span class="built_in">type</span>(<span class="string">&#x27;Foo&#x27;</span>, (), &#123;<span class="string">&#x27;bar&#x27;</span>:<span class="literal">True</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>并且可以将Foo当成一个普通的类一样使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(Foo)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">Foo</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params">Foo.bar</span>)</span></span><br><span class="line"><span class="class"><span class="title">True</span></span></span><br><span class="line">&gt;&gt;&gt; f = Foo()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(f)</span><br><span class="line">&lt;__main__.Foo <span class="built_in">object</span> at <span class="number">0x8a9b84c</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(f.bar)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，你可以向这个类继承，所以，如下的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">FooChild</span>(<span class="params">Foo</span>):</span></span><br><span class="line">…       <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>就可以写成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>FooChild = <span class="built_in">type</span>(<span class="string">&#x27;FooChild&#x27;</span>, (Foo,),&#123;&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(FooChild)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">FooChild</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">print</span>(<span class="params">FooChild.bar</span>) # <span class="title">bar</span>属性是由<span class="title">Foo</span>继承而来</span></span><br><span class="line"><span class="class"><span class="title">True</span></span></span><br></pre></td></tr></table></figure>
+
+<p>最终你会希望为你的类增加方法。只需要定义一个有着恰当签名的函数并将其作为属性赋值就可以了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">echo_bar</span>(<span class="params">self</span>):</span></span><br><span class="line">…       print(self.bar)</span><br><span class="line">…</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>FooChild = <span class="built_in">type</span>(<span class="string">&#x27;FooChild&#x27;</span>, (Foo,), &#123;<span class="string">&#x27;echo_bar&#x27;</span>: echo_bar&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hasattr</span>(Foo, <span class="string">&#x27;echo_bar&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">hasattr</span>(FooChild, <span class="string">&#x27;echo_bar&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_foo = FooChild()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_foo.echo_bar()</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>你可以看到，在Python中，类也是对象，你可以动态的创建类。<br>这就是当你使用关键字 class 时Python在幕后做的事情，而这就是通过元类来实现的。</p>
+<h2 id="到底什么是元类（终于到主题了）"><a href="#到底什么是元类（终于到主题了）" class="headerlink" title="到底什么是元类（终于到主题了）"></a>到底什么是元类（终于到主题了）</h2><p>元类就是用来创建类的“东西”。<br>你创建类就是为了创建类的实例对象，不是吗？<br>但是我们已经学习到了Python中的类也是对象。<br>好吧，元类就是用来创建这些类（对象）的，元类就是类的类，你可以这样理解 为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass = MetaClass()</span><br><span class="line">MyObject = MyClass()</span><br></pre></td></tr></table></figure>
+
+<p>你已经看到了 type 可以让你像这样做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyClass = <span class="built_in">type</span>(<span class="string">&#x27;MyClass&#x27;</span>, (), &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>这是因为函数 type 实际上是一个元类。<br>type 就是Python在背后用来创建所有类的元类。<br>现在你想知道那为什么 type 会全部采用小写形式而不是 Type 呢？<br>好吧，我猜这是为了和 str 保持一致性， str 是用来创建字符串对象的类，而 int 是用来创建整数对象的类。<br>type 就是创建类对象的类。你可以通过检查 <strong>class</strong> 属性来看到这一点。<br>Python中所有的东西，注意，我是指所有的东西——都是对象。<br>这包括整数、字符串、函数以及类。它们全部都是对象，而且它们都是从一个类创建而来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>age = <span class="number">35</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;int&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">&#x27;bob&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>name.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span> <span class="keyword">pass</span></span><br><span class="line">&gt;&gt;&gt;foo.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;function&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Bar</span>(<span class="params"><span class="built_in">object</span></span>):</span> <span class="keyword">pass</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = Bar()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.__class__</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">Bar</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code>现在，对于任何一个 __class__ 的 __class__ 属性又是什么呢？</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.__class__.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;type&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>age.__class__.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;type&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo.__class__.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;type&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.__class__.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;type&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>因此，元类就是创建类这种对象的东西。<br>如果你喜欢的话，可以把元类称为“类工厂”（不要和工厂类搞混了:D）<br>type 就是Python的内建元类，当然了，你也可以创建自己的元类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Something</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">  ...     <span class="keyword">pass</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Something</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">Something</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span>(<span class="params">Something</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">type</span> &#x27;<span class="title">type</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span>(<span class="params"><span class="built_in">int</span></span>) # 说明 <span class="title">int</span> 类是用 <span class="title">type</span> 创建的</span></span><br><span class="line"><span class="class">&lt;<span class="title">type</span> &#x27;<span class="title">type</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&gt;&gt;&gt; <span class="title">type</span>(<span class="params"><span class="built_in">type</span></span>) # 说明 <span class="title">type</span> 类也是用 <span class="title">type</span> 创建的</span></span><br><span class="line"><span class="class">&lt;<span class="title">type</span> &#x27;<span class="title">type</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="metaclass-属性"><a href="#metaclass-属性" class="headerlink" title="metaclass 属性"></a><strong>metaclass</strong> 属性</h2><p>你可以在写一个类的时候为其添加 <strong>metaclass</strong> 属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># py2.x 的元类继承写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">  __metaclass__ = something…</span><br><span class="line">  […]</span><br><span class="line"></span><br><span class="line">  <span class="comment"># py3.x 的元类继承写法</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span>, metaclass = something…</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你这么做了，Python就会用元类来创建类Foo。小心点，这里面有些技巧。<br>你首先写下 class Foo(object)，但是类对象Foo还没有在内存中创建。<br>Python会在类的定义中寻找 <strong>metaclass</strong> 属性，如果找到了，Python就会用它来创建类Foo，如果没有找到，就会用内建的 type 来创建这个类。<br>把下面这段话反复读几次。当你写如下代码时:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params">Bar</span>):</span></span><br><span class="line">  <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>Python做了如下的操作：<br>Foo中有 <strong>metaclass</strong> 这个属性吗？如果是，Python会在内存中通过 <strong>metaclass</strong> 创建一个名字为Foo的类对象（我说的是类对象，请紧跟我的思路）。<br>如果Python没有找到 <strong>metaclass</strong> ，它会继续在Bar（父类）中寻找 <strong>metaclass</strong> 属性，并尝试做和前面同样的操作。<br>如果Python在任何父类中都找不到 <strong>metaclass</strong> ，它就会在模块层次中去寻找 <strong>metaclass</strong> ，并尝试做同样的操作。<br>如果还是找不到 <strong>metaclass</strong> ，Python就会用内置的 type 来创建这个类对象。</p>
+<p>现在的问题就是，你可以在 <strong>metaclass</strong> 中放置些什么代码呢？答案就是：可以创建一个类的东西。<br>那么什么可以用来创建一个类呢？ type ，或者任何使用到 type 或者子类化 type 的东东都可以。</p>
+<h2 id="自定义元类"><a href="#自定义元类" class="headerlink" title="自定义元类"></a>自定义元类</h2><p>元类的主要目的就是为了当创建类时能够自定义地改变类。<br>通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。<br>假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。<br>有好几种方法可以办到，但其中一种就是通过在模块级别设定 <strong>metaclass</strong> 。<br>采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
+<p>幸运的是， <strong>metaclass</strong> 实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个 class ，画画图理解下，这很有帮助）。<br>所以，我们这里就先以一个简单的函数作为例子开始。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 元类会自动将你通常传给‘type’的参数作为自己的参数传入</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upper_attr</span>(<span class="params">future_class_name, future_class_parents, future_class_attr</span>):</span></span><br><span class="line">  <span class="string">&#x27;&#x27;&#x27;返回一个类对象，将属性都转为大写形式&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 选择所有不以&#x27;__&#x27;开头的属性</span></span><br><span class="line">  attrs = ((name, value) <span class="keyword">for</span> name, value <span class="keyword">in</span> future_class_attr.items() <span class="keyword">if</span> <span class="keyword">not</span> name.startswith(<span class="string">&#x27;__&#x27;</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 将它们转为大写形式</span></span><br><span class="line">  uppercase_attr = <span class="built_in">dict</span>((name.upper(), value) <span class="keyword">for</span> name, value <span class="keyword">in</span> attrs)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 通过&#x27;type&#x27;来做类对象的创建</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">type</span>(future_class_name, future_class_parents, uppercase_attr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这会作用到这个模块中的所有类</span></span><br><span class="line">__metaclass__ = upper_attr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意：这里绝不能继承 object 类。</span></span><br><span class="line"><span class="comment"># 否则按 __metaclass__ 的查找顺序会去查找 父类object 的 __metaclass__ ， 再去查找 父类object 的模块的 __metaclass__ 。那就导致这模块的 __metaclass__ 失效。</span></span><br><span class="line"><span class="comment"># 另外，发现在 py2.6、py2.7 中这样可运行成功。但 py3.x 失败，估计是不再允许作用于整个模块的元类。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>():</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 我们也可以只在这里定义 __metaclass__ ，这样就只会作用于这个类中</span></span><br><span class="line">  bar = <span class="string">&#x27;bip&#x27;</span></span><br><span class="line"></span><br><span class="line">  print( <span class="built_in">hasattr</span>(Foo, <span class="string">&#x27;bar&#x27;</span>) ) <span class="comment"># 输出: False</span></span><br><span class="line">  print( <span class="built_in">hasattr</span>(Foo, <span class="string">&#x27;BAR&#x27;</span>) ) <span class="comment"># 输出:True</span></span><br><span class="line"></span><br><span class="line">  f = Foo()</span><br><span class="line">  print( f.BAR ) <span class="comment"># 输出:&#x27;bip&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>现在让我们再做一次，这一次用一个真正的 class 来当做元类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请记住，&#x27;type&#x27;实际上是一个类，就像&#x27;str&#x27;和&#x27;int&#x27;一样。 所以，你可以从type继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpperAttrMetaClass</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># __new__ 是在 __init__ 之前被调用的特殊方法</span></span><br><span class="line">  <span class="comment"># __new__ 是用来创建对象并返回之的方法</span></span><br><span class="line">  <span class="comment"># 而 __init__ 只是用来将传入的参数初始化给对象</span></span><br><span class="line">  <span class="comment"># 你很少用到 __new__ ，除非你希望能够控制对象的创建</span></span><br><span class="line">  <span class="comment"># 这里，创建的对象是类，我们希望能够自定义它，所以我们这里改写 __new__</span></span><br><span class="line">  <span class="comment"># 如果你希望的话，你也可以在 __init__ 中做些事情</span></span><br><span class="line">  <span class="comment"># 还有一些高级的用法会涉及到改写__call__特殊方法，但是我们这里不用</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">upperattr_metaclass, future_class_name, future_class_parents, future_class_attr</span>):</span></span><br><span class="line">    attrs = ((name, value) <span class="keyword">for</span> name, value <span class="keyword">in</span> future_class_attr.items() <span class="keyword">if</span> <span class="keyword">not</span> name.startswith(<span class="string">&#x27;__&#x27;</span>))</span><br><span class="line">    uppercase_attr = <span class="built_in">dict</span>((name.upper(), value) <span class="keyword">for</span> name, value <span class="keyword">in</span> attrs)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">type</span>(future_class_name, future_class_parents, uppercase_attr)</span><br><span class="line">  <span class="comment"># 这写法只能供本类的 __metaclass__ 来用， 如果是子类则不生效。</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这种方式其实不是OOP。我们直接调用了 type ，而且我们没有改写父类的 <strong>new</strong> 方法。现在让我们这样去处理:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpperAttrMetaclass</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">upperattr_metaclass, future_class_name, future_class_parents, future_class_attr</span>):</span></span><br><span class="line">    attrs = ((name, value) <span class="keyword">for</span> name, value <span class="keyword">in</span> future_class_attr.items() <span class="keyword">if</span> <span class="keyword">not</span> name.startswith(<span class="string">&#x27;__&#x27;</span>))</span><br><span class="line">    uppercase_attr = <span class="built_in">dict</span>((name.upper(), value) <span class="keyword">for</span> name, value <span class="keyword">in</span> attrs)</span><br><span class="line">    <span class="comment"># 复用type.__new__方法</span></span><br><span class="line">    <span class="comment"># 这就是基本的OOP编程，没什么魔法</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">type</span>.__new__(upperattr_metaclass, future_class_name, future_class_parents, uppercase_attr)</span><br><span class="line">  <span class="comment"># 这写法即使是子类也会生效。</span></span><br></pre></td></tr></table></figure>
+<p>你可能已经注意到了有个额外的参数 upperattr_metaclass ，这并没有什么特别的。<br>类方法的第一个参数总是表示当前的实例，就像在普通的类方法中的 self 参数一样。<br>当然了，为了清晰起见，这里的名字我起的比较长。但是就像 self 一样，所有的参数都有它们的传统名称。<br>因此，在真实的产品代码中一个元类应该是像这样的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpperAttrMetaclass</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, dct</span>):</span></span><br><span class="line">    attrs = ((name, value) <span class="keyword">for</span> name, value <span class="keyword">in</span> dct.items() <span class="keyword">if</span> <span class="keyword">not</span> name.startswith(<span class="string">&#x27;__&#x27;</span>)</span><br><span class="line">             uppercase_attr  = <span class="built_in">dict</span>((name.upper(), value) <span class="keyword">for</span> name, value <span class="keyword">in</span> attrs)</span><br><span class="line">             <span class="keyword">return</span> <span class="built_in">type</span>.__new__(cls, name, bases, uppercase_attr)</span><br></pre></td></tr></table></figure>
+<p>如果使用 super 方法的话，我们还可以使它变得更清晰一些，这会缓解继承<br>（是的，你可以拥有元类，从元类继承，从 type 继承）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpperAttrMetaclass</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># cls: 将要创建的类，类似与self，但是self指向的是instance，而这里cls指向的是class</span></span><br><span class="line">  <span class="comment"># name: 类的名字，也就是我们通常用类名.__name__获取的。</span></span><br><span class="line">  <span class="comment"># bases: 基类的元组</span></span><br><span class="line">  <span class="comment"># attrs: 属性的dict。dict的内容可以是变量(类属性），也可以是函数（类方法）。</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, name, bases, dct</span>):</span></span><br><span class="line">    attrs = ((name, value) <span class="keyword">for</span> name, value <span class="keyword">in</span> dct.items() <span class="keyword">if</span> <span class="keyword">not</span> name.startswith(<span class="string">&#x27;__&#x27;</span>))</span><br><span class="line">    uppercase_attr = <span class="built_in">dict</span>((name.upper(), value) <span class="keyword">for</span> name, value <span class="keyword">in</span> attrs)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">super</span>(UpperAttrMetaclass, cls).__new__(cls, name, bases, uppercase_attr)</span><br></pre></td></tr></table></figure>
+<p>就是这样，除此之外，关于元类真的没有别的可说的了。<br>使用到元类的代码比较复杂，这背后的原因倒并不是因为元类本身，而是因为你通常会使用元类去做一些晦涩的事情，依赖于自省，控制继承等等。<br>确实，用元类来搞些“黑暗魔法”是特别有用的，因而会搞出些复杂的东西来。<br>但就元类本身而言，它们其实是很简单的：</p>
+<ol>
+<li>  拦截类的创建</li>
+<li>  修改类</li>
+<li>  返回修改之后的类</li>
+</ol>
+<h2 id="为什么要用-metaclass-类而不是函数"><a href="#为什么要用-metaclass-类而不是函数" class="headerlink" title="为什么要用 metaclass 类而不是函数?"></a>为什么要用 metaclass 类而不是函数?</h2><p>由于 <strong>metaclass</strong> 可以接受任何可调用的对象，那为何还要使用类呢，因为很显然使用类会更加复杂啊？这里有好几个原因：</p>
+<ol>
+<li>意图会更加清晰。当你读到 UpperAttrMetaclass(type) 时，你知道接下来要发生什么。</li>
+<li>你可以使用OOP编程。元类可以从元类中继承而来，改写父类的方法。元类甚至还可以使用元类。</li>
+<li>你可以把代码组织的更好。当你使用元类的时候肯定不会是像我上面举的这种简单场景，通常都是针对比较复杂的问题。将多个方法归总到一个类中会很有帮助，也会使得代码更容易阅读。</li>
+<li>你可以使用 <strong>new</strong>, <strong>init</strong> 以及 <strong>call</strong> 这样的特殊方法。它们能帮你处理不同的任务。就算通常你可以把所有的东西都在 <strong>new</strong> 里处理掉，有些人还是觉得用 <strong>init</strong> 更舒服些。</li>
+<li>哇哦，这东西的名字是 metaclass ，肯定非善类，我要小心！</li>
+</ol>
+<p>究竟为什么要使用元类？</p>
+<p>现在回到我们的大主题上来，究竟是为什么你会去使用这样一种容易出错且晦涩的特性？好吧，一般来说，你根本就用不上它：</p>
+<blockquote>
+<p>“元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。”  —— Python界的领袖 Tim Peters</p>
+</blockquote>
+<p>元类的主要用途是创建API。一个典型的例子是 Django ORM 。它允许你像这样定义：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">  name = models.CharField(max_length=<span class="number">30</span>)</span><br><span class="line">  age = models.IntegerField()</span><br></pre></td></tr></table></figure>
+<p>但是如果你像这样做的话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">guy  = Person(name=<span class="string">&#x27;bob&#x27;</span>, age=<span class="string">&#x27;35&#x27;</span>)</span><br><span class="line">print(guy.age)</span><br></pre></td></tr></table></figure>
+<p>这并不会返回一个 IntegerField 对象，而是会返回一个 int ，甚至可以直接从数据库中取出数据。<br>这是有可能的，因为 models.Model 定义了 <strong>metaclass</strong> ， 并且使用了一些魔法能够将你刚刚定义的简单的Person类转变成对数据库的一个复杂hook。<br>Django框架将这些看起来很复杂的东西通过暴露出一个简单的使用元类的API将其化简，通过这个API重新创建代码，在背后完成真正的工作。</p>
+<p>结语<br>首先，你知道了类其实是能够创建出类实例的对象。<br>好吧，事实上，类本身也是实例，当然，它们是元类的实例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="class"><span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">object</span></span>):</span> <span class="keyword">pass</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">id</span>(Foo)</span><br></pre></td></tr></table></figure>
+<p>Python中的一切都是对象，它们要么是类的实例，要么是元类的实例，除了 type 。<br>type 实际上是它自己的元类，在纯Python环境中这可不是你能够做到的，这是通过在实现层面耍一些小手段做到的。<br>其次，元类是很复杂的。对于非常简单的类，你可能不希望通过使用元类来对类做修改。<br>你可以通过其他两种技术来修改类：</p>
+<ol>
+<li><code>Monkey patching</code></li>
+<li><code>class decorators</code></li>
+</ol>
+<p>当你需要动态修改类时，99%的时间里你最好使用上面这两种技术。<br>当然了，其实在99%的时间里你根本就不需要动态修改类 :D</p>
+<h2 id="范例-使用元类实现单例"><a href="#范例-使用元类实现单例" class="headerlink" title="范例(使用元类实现单例)"></a>范例(使用元类实现单例)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="comment"># 每次 new MyClass类 时都会执行， 且首参数 cls 是 MyClass类 而不是 MyClass类实例(因为这是元类)。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">cls, *args, **kw</span>):</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(cls, <span class="string">&#x27;_instance&#x27;</span>):</span><br><span class="line">            cls._instance = <span class="built_in">super</span>(Singleton, cls).__call__(*args, **kw)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br><span class="line"></span><br><span class="line"><span class="comment"># py2.x 的元类继承写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    __metaclass__ = Singleton</span><br><span class="line"></span><br><span class="line"><span class="comment"># py3.x 的元类继承写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>(<span class="params"><span class="built_in">object</span>, metaclass = Singleton</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>参考地址：<a target="_blank" rel="noopener" href="https://github.com/Holemar/notes/blob/master/01.Python/1.%E5%9F%BA%E7%A1%80/1.6.1.metaclass(%E5%85%83%E7%B1%BB).py">https://github.com/Holemar/notes/blob/master/01.Python/1.%E5%9F%BA%E7%A1%80/1.6.1.metaclass(%E5%85%83%E7%B1%BB).py</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/12/26/%E8%BD%AC%E8%BD%BD/%E5%85%83%E7%B1%BB(metaclass)/">https://www.klause.cn/2019/12/26/%E8%BD%AC%E8%BD%BD/%E5%85%83%E7%B1%BB(metaclass)/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/metaclass/">
+                                    <span class="chip bg-color">metaclass</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%85%83%E7%B1%BB/">
+                                    <span class="chip bg-color">元类</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-12-26T16-32-27',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/01/16/Java/Java%20%E6%89%93%E5%8C%85%20JAR/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="Java 打包 JAR">
+                        
+                        <span class="card-title">Java 打包 JAR</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech/" class="post-category">
+                                    Tech
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/jar/">
+                        <span class="chip bg-color">jar</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%89%93%E5%8C%85/">
+                        <span class="chip bg-color">打包</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/12/26/Redis/Redis.zadd%20%E5%8F%82%E6%95%B0%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="Redis.zadd 参数顺序问题">
+                        
+                        <span class="card-title">Redis.zadd 参数顺序问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Tech/" class="post-category">
+                                    Tech
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/zadd/">
+                        <span class="chip bg-color">zadd</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

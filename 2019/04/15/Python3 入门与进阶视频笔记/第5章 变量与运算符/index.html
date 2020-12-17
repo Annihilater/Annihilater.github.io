@@ -1,0 +1,1532 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="第5章 变量与运算符, 湮灭星空,博客,Python,后端">
+    <meta name="description" content="天下寥寥，苍生涂涂，诸子百家，唯我纵横">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>第5章 变量与运算符 | 湮灭星空</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">湮灭星空</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">湮灭星空</div>
+        <div class="logo-desc">
+            
+            天下寥寥，苍生涂涂，诸子百家，唯我纵横
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/Annihilater" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Follow Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/Annihilater" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Follow Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">第5章 变量与运算符</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                入门与进阶
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-04-15
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2019-12-06
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>本章详细讲解变量的意义与七种运算符，并对每一种运算符的扩展做出详细的讲解。</p>
+<a id="more"></a>
+
+<h3 id="5-1-什么是变量"><a href="#5-1-什么是变量" class="headerlink" title="5-1 什么是变量"></a>5-1 什么是变量</h3><p>变量命名的可读性要强！变量在 <code>Python</code>里就是一个名字。</p>
+<p><strong><code>Python</code>的变量是不需要定义的。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<p>上述这种写法读作将1赋值给变量 a，并不是定义变量 a。</p>
+<h3 id="5-2-变量的命名规则"><a href="#5-2-变量的命名规则" class="headerlink" title="5-2 变量的命名规则"></a>5-2 变量的命名规则</h3><ul>
+<li>变量命名只能使用<strong>数字</strong>、<strong>字母</strong>、<strong>下划线</strong>；</li>
+<li><strong>首字符</strong>不能为数字；</li>
+<li><strong>系统关键字</strong>不能用在变量名中；（系统关键字被称为保留关键字）</li>
+<li><strong>变量名</strong>是区分大小写的；</li>
+<li><code>Python</code>的变量是没有类型限制的，任何类型都可以赋值给变量，是 <code>Python</code> 作为动态语言的特性之一。</li>
+</ul>
+<p>有趣的现象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">150</span>]: <span class="built_in">type</span> = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">151</span>]: <span class="built_in">type</span></span><br><span class="line">Out[<span class="number">151</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">152</span>]: <span class="built_in">type</span>(<span class="number">1</span>)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-<span class="built_in">input</span>-<span class="number">152</span>-a1aa052b5b77&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">----&gt; 1 type(1)</span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;int&#x27;</span> <span class="built_in">object</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="built_in">callable</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-3-值类型与引用类型"><a href="#5-3-值类型与引用类型" class="headerlink" title="5-3 值类型与引用类型"></a>5-3 值类型与引用类型</h3><h4 id="值类型（不可变）"><a href="#值类型（不可变）" class="headerlink" title="值类型（不可变）"></a>值类型（不可变）</h4><ul>
+<li><code>int</code>、<code>str</code>、<code>tuple</code></li>
+</ul>
+<h4 id="引用类型（可变）"><a href="#引用类型（可变）" class="headerlink" title="引用类型（可变）"></a>引用类型（可变）</h4><ul>
+<li><code>list</code>、<code>set</code>、<code>dict</code></li>
+</ul>
+<ul>
+<li><p>现象一</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">141</span>]: a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">142</span>]: b = a</span><br><span class="line"></span><br><span class="line">In [<span class="number">143</span>]: a = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">144</span>]: b</span><br><span class="line">Out[<span class="number">144</span>]: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>可以用下图解释上述过程：<img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144412.jpg" alt="image-20181023180558313"><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144414.jpg" alt="image-20181023180805178"></p>
+</li>
+<li><p>现象二</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">145</span>]: a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">146</span>]: b = a</span><br><span class="line"></span><br><span class="line">In [<span class="number">147</span>]: a[<span class="number">0</span>] = <span class="string">&#x27;1&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">148</span>]: print(a)</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">149</span>]: print(b)</span><br><span class="line">[<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>可以用下图解释上述过程：</p>
+<p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144415.jpg" alt="image-20181023181049824"><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144417.jpg" alt="image-20181023181136675"></p>
+</li>
+<li><p>现象三</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">153</span>]: a = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">154</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">154</span>]: <span class="number">4364305832</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">155</span>]: a = a + <span class="string">&#x27;python&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">156</span>]: a</span><br><span class="line">Out[<span class="number">156</span>]: <span class="string">&#x27;hellopython&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">157</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">157</span>]: <span class="number">4366761904</span></span><br></pre></td></tr></table></figure>
+
+<p>上述过程中两次 <code>a</code>的地址是不同的，可得出两个 <code>a</code>指向的是两个对象。</p>
+</li>
+</ul>
+<h4 id="类型区别"><a href="#类型区别" class="headerlink" title="类型区别"></a>类型区别</h4><p>不可改变类型（值类型）在需要更改变量内容的时候会抛弃原对象，指向新的对象；</p>
+<p>可变类型（引用类型）在更改变量内容的时候则是直接在原对象上修改。</p>
+<h3 id="5-4-列表的可变与元组的不可变"><a href="#5-4-列表的可变与元组的不可变" class="headerlink" title="5-4 列表的可变与元组的不可变"></a>5-4 列表的可变与元组的不可变</h3><blockquote>
+<p>小知识：</p>
+<ul>
+<li><code>id()</code>函数可以获取对象的内存地址；</li>
+<li>计算机内存地址是用十六进制来表示的。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">4410830024</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: <span class="built_in">hex</span>(<span class="built_in">id</span>(a))</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">&#x27;0x106e7ecc8&#x27;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="列表的可变"><a href="#列表的可变" class="headerlink" title="列表的可变"></a>列表的可变</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">5</span>]: a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">4410905608</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: a[<span class="number">0</span>] = <span class="string">&#x27;1&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: a</span><br><span class="line">Out[<span class="number">8</span>]: [<span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">9</span>]: <span class="number">4410905608</span></span><br></pre></td></tr></table></figure>
+
+<p>如以上过程所演示，列表在改变内部元素的时候，<strong>内存地址</strong>是没有改变的，也就是说变量名指向的是同一个对象，这就是列表的可变性。</p>
+<h4 id="元组的不可变"><a href="#元组的不可变" class="headerlink" title="元组的不可变"></a>元组的不可变</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">10</span>]: a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: a[<span class="number">0</span>] = <span class="string">&#x27;1&#x27;</span></span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-<span class="built_in">input</span>-<span class="number">11</span>-752cfe243606&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">----&gt; 1 a[0] = &#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">TypeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line">    </span><br><span class="line">In [<span class="number">13</span>]: a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">14</span>]: <span class="number">4379433360</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: a = (<span class="string">&#x27;1&#x27;</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">16</span>]: <span class="number">4381886936</span></span><br></pre></td></tr></table></figure>
+
+<p>上述过程表示元组的不可变。如果需要改变变量名必先抛弃原对象，重新指向新对象。</p>
+<h4 id="不可变类型的重要意义"><a href="#不可变类型的重要意义" class="headerlink" title="不可变类型的重要意义"></a>不可变类型的重要意义</h4><p>编码最重要的是要保证代码的稳定性，简单代码变量的可变不可变意义不大，因为都是自己随手写的，别人不可能来调用或者来修改代码的，但是问题是在一个复杂的项目里，我们不可能一个人把一个很复杂的项目都写完，必须是很多人共同来写代码。如果是共同来写代码的话就涉及到<strong>代码的调用</strong>，涉及到代码的调用，这些不可能改变的类型是有优势的，因为别人尝试修改不可改变的类型马上就会报错，根本不会让它运行，这就避免了一些隐藏的错误。</p>
+<p><strong>建议</strong>：能用不可改变的类型就用不可改变的类型。当然如果你需要动态改变组内部元素的话，还是用可变类型比较合适。</p>
+<h3 id="5-5-运算符号"><a href="#5-5-运算符号" class="headerlink" title="5-5 运算符号"></a>5-5 运算符号</h3><p><img src="https://klause-blog-pictures.oss-cn-shanghai.aliyuncs.com/2019-05-14-144419.jpg" alt="image-20181024040629777"></p>
+<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p>运算符来源与数学，是对数字的运算，所以以下这些运算符被称为<strong>算术运算符</strong>。</p>
+<h5 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h5><ul>
+<li><p><code>+</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">17</span>]: <span class="string">&#x27;hello&#x27;</span>+<span class="string">&#x27;world&#x27;</span></span><br><span class="line">Out[<span class="number">17</span>]: <span class="string">&#x27;helloworld&#x27;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h5><ul>
+<li><p><code>*</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">18</span>]: <span class="string">&#x27;hello&#x27;</span>*<span class="number">3</span></span><br><span class="line">Out[<span class="number">18</span>]: <span class="string">&#x27;hellohellohello&#x27;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h5><ul>
+<li><p><code>/</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">19</span>]: <span class="number">2</span>/<span class="number">2</span></span><br><span class="line">Out[<span class="number">19</span>]: <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">20</span>]: <span class="number">5</span>/<span class="number">2</span></span><br><span class="line">Out[<span class="number">20</span>]: <span class="number">2.5</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="整除取整"><a href="#整除取整" class="headerlink" title="整除取整"></a>整除取整</h5><ul>
+<li><p><code>//</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">21</span>]: <span class="number">5</span>//<span class="number">2</span></span><br><span class="line">Out[<span class="number">21</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="求余"><a href="#求余" class="headerlink" title="求余"></a>求余</h5><ul>
+<li><p><code>%</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">23</span>]: <span class="number">5</span>%<span class="number">2</span></span><br><span class="line">Out[<span class="number">23</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">24</span>]: <span class="number">9</span>%<span class="number">4</span></span><br><span class="line">Out[<span class="number">24</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">25</span>]: <span class="number">10</span>%<span class="number">4</span></span><br><span class="line">Out[<span class="number">25</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="次方"><a href="#次方" class="headerlink" title="次方"></a>次方</h5><ul>
+<li><p><code>**</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2的2次方</span></span><br><span class="line">In [<span class="number">26</span>]: <span class="number">2</span>**<span class="number">2</span></span><br><span class="line">Out[<span class="number">26</span>]: <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2的3次方</span></span><br><span class="line">In [<span class="number">27</span>]: <span class="number">2</span>**<span class="number">3</span></span><br><span class="line">Out[<span class="number">27</span>]: <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2的4次方</span></span><br><span class="line">In [<span class="number">28</span>]: <span class="number">2</span>**<span class="number">4</span></span><br><span class="line">Out[<span class="number">28</span>]: <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2的5次方</span></span><br><span class="line">In [<span class="number">29</span>]: <span class="number">2</span>**<span class="number">5</span></span><br><span class="line">Out[<span class="number">29</span>]: <span class="number">32</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<h3 id="5-6-赋值运算符"><a href="#5-6-赋值运算符" class="headerlink" title="5-6 赋值运算符"></a>5-6 赋值运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>简单的赋值运算符</td>
+<td>c = a + b 将 a + b 的运算结果赋值为 c</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>加法赋值运算符</td>
+<td>c += a 等效于 c = c + a</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>减法赋值运算符</td>
+<td>c -= a 等效于 c = c - a</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>乘法赋值运算符</td>
+<td>c *= a 等效于 c = c * a</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>除法赋值运算符</td>
+<td>c /= a 等效于 c = c / a</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>取模赋值运算符</td>
+<td>c %= a 等效于 c = c % a</td>
+</tr>
+<tr>
+<td>**=</td>
+<td>幂赋值运算符</td>
+<td>c **= a 等效于 c = c ** a</td>
+</tr>
+<tr>
+<td>//=</td>
+<td>取整除赋值运算符</td>
+<td>c //= a 等效于 c = c // a</td>
+</tr>
+</tbody></table>
+<h3 id="5-7-比较运算符"><a href="#5-7-比较运算符" class="headerlink" title="5-7 比较运算符"></a>5-7 比较运算符</h3><p><strong>不同类型的对象不能进行比较！</strong></p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==</td>
+<td>等于 - 比较对象是否相等</td>
+<td>(a == b) 返回 False。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于 - 比较两个对象是否不相等</td>
+<td>(a != b) 返回 true.</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于 - 比较两个对象是否不相等</td>
+<td>(a &lt;&gt; b) 返回 true。这个运算符类似 != 。</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于 - 返回x是否大于y</td>
+<td>(a &gt; b) 返回 False。</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于 - 返回x是否小于y。所有比较运算符返回1表示真，返回0表示假。这分别与特殊的变量True和False等价。</td>
+<td>(a &lt; b) 返回 true。</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于    - 返回x是否大于等于y。</td>
+<td>(a &gt;= b) 返回 False。</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于 -    返回x是否小于等于y。</td>
+<td>(a &lt;= b) 返回 true。</td>
+</tr>
+</tbody></table>
+<h3 id="5-8-不只是数字才能做比较运算"><a href="#5-8-不只是数字才能做比较运算" class="headerlink" title="5-8 不只是数字才能做比较运算"></a>5-8 不只是数字才能做比较运算</h3><p>不仅<code>number</code>可以做比较运算，<code>list</code>、<code>str</code>、<code>tuple</code>、<code>dict</code>等都是可以做比较的。</p>
+<ul>
+<li><p>比较 <code>str</code></p>
+<ul>
+<li><p>单个字符串进行比较的时候，是将字符串转化为 ASCII 码之后在进行比较的</p>
+<blockquote>
+<p>字符串转换成 ASCII 码使用 <code>ord()</code>函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">65</span>]: <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">Out[<span class="number">65</span>]: <span class="number">97</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">66</span>]: <span class="built_in">ord</span>(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">Out[<span class="number">66</span>]: <span class="number">98</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>多个字符串进行比较的时候，是将两组字符串按照索引位顺序取出单个字符进行索引比较的，直至得出比较结果</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">31</span>]: <span class="string">&#x27;a&#x27;</span> &gt; <span class="string">&#x27;b&#x27;</span></span><br><span class="line">Out[<span class="number">31</span>]: <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">In [<span class="number">36</span>]: <span class="string">&#x27;abc&#x27;</span> &lt; <span class="string">&#x27;def&#x27;</span></span><br><span class="line">Out[<span class="number">36</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">37</span>]: <span class="string">&#x27;abc&#x27;</span> &lt; <span class="string">&#x27;aef&#x27;</span></span><br><span class="line">Out[<span class="number">37</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">38</span>]: <span class="string">&#x27;abc&#x27;</span> &lt; <span class="string">&#x27;aaf&#x27;</span></span><br><span class="line">Out[<span class="number">38</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">39</span>]: <span class="string">&#x27;abc&#x27;</span> &lt; <span class="string">&#x27;abf&#x27;</span></span><br><span class="line">Out[<span class="number">39</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">40</span>]: <span class="string">&#x27;abc&#x27;</span> &lt; <span class="string">&#x27;abb&#x27;</span></span><br><span class="line">Out[<span class="number">40</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>比较 <code>list</code>、<code>tuple</code>、<code>dict</code>与比较 <code>str</code>是一样的</p>
+</li>
+</ul>
+<h3 id="5-9-逻辑运算符"><a href="#5-9-逻辑运算符" class="headerlink" title="5-9 逻辑运算符"></a>5-9 逻辑运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>逻辑表达式</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and</td>
+<td>x and y</td>
+<td>布尔”与” - 如果 x 为 False，x and y 返回 False，否则它返回 y 的计算值。</td>
+<td>(a and b) 返回 20。</td>
+</tr>
+<tr>
+<td>or</td>
+<td>x or y</td>
+<td>布尔”或”    - 如果 x 是非 0，它返回 x 的值，否则它返回 y 的计算值。</td>
+<td>(a or b) 返回 10。</td>
+</tr>
+<tr>
+<td>not</td>
+<td>not x</td>
+<td>布尔”非” - 如果 x 为 True，返回 False 。如果 x 为 False，它返回 True。</td>
+<td>not(a and b) 返回 False</td>
+</tr>
+</tbody></table>
+<p>有趣的现象之 <code>and</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 两个 True 对象，返回第二个 True 对象</span></span><br><span class="line">In [<span class="number">44</span>]: <span class="number">1</span> <span class="keyword">and</span> <span class="number">3</span></span><br><span class="line">Out[<span class="number">44</span>]: <span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: <span class="string">&#x27;a&#x27;</span> <span class="keyword">and</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">Out[<span class="number">45</span>]: <span class="string">&#x27;b&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: <span class="number">5</span> <span class="keyword">and</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">Out[<span class="number">46</span>]: <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 两个 False 对象，返回第一个 False 对象</span></span><br><span class="line">In [<span class="number">63</span>]: <span class="number">0</span> <span class="keyword">and</span> []</span><br><span class="line">Out[<span class="number">63</span>]: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">64</span>]: [] <span class="keyword">and</span> <span class="number">0</span></span><br><span class="line">Out[<span class="number">64</span>]: []</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 一个 True 对象和一个 False 对象，返回 False 对象</span></span><br><span class="line">In [<span class="number">67</span>]: <span class="number">1</span> <span class="keyword">and</span> <span class="number">0</span></span><br><span class="line">Out[<span class="number">67</span>]: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">68</span>]: <span class="number">0</span> <span class="keyword">and</span> <span class="number">1</span></span><br><span class="line">Out[<span class="number">68</span>]: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>有趣的现象之<code>or</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 两个 True 对象，返回第一个 True 对象</span></span><br><span class="line">In [<span class="number">52</span>]: <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">Out[<span class="number">52</span>]: <span class="string">&#x27;a&#x27;</span></span><br><span class="line">    </span><br><span class="line">In [<span class="number">54</span>]: <span class="number">1</span> <span class="keyword">or</span> <span class="number">3</span></span><br><span class="line">Out[<span class="number">54</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一个 True 和一个 False 对象，返回 True 对象</span></span><br><span class="line">In [<span class="number">53</span>]: <span class="string">&#x27;&#x27;</span> <span class="keyword">or</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">Out[<span class="number">53</span>]: <span class="string">&#x27;b&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">55</span>]: <span class="number">0</span> <span class="keyword">or</span> <span class="number">3</span></span><br><span class="line">Out[<span class="number">55</span>]: <span class="number">3</span></span><br><span class="line">    </span><br><span class="line">In [<span class="number">56</span>]: <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">Out[<span class="number">56</span>]: <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">57</span>]: <span class="number">1</span> <span class="keyword">or</span> o</span><br><span class="line">Out[<span class="number">57</span>]: <span class="number">1</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 两个 False 对象，返回第二个 False 对象</span></span><br><span class="line">In [<span class="number">61</span>]: <span class="number">0</span> <span class="keyword">or</span> []</span><br><span class="line">Out[<span class="number">61</span>]: []</span><br><span class="line"></span><br><span class="line">In [<span class="number">62</span>]: [] <span class="keyword">or</span> <span class="number">0</span></span><br><span class="line">Out[<span class="number">62</span>]: <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 <code>number</code>、<code>str</code>、<code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>中：空被认为是 <code>False</code>，非空被认为是 <code>True</code>。</p>
+<p>指的注意的现象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">59</span>]: <span class="keyword">not</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">Out[<span class="number">59</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x27;0&#x27;为非空字符串</span></span><br><span class="line">In [<span class="number">60</span>]: <span class="keyword">not</span> <span class="string">&#x27;0&#x27;</span></span><br><span class="line">Out[<span class="number">60</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-10-成员运算符"><a href="#5-10-成员运算符" class="headerlink" title="5-10 成员运算符"></a>5-10 成员运算符</h3><p>特点：</p>
+<ul>
+<li>判断一个元素是否在一组元素里</li>
+<li>返回值是 <code>bool</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>in</td>
+<td>如果在指定的序列中找到值返回 True，否则返回 False。</td>
+<td>x 在 y 序列中 , 如果 x 在 y 序列中返回 True。</td>
+</tr>
+<tr>
+<td>not in</td>
+<td>如果在指定的序列中没有找到值返回 True，否则返回 False。</td>
+<td>x 不在 y 序列中 , 如果 x 不在 y 序列中返回 True。</td>
+</tr>
+</tbody></table>
+<p><code>number</code>、<code>str</code>、<code>list</code>、<code>tuple</code>、<code>set</code>、<code>dict</code>都支持成员运算符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">69</span>]: a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># list</span></span><br><span class="line">In [<span class="number">70</span>]: a <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">Out[<span class="number">70</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">71</span>]: b = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">72</span>]: b <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Out[<span class="number">72</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">73</span>]: b <span class="keyword">not</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Out[<span class="number">73</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># str</span></span><br><span class="line">In [<span class="number">75</span>]: b <span class="keyword">in</span> <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">Out[<span class="number">75</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tuple</span></span><br><span class="line">In [<span class="number">76</span>]: b <span class="keyword">not</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">Out[<span class="number">76</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set</span></span><br><span class="line">In [<span class="number">77</span>]: b <span class="keyword">not</span> <span class="keyword">in</span> &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">Out[<span class="number">77</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>但是 <code>dict</code>的成员运算符比较特别，<code>dict</code>里的成员运算符是针对 <code>key:value</code>里的 <code>key</code>进行操作的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">78</span>]: b = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: b <span class="keyword">in</span> &#123;<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">Out[<span class="number">79</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: b = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">81</span>]: b <span class="keyword">in</span> &#123;<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">Out[<span class="number">81</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">82</span>]: b = <span class="string">&#x27;c&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: b <span class="keyword">in</span> &#123;<span class="string">&#x27;c&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">Out[<span class="number">83</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-11-身份运算符"><a href="#5-11-身份运算符" class="headerlink" title="5-11 身份运算符"></a>5-11 身份运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is</td>
+<td>is 是判断两个标识符是不是引用自一个对象</td>
+<td><strong>x is y</strong>, 类似 <strong>id(x) == id(y)</strong> , 如果引用的是同一个对象则返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>is not</td>
+<td>is not 是判断两个标识符是不是引用自不同对象</td>
+<td><strong>x is not y</strong> ， 类似 **id(a) != id(b)**。如果引用的不是同一个对象则返回结果 True，否则返回 False。</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">84</span>]: a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">85</span>]: b = <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">86</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">86</span>]: <span class="number">4368033776</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">87</span>]: <span class="built_in">id</span>(b)</span><br><span class="line">Out[<span class="number">87</span>]: <span class="number">4410835472</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关系运算符 == 只考虑取值是否相等</span></span><br><span class="line">In [<span class="number">88</span>]: a == b</span><br><span class="line">Out[<span class="number">88</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">89</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">89</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>两个变量的取值相同并不代表身份也相同，身份可以用内存地址表示，因为它们的内存地址不同，所以它们的身份不同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set</span></span><br><span class="line">In [<span class="number">92</span>]: a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">93</span>]: b = &#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">94</span>]: a == b</span><br><span class="line">Out[<span class="number">94</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">95</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">95</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">96</span>]: <span class="built_in">id</span>(a)</span><br><span class="line">Out[<span class="number">96</span>]: <span class="number">4386541640</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">97</span>]: <span class="built_in">id</span>(b)</span><br><span class="line">Out[<span class="number">97</span>]: <span class="number">4386541864</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tuple</span></span><br><span class="line">In [<span class="number">109</span>]: c = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">110</span>]: d = (<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">111</span>]: c == d</span><br><span class="line">Out[<span class="number">111</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">112</span>]: c <span class="keyword">is</span> d</span><br><span class="line">Out[<span class="number">112</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">113</span>]: <span class="built_in">id</span>(c)</span><br><span class="line">Out[<span class="number">113</span>]: <span class="number">4410495696</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">114</span>]: <span class="built_in">id</span>(d)</span><br><span class="line">Out[<span class="number">114</span>]: <span class="number">4372745888</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># list</span></span><br><span class="line">In [<span class="number">115</span>]: e = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">116</span>]: f = [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">117</span>]: e == f</span><br><span class="line">Out[<span class="number">117</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">118</span>]: e <span class="keyword">is</span> f</span><br><span class="line">Out[<span class="number">118</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">119</span>]: <span class="built_in">id</span>(e)</span><br><span class="line">Out[<span class="number">119</span>]: <span class="number">4409831880</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">120</span>]: <span class="built_in">id</span>(f)</span><br><span class="line">Out[<span class="number">120</span>]: <span class="number">4410963080</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-12-如何判断变量的值、身份与类型"><a href="#5-12-如何判断变量的值、身份与类型" class="headerlink" title="5-12 如何判断变量的值、身份与类型"></a>5-12 如何判断变量的值、身份与类型</h3><p>在 <code>Python</code>里，一切皆对象。对象的三个特征：</p>
+<ul>
+<li>值</li>
+<li>身份</li>
+<li>类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">121</span>]: a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">122</span>]: b =<span class="number">22</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 值判断</span></span><br><span class="line">In [<span class="number">123</span>]: a == b</span><br><span class="line">Out[<span class="number">123</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份判断</span></span><br><span class="line">In [<span class="number">124</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">124</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 类型判断</span></span><br><span class="line">In [<span class="number">125</span>]: <span class="built_in">type</span>(a) == <span class="built_in">type</span>(b)</span><br><span class="line">Out[<span class="number">125</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>Python</code>里有一个专门的函数来判断变量的类型：<code>isinstance()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">126</span>]: a = <span class="string">&#x27;hello&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断 a 是否是一个str</span></span><br><span class="line">In [<span class="number">127</span>]: <span class="built_in">isinstance</span>(a, <span class="built_in">str</span>)</span><br><span class="line">Out[<span class="number">127</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断 a 是否是一个 int</span></span><br><span class="line">In [<span class="number">128</span>]: <span class="built_in">isinstance</span>(a, <span class="built_in">int</span>)</span><br><span class="line">Out[<span class="number">128</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断 a 是不是后面元组里三种类型的任意一种</span></span><br><span class="line">In [<span class="number">129</span>]: <span class="built_in">isinstance</span>(a, (<span class="built_in">int</span>,<span class="built_in">str</span>,<span class="built_in">float</span>))</span><br><span class="line">Out[<span class="number">129</span>]: <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">In [<span class="number">130</span>]: <span class="built_in">isinstance</span>(a, (<span class="built_in">int</span>,<span class="built_in">float</span>))</span><br><span class="line">Out[<span class="number">130</span>]: Fals</span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p><code>type()</code>与<code>isinstance()</code>的区别：</p>
+<p><code>type</code>不能判断对象的子类是否属于某种类型的，但是 <code>isinstance</code>可以</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Color</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 子类继承父类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Red</span>(<span class="params">Color</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"> </span><br><span class="line">print(<span class="built_in">type</span>(Color()) == Color)</span><br><span class="line">print(<span class="built_in">type</span>(Red()) == Color)</span><br><span class="line">print(<span class="built_in">isinstance</span>(Red(),Color))</span><br><span class="line">--------------------------------</span><br><span class="line">运行结果：</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="5-13-位运算符"><a href="#5-13-位运算符" class="headerlink" title="5-13 位运算符"></a>5-13 位运算符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">134</span>]: a = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">135</span>]: b =<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a 按位与 b</span></span><br><span class="line">In [<span class="number">136</span>]: a &amp; b</span><br><span class="line">Out[<span class="number">136</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p> 上述过程解释：</p>
+<ol>
+<li>将a转化为二进制数得到10，将b 转化为二进制数得到11；</li>
+<li>分别将两个二进制数进行<strong>与</strong>操作，两个二进制数的第一位：0 and 1返回结果为0，两个二进制数第二位：1 and 1返回结果为1；</li>
+<li>所以两个二进制数进行<strong>与</strong>操作之后，得到的是二进制数10；</li>
+<li>最后将得到的二进制数10转化为十进制数2返回。</li>
+</ol>
+<blockquote>
+<p>小知识：</p>
+<p>异或：如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">湮灭星空</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.klause.cn/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC5%E7%AB%A0%20%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/">https://www.klause.cn/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC5%E7%AB%A0%20%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">湮灭星空</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9eb5bc3ac1e1ff3ddac0',
+        clientSecret: '4b7ae28042282281295075c2bf0c97ff1791cfeb',
+        repo: 'HexoBlogComments',
+        owner: 'Annihilater',
+        admin: "Annihilater",
+        id: '2019-04-15T11-56-02',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC3%E7%AB%A0%20%E7%90%86%E8%A7%A3%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%99%E4%BB%A3%E7%A0%81%E4%B8%8EPython%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/16.jpg" class="responsive-img" alt="第3章 理解什么是写代码与Python的基本类型">
+                        
+                        <span class="card-title">第3章 理解什么是写代码与Python的基本类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            第3章 理解什么是写代码与Python的基本类型本章详细介绍了Python的基本类型，包括整形、浮点型；10、8、2、16进制数的意义和转换关系；布尔类型；字符串与字符串常见运算操作
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-04-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    入门与进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/15/Python3%20%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/%E7%AC%AC4%E7%AB%A0%20Python%E4%B8%AD%E8%A1%A8%E7%A4%BA%E2%80%9C%E7%BB%84%E2%80%9D%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9A%E4%B9%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="第4章 Python中表示“组”的概念与定义">
+                        
+                        <span class="card-title">第4章 Python中表示“组”的概念与定义</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本章详细讲解了“组”的概念，以及在Python中用来表示“组”的一些类型，包括：元组、列表、集合和字典。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%A5%E9%97%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" class="post-category">
+                                    入门与进阶
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 湮灭星空<br />'
+            + '文章作者: 湮灭星空<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">湮灭星空</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn" target="_blank">皖ICP备18005729号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Annihilater" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:yanmiexingkong@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://twitter.com" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: https://twitter.com" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="https://www.zhihu.com" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/Annihilater/Annihilater.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
